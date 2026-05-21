@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malku - Carrito</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+</head>
+
+<body>
+
+    <!-- ================= CABECERA (header) ================= -->
+    <header class="site-header">
+
+        <nav class="header-container">
+
+            <!-- Logo de la marca -->
+            <a href="../index.html" class="logo">
+                <img src="../imagenes/icon_malku.png" alt="Logo Malku">
+                <span>MALKU</span>
+            </a>
+
+            <!-- Navegación principal para escritorio -->
+            <nav>
+                <ul>
+                    <li><a href="coleccion.html">COLECCIÓN</a></li>
+                    <li><a href="nosotros.html">NOSOTROS</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <span>🔍</span>
+                <span>
+                    <a href="carrito.html">🛒</a>
+                </span>
+                <span>
+                    <a href="login.html">👤</a>
+                </span>
+            </div>
+
+            <!-- Botón de menú para dispositivos móviles -->
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <div class="off-canvas-menu" id="off-canvas-menu">
+                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                <nav>
+                    <ul>
+                        <li><a href="coleccion.html">COLECCIÓN</a></li>
+                        <li><a href="nosotros.html">NOSOTROS</a></li>
+                        <li><a href="contacto.html">CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main id="carrito-page">
+
+        <section class="carrito-section">
+
+            <div class="contenedor carrito-grid">
+
+                <!-- ================= PRODUCTOS ================= -->
+                <div class="carrito-productos">
+
+                    <!-- Título -->
+                    <div class="carrito-titulo">
+
+                        <h1>
+                            Tu Bolsa
+                        </h1>
+
+                        <span>
+                            (2 artículos)
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================= PRODUCTO 1 ================= -->
+                    <article class="carrito-item">
+
+                        <!-- Imagen -->
+                        <div class="carrito-imagen">
+
+                            <img src="../imagenes/producto-carrito-1.jpg"
+                                alt="Suéter Alpaca Crewneck">
+
+                        </div>
+
+
+                        <!-- Info -->
+                        <div class="carrito-info">
+
+                            <div class="carrito-top">
+
+                                <div>
+
+                                    <h2>
+                                        Suéter Alpaca Crewneck
+                                    </h2>
+
+                                    <p>
+                                        Color: Crudo
+                                    </p>
+
+                                    <p>
+                                        Talla: M
+                                    </p>
+
+                                </div>
+
+                                <span class="carrito-precio">
+                                    $320.00
+                                </span>
+
+                            </div>
+
+
+                            <!-- Cantidad -->
+                            <div class="carrito-cantidad">
+
+                                <button>
+                                    −
+                                </button>
+
+                                <span>
+                                    1
+                                </span>
+
+                                <button>
+                                    +
+                                </button>
+
+                                <a href="#">
+                                    Eliminar
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ================= PRODUCTO 2 ================= -->
+                    <article class="carrito-item">
+
+                        <!-- Imagen -->
+                        <div class="carrito-imagen">
+
+                            <img src="../imagenes/producto-carrito-2.jpg"
+                                alt="Bufanda Merino Artesanal">
+
+                        </div>
+
+
+                        <!-- Info -->
+                        <div class="carrito-info">
+
+                            <div class="carrito-top">
+
+                                <div>
+
+                                    <h2>
+                                        Bufanda Merino Artesanal
+                                    </h2>
+
+                                    <p>
+                                        Color: Carbón
+                                    </p>
+
+                                    <p>
+                                        Talla: Única
+                                    </p>
+
+                                </div>
+
+                                <span class="carrito-precio">
+                                    $145.00
+                                </span>
+
+                            </div>
+
+
+                            <!-- Cantidad -->
+                            <div class="carrito-cantidad">
+
+                                <button>
+                                    −
+                                </button>
+
+                                <span>
+                                    1
+                                </span>
+
+                                <button>
+                                    +
+                                </button>
+
+                                <a href="#">
+                                    Eliminar
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- ================= RESUMEN ================= -->
+                <aside class="resumen-compra">
+
+                    <h3>
+                        Resumen de pedido
+                    </h3>
+
+
+                    <!-- Subtotal -->
+                    <div class="resumen-linea">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <p>
+                            $465.00
+                        </p>
+
+                    </div>
+
+
+                    <!-- Envío -->
+                    <div class="resumen-linea">
+
+                        <span>
+                            Envío
+                        </span>
+
+                        <small>
+                            Calculado en el siguiente paso
+                        </small>
+
+                    </div>
+
+
+                    <!-- Total -->
+                    <div class="resumen-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <p>
+                            $465.00
+                        </p>
+
+                    </div>
+
+
+                    <!-- Botones -->
+                    <div class="resumen-botones">
+
+                        <a href="#" class="btn-checkout">
+                            Finalizar compra →
+                        </a>
+
+                        <a href="coleccion.html" class="btn-outline">
+                            Continuar comprando
+                        </a>
+
+                    </div>
+
+
+                    <!-- Features -->
+                    <div class="resumen-beneficios">
+
+                        <div class="beneficio">
+
+                            <span>
+                                ✦
+                            </span>
+
+                            <div>
+
+                                <h4>
+                                    Envíos globales
+                                </h4>
+
+                                <p>
+                                    Artesanía de los Andes a tu puerta
+                                    en 5–8 días hábiles.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="beneficio">
+
+                            <span>
+                                ⌂
+                            </span>
+
+                            <div>
+
+                                <h4>
+                                    Pago seguro
+                                </h4>
+
+                                <p>
+                                    Encriptación de nivel bancario
+                                    para proteger tus datos.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+     </main>
+
+     <!-- ================= PIE DE PÁGINA (footer) ================= -->
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+
+            <div class="footer-brand">
+                <h4>Malku</h4>
+                <p>Lujo esencial para un mundo que valora lo perdurable.</p>
+            </div>
+
+            <div>
+                <h5>Explorar</h5>
+                <ul>
+                    <li><a href="coleccion.html">Colección</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Soporte</h5>
+                <ul>
+                    <li><a href="internos/envios_devoluciones.html">Envíos</a></li>
+                    <li><a href="internos/envios_devoluciones.html">Devoluciones</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Seguinos</h5>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom contenedor">
+            <p>© 2026 Malku. Todos los derechos reservados.</p>
+            <div>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
