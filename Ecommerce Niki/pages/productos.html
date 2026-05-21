@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malku - Productos</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/productos.css">
+</head>
+
+<body>
+
+    <!-- ================= CABECERA (header) ================= -->
+    <header class="site-header">
+
+        <nav class="header-container">
+
+            <!-- Logo de la marca -->
+            <a href="../index.html" class="logo">
+                <img src="../imagenes/icon_malku.png" alt="Logo Malku">
+                <span>MALKU</span>
+            </a>
+
+            <!-- Navegación principal para escritorio -->
+            <nav>
+                <ul>
+                    <li><a href="coleccion.html">COLECCIÓN</a></li>
+                    <li><a href="nosotros.html">NOSOTROS</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <span>🔍</span>
+                <span>🛒</span>
+            </div>
+
+            <!-- Botón de menú para dispositivos móviles -->
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <div class="off-canvas-menu" id="off-canvas-menu">
+                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                <nav>
+                    <ul>
+                        <li><a href="coleccion.html">COLECCIÓN</a></li>
+                        <li><a href="nosotros.html">NOSOTROS</a></li>
+                        <li><a href="contacto.html">CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main id="producto-page">
+
+        <section class="producto-section">
+
+            <div class="contenedor producto-grid">
+
+                <!-- ===================================== -->
+                <!-- GALERÍA -->
+                <!-- ===================================== -->
+                <div class="producto-galeria">
+
+                    <div class="galeria-item galeria-main">
+                        <img 
+                            src="../imagenes/productos/alpaca_sweater.webp" 
+                            alt="Alpaca Oversized Sweater"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================== -->
+                <!-- INFO -->
+                <!-- ===================================== -->
+                <div class="producto-info">
+
+                    <!-- HEADER -->
+                    <div class="producto-header">
+
+                        <h1>
+                            Suéter Oversize de Alpaca
+                        </h1>
+
+                        <span class="precio">
+                            $280
+                        </span>
+                    </div>
+
+                    <!-- DESCRIPCIÓN -->
+                    <p class="producto-descripcion">
+                        Tejido artesanalmente con lana natural.
+                        Una prenda suave, cálida y atemporal.
+                    </p>
+
+
+                    <!-- ===================================== -->
+                    <!-- TALLES -->
+                    <!-- ===================================== -->
+                    <div class="producto-bloque">
+
+                        <span class="producto-label">
+                            TALLA
+                        </span>
+
+                        <div class="talles-grid">
+
+                            <button class="talle active">
+                                S
+                            </button>
+
+                            <button class="talle">
+                                M
+                            </button>
+
+                            <button class="talle">
+                                L
+                            </button>
+
+                            <button class="talle">
+                                XL
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ===================================== -->
+                    <!-- CANTIDAD -->
+                    <!-- ===================================== -->
+
+                    <div class="producto-bloque">
+
+                        <span class="producto-label">
+                            CANTIDAD
+                        </span>
+
+
+                        <div class="cantidad-selector">
+
+                            <button>
+                                −
+                            </button>
+
+                            <span>
+                                1
+                            </span>
+
+                            <button>
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- BOTÓN -->
+                    <!-- ===================================== -->
+                    <button class="add-cart-btn">
+                        AGREGAR AL CARRITO
+                    </button>
+
+                    <!-- ===================================== -->
+                    <!-- ACORDEÓN -->
+                    <!-- ===================================== -->
+                    <div class="producto-acordeon">
+
+                        <details>
+
+                            <summary>
+                                MATERIALES
+                            </summary>
+
+                            <p>
+                                100% alpaca natural seleccionada éticamente.
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                INSTRUCCIONES DE CUIDADO
+                            </summary>
+
+                            <p>
+                                Lavar a mano con agua fría y secar
+                                en superficie plana.
+                            </p>
+
+                        </details>
+
+                        <details>
+
+                            <summary>
+                                ENVÍOS Y DEVOLUCIONES
+                            </summary>
+
+                            <p>
+                                Para envíos y devoluciones, por favor 
+                                consulta nuestra página de 
+                                <a href="internos/envios_devoluciones.html">
+                                    Envíos y Devoluciones</a>.
+                            </p>
+
+                        </details>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================= -->
+        <!-- RELATED -->
+        <!-- ========================================= -->
+        <section class="related-section">
+
+            <div class="contenedor">
+
+                <h2 class="related-title">
+                    También te puede gustar
+                </h2>
+
+                <!-- Grid -->
+                <div class="related-grid">
+
+                    <!-- CARD -->
+                    <article class="related-card">
+
+                        <div class="related-image">
+                            <img src="../imagenes/productos/related_01.webp" alt="Wool Cardigan">
+                        </div>
+
+                        <div class="related-info">
+
+                            <h3>
+                                Wool Cardigan
+                            </h3>
+
+                            <span>
+                                $320
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CARD -->
+                    <article class="related-card">
+
+                        <div class="related-image">
+                            <img src="../imagenes/productos/related_02.webp" alt="Artisan Scarf">
+                        </div>
+
+                        <div class="related-info">
+
+                            <h3>
+                                Artisan Scarf
+                            </h3>
+
+                            <span>
+                                $110
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CARD -->
+                    <article class="related-card">
+
+                        <div class="related-image">
+                            <img src="../imagenes/productos/related_03.webp" alt="Ribbed Crewneck">
+                        </div>
+
+                        <div class="related-info">
+
+                            <h3>
+                                Ribbed Crewneck
+                            </h3>
+
+                            <span>
+                                $250
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CARD -->
+                    <article class="related-card">
+
+                        <div class="related-image">
+                            <img src="../imagenes/productos/related_04.webp" alt="Knit Vest">
+                        </div>
+
+                        <div class="related-info">
+
+                            <h3>
+                                Knit Vest
+                            </h3>
+
+                            <span>
+                                $190
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../javascript/productos.js"></script>
+
+    <!-- ================= PIE DE PÁGINA (footer) ================= -->
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+
+            <div class="footer-brand">
+                <h4>Malku</h4>
+                <p>Lujo esencial para un mundo que valora lo perdurable.</p>
+            </div>
+
+            <div>
+                <h5>Explorar</h5>
+                <ul>
+                    <li><a href="coleccion.html">Colección</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Soporte</h5>
+                <ul>
+                    <li><a href="internos/envios_devoluciones.html">Envíos</a></li>
+                    <li><a href="internos/envios_devoluciones.html">Devoluciones</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Seguinos</h5>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom contenedor">
+            <p>© 2026 Malku. Todos los derechos reservados.</p>
+            <div>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

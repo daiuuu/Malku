@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malku - Contacto</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/contacto.css">
+</head>
+
+<body>
+
+    <!-- ================= CABECERA (header) ================= -->
+    <header class="site-header">
+
+        <nav class="header-container">
+
+            <!-- Logo de la marca -->
+            <a href="../index.html" class="logo">
+                <img src="../imagenes/icon_malku.png" alt="Logo Malku">
+                <span>MALKU</span>
+            </a>
+
+            <!-- Navegación principal para escritorio -->
+            <nav>
+                <ul>
+                    <li><a href="coleccion.html">COLECCIÓN</a></li>
+                    <li><a href="nosotros.html">NOSOTROS</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <span>🔍</span>
+                <span>🛒</span>
+            </div>
+
+            <!-- Botón de menú para dispositivos móviles -->
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <div class="off-canvas-menu" id="off-canvas-menu">
+                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                <nav>
+                    <ul>
+                        <li><a href="coleccion.html">COLECCIÓN</a></li>
+                        <li><a href="nosotros.html">NOSOTROS</a></li>
+                        <li><a href="contacto.html">CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main id="contacto-page">
+
+        <!-- ================= HERO CONTACTO ================= -->
+        <section class="contacto-hero">
+
+            <div class="contenedor">
+
+                <span class="contacto-label">
+                    ATELIER MALKU
+                </span>
+
+                <h1>
+                    <i>Contactanos</i>
+                </h1>
+
+                <p>
+                    Cada prenda nace de una historia, y cada consulta merece el mismo cuidado.
+                    Ya sea para acompañarte en una compra, conocer nuestros procesos
+                    artesanales o explorar colaboraciones, nuestro atelier está abierto para vos.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CONTACTO PRINCIPAL ================= -->
+        <section class="contacto-main">
+
+            <div class="contenedor contacto-grid">
+
+                <!-- ========= FORMULARIO ========= -->
+                <div class="contacto-formulario-container">
+
+                    <form class="contacto-formulario">
+
+                        <!-- Nombre -->
+                        <div class="form-group">
+
+                            <label for="nombre">
+                                Nombre completo
+                            </label>
+
+                            <input 
+                                type="text" 
+                                id="nombre"
+                                placeholder="Ingresa tu nombre"
+                            >
+
+                        </div>
+
+
+                        <!-- Email -->
+                        <div class="form-group">
+
+                            <label for="email">
+                                Correo electrónico
+                            </label>
+
+                            <input 
+                                type="email" 
+                                id="email"
+                                placeholder="hola@ejemplo.com"
+                            >
+
+                        </div>
+
+
+                        <!-- Asunto -->
+                        <div class="form-group">
+
+                            <label for="asunto">
+                                Asunto
+                            </label>
+
+                            <input 
+                                type="text" 
+                                id="asunto"
+                                placeholder="Motivo de tu consulta"
+                            >
+
+                        </div>
+
+
+                        <!-- Mensaje -->
+                        <div class="form-group">
+
+                            <label for="mensaje">
+                                Mensaje
+                            </label>
+
+                            <textarea 
+                                id="mensaje"
+                                rows="5"
+                                placeholder="Escribe tu mensaje aquí..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- Botón -->
+                        <button type="submit" class="btn-contacto">
+                            Enviar consulta
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ========= INFO CONTACTO ========= -->
+                <div class="contacto-info">
+
+                    <!-- Email -->
+                    <div class="info-block">
+
+                        <span class="info-label">
+                            Correo electrónico
+                        </span>
+
+                        <a href="mailto:hola@malku.com" class="info-link">
+                            hola@malku.com
+                        </a>
+
+                    </div>
+
+
+                    <!-- Teléfono -->
+                    <div class="info-block">
+
+                        <span class="info-label">
+                            Teléfono
+                        </span>
+
+                        <a href="tel:+5491164547751" class="info-link">
+                            +54 9 11 6454-7751
+                        </a>
+
+                    </div>
+
+
+                    <!-- Dirección -->
+                    <div class="info-block">
+
+                        <span class="info-label">
+                            El Atelier
+                        </span>
+
+                        <p>
+                            Av. General Paz 1240 <br>
+                            Buenos Aires, Argentina
+                        </p>
+
+                        <span class="info-horario">
+                            Lun—Vie, 10am—6pm
+                        </span>
+
+                    </div>
+
+
+                    <!-- Redes -->
+                    <div class="info-block">
+
+                        <span class="info-label">
+                            Conectar
+                        </span>
+
+                        <div class="redes-contacto">
+
+                            <a href="#">
+                                Instagram
+                            </a>
+
+                            <a href="#">
+                                Facebook
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Letra decorativa -->
+                    <div class="contacto-decoracion">
+                        M
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICIOS ================= -->
+        <section class="contacto-servicios">
+
+            <div class="contenedor servicios-grid">
+
+                <!-- Servicio 1 -->
+                <article class="servicio-card">
+
+                    <h2>
+                        Cuidado & Reparaciones
+                    </h2>
+
+                    <p>
+                        Cada pieza MALKU está diseñada para perdurar por generaciones.
+                        Ofrecemos un servicio de reparación dedicado para preservar
+                        la esencia y la vida útil de cada prenda artesanal.
+                    </p>
+
+                    <a href="tel:+5491164547751">
+                        Solicitar reparación →
+                    </a>
+
+                </article>
+
+
+                <!-- Servicio 2 -->
+                <article class="servicio-card">
+
+                    <h2>
+                        Consultas Mayoristas
+                    </h2>
+
+                    <p>
+                        Colaboramos con boutiques y espacios seleccionados alrededor
+                        del mundo que comparten nuestra visión de lujo silencioso,
+                        artesanía y diseño atemporal.
+                    </p>
+
+                    <a href="#">
+                        Aplicar como partner →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMAGEN EDITORIAL ================= -->
+        <section class="contacto-editorial">
+
+            <div class="contenedor">
+
+                <div class="editorial-imagen">
+
+                    <img 
+                        src="../imagenes/contacto-editorial.jpg" 
+                        alt="Lana artesanal Malku"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= PIE DE PÁGINA (footer) ================= -->
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+
+            <div class="footer-brand">
+                <h4>Malku</h4>
+                <p>Lujo esencial para un mundo que valora lo perdurable.</p>
+            </div>
+
+            <div>
+                <h5>Explorar</h5>
+                <ul>
+                    <li><a href="coleccion.html">Colección</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Soporte</h5>
+                <ul>
+                    <li><a href="internos/envios_devoluciones.html">Envíos</a></li>
+                    <li><a href="internos/envios_devoluciones.html">Devoluciones</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Seguinos</h5>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom contenedor">
+            <p>© 2026 Malku. Todos los derechos reservados.</p>
+            <div>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
