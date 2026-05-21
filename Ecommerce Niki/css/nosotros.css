@@ -1,0 +1,403 @@
+/* ========================================= */
+/* NOSOTROS */
+/* ========================================= */
+
+#nosotros-page {
+    background-color: #F5F1E8;
+}
+
+
+/* ========================================= */
+/* HERO */
+/* ========================================= */
+
+.nosotros-hero {
+    position: relative;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-image: url("../imagenes/hero_nosotros_malku.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.28);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 7rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-bottom: 1.5rem;
+    color:#F5F1E8
+}
+
+.hero-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    line-height: 2;
+    COLOR: #F5F1E8;
+}
+
+
+/* ========================================= */
+/* INTRO */
+/* ========================================= */
+
+.intro-section {
+    padding: 8rem 0;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 0.7fr 2fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.intro-label span {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #79836d;
+    font-weight: 600;
+}
+
+.intro-content h2 {
+    max-width: 720px;
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #111;
+    margin-bottom: 4rem;
+}
+
+.intro-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.intro-columns p {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: #8b8882;
+    font-weight: 300;
+}
+
+
+/* ========================================= */
+/* LEGADO */
+/* ========================================= */
+
+.legado-section {
+    padding: 8rem 0;
+    background: #ffffff;
+}
+
+.legado-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+}
+
+.legado-icono {
+    display: flex;
+    justify-content: center;
+}
+
+.legado-icono img {
+    width: 70%;
+    max-width: 380px;
+    opacity: 0.9;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #79836d;
+    font-weight: 600;
+}
+
+.legado-content h2 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: #111;
+}
+
+.legado-content > p {
+    font-size: 1rem;
+    line-height: 2;
+    color: #8b8882;
+    margin-bottom: 3rem;
+}
+
+.legado-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 2rem;
+}
+
+.legado-info::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    bottom: 0;
+    width: 2px;
+    background: #d8d3c9;
+}
+
+.legado-info > div {
+    padding-left: 1rem;
+}
+
+.legado-info h4 {
+    margin-bottom: 0.7rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #111;
+}
+
+.legado-info p {
+    max-width: 420px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #8b8882;
+}
+
+
+/* ========================================= */
+/* SUSTENTABILIDAD */
+/* ========================================= */
+
+.sustentabilidad-section {
+    min-height: 100vh;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+    margin-top: 0.5rem;
+    font-size: 3rem;
+    font-weight: 300;
+    color: #111;
+}
+
+.sustentabilidad-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    align-items: stretch;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+
+/* Cards */
+
+.s-card {
+    padding: 2rem;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.s-card h3 {
+    margin-bottom: 0.9rem;
+    font-size: 1.45rem;
+    font-weight: 300;
+}
+
+.s-card p {
+    max-width: 380px;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: rgba(0,0,0,0.6);
+}
+
+
+/* Variantes */
+
+.s-card-light {
+    background: #ffffff;
+}
+
+.s-card-primary {
+    background: #79836d;
+    color: white;
+}
+
+.s-card-primary p {
+    color: rgba(255,255,255,0.8);
+}
+
+.s-card-dark {
+    background: #111;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.s-card-horizontal {
+    background: #e9e3d8;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+/* Íconos */
+
+.s-icon {
+    margin-bottom: auto;
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+.mini-logo {
+    width: 80px;
+    height: 80px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-logo img {
+    width: 28px;
+}
+
+/* ========================================= */
+/* CTA */
+/* ========================================= */
+
+.cta-section {
+    padding: 10rem 0;
+    background: #ffffff;
+}
+
+.cta-content {
+    text-align: center;
+}
+
+.cta-content h2 {
+    margin-bottom: 3rem;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: #111;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 1.3rem 3.5rem;
+    background: #111;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #79836d;
+}
+
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media (max-width: 1100px) {
+    .intro-grid,
+    .legado-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sustentabilidad-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .nosotros-hero {
+        height: 75vh;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
+    .intro-content h2,
+    .legado-content h2,
+    .section-heading h2,
+    .cta-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .intro-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .s-card-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 0.65rem;
+    }
+
+    .intro-content h2,
+    .legado-content h2,
+    .section-heading h2,
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .s-card {
+        padding: 2rem;
+    }
+}

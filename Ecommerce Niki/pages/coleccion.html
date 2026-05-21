@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malku - Colección</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/coleccion.css">
+</head>
+
+<body>
+
+    <!-- ================= CABECERA (header) ================= -->
+    <header class="site-header">
+
+        <nav class="header-container">
+
+            <!-- Logo de la marca -->
+            <a href="../index.html" class="logo">
+                <img src="../imagenes/icon_malku.png" alt="Logo Malku">
+                <span>MALKU</span>
+            </a>
+
+            <!-- Navegación principal para escritorio -->
+            <nav>
+                <ul>
+                    <li><a href="coleccion.html">COLECCIÓN</a></li>
+                    <li><a href="nosotros.html">NOSOTROS</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <span>🔍</span>
+                <span>🛒</span>
+            </div>
+
+            <!-- Botón de menú para dispositivos móviles -->
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <div class="off-canvas-menu" id="off-canvas-menu">
+                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                <nav>
+                    <ul>
+                        <li><a href="coleccion.html">COLECCIÓN</a></li>
+                        <li><a href="nosotros.html">NOSOTROS</a></li>
+                        <li><a href="contacto.html">CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main id="coleccion-page">
+
+        <!-- ================= HERO ================= -->
+        <section class="coleccion-hero">
+
+            <div class="contenedor">
+
+                <h1><i>Colección</i></h1>
+
+                <p>
+                    Descubrí la esencia de la artesanía andina a través de nuestras
+                    prendas tejidas a mano con lana premium. Cada pieza cuenta una
+                    historia de tradición, elaborada con fibras sustentables de alpaca
+                    y merino provenientes de las altas montañas.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FILTROS ================= -->
+        <section class="filtros">
+
+            <div class="contenedor filtros-container">
+
+                <div class="filtros-left">
+
+                    <button class="filtro-btn">
+                        Categoría
+                    </button>
+
+                    <button class="filtro-btn">
+                        Talle
+                    </button>
+
+                </div>
+
+                <div class="filtros-right">
+
+                    <span>Ordenar por:</span>
+
+                    <button class="filtro-btn">
+                        Más nuevos
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PRODUCTOS ================= -->
+        <section class="productos">
+
+            <div class="contenedor">
+
+                <div class="productos-grid">
+
+                    <!-- PRODUCTO 1 -->
+                    <article class="producto-card" data-product-id="sueter-oversize-alpaca">
+
+                        <div class="producto-imagen">
+
+                            <img src="../imagenes/producto1.jpg" alt="Suéter oversize de alpaca">
+
+                            <span class="producto-tag">
+                                Nuevo
+                            </span>
+
+                        </div>
+
+                        <div class="producto-info">
+
+                            <div class="producto-top">
+
+                                <h3>Suéter Oversize de Alpaca</h3>
+
+                                <p class="precio">$280</p>
+
+                            </div>
+
+                            <span class="producto-color">
+                                Blanco crema
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCTO 2 -->
+                    <article class="producto-card" data-product-id="cardigan-tejido-a-mano">
+
+                        <div class="producto-imagen">
+                            <img src="../imagenes/producto2.jpg" alt="Cárdigan tejido a mano">
+                        </div>
+
+                        <div class="producto-info">
+
+                            <div class="producto-top">
+
+                                <h3>Cárdigan tejido a mano</h3>
+
+                                <p class="precio">$320</p>
+
+                            </div>
+
+                            <span class="producto-color">
+                                Gris piedra
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCTO 3 -->
+                    <article class="producto-card" data-product-id="polera-lana-merino">
+
+                        <div class="producto-imagen">
+                            <img src="../imagenes/producto3.jpg" alt="Polera de lana merino">
+                        </div>
+
+                        <div class="producto-info">
+
+                            <div class="producto-top">
+
+                                <h3>Polera de lana merino</h3>
+
+                                <p class="precio">$245</p>
+
+                            </div>
+
+                            <span class="producto-color">
+                                Verde salvia
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCTO 4 -->
+                    <article class="producto-card" data-product-id="sweater-clasico-cuello-v">
+
+                        <div class="producto-imagen">
+                            <img src="../imagenes/producto4.jpg" alt="Sweater clásico cuello V">
+                        </div>
+
+                        <div class="producto-info">
+
+                            <div class="producto-top">
+
+                                <h3>Sweater clásico cuello V</h3>
+
+                                <p class="precio">$210</p>
+
+                            </div>
+
+                            <span class="producto-color">
+                                Carbón
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCTO 5 -->
+                    <article class="producto-card" data-product-id="sweater-texturizado">
+
+                        <div class="producto-imagen">
+                            <img src="../imagenes/producto5.jpg" alt="Sweater texturizado">
+                        </div>
+
+                        <div class="producto-info">
+
+                            <div class="producto-top">
+
+                                <h3>Sweater texturizado</h3>
+
+                                <p class="precio">$195</p>
+
+                            </div>
+
+                            <span class="producto-color">
+                                Avena
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCTO 6 -->
+                    <article class="producto-card" data-product-id="poncho-andino">
+
+                        <div class="producto-imagen">
+
+                            <img src="../imagenes/producto6.jpg" alt="Poncho andino">
+
+                            <span class="producto-tag">
+                                Limitado
+                            </span>
+
+                        </div>
+
+                        <div class="producto-info">
+
+                            <div class="producto-top">
+
+                                <h3>Poncho andino</h3>
+
+                                <p class="precio">$350</p>
+
+                            </div>
+
+                            <span class="producto-color">
+                                Tonos tierra
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOAD MORE ================= -->
+        <section class="load-more-section">
+
+            <div class="contenedor load-more-container">
+
+                <p>
+                    Mostrando 6 de 24 productos
+                </p>
+
+                <button class="load-more-btn">
+                    Cargar más
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../javascript/productos.js"></script>
+
+    <!-- ================= PIE DE PÁGINA (footer) ================= -->
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+
+            <div class="footer-brand">
+                <h4>Malku</h4>
+                <p>Lujo esencial para un mundo que valora lo perdurable.</p>
+            </div>
+
+            <div>
+                <h5>Explorar</h5>
+                <ul>
+                    <li><a href="coleccion.html">Colección</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Soporte</h5>
+                <ul>
+                    <li><a href="internos/envios_devoluciones.html">Envíos</a></li>
+                    <li><a href="internos/envios_devoluciones.html">Devoluciones</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Seguinos</h5>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom contenedor">
+            <p>© 2026 Malku. Todos los derechos reservados.</p>
+            <div>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
