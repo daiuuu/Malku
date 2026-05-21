@@ -18,6 +18,53 @@
 }
 
 /* ========================================= */
+/* VOLVER A COLECCIÓN */
+/* ========================================= */
+.volver-coleccion-section {
+    padding: 2rem 0;
+}
+
+.volver-coleccion-container {
+    max-width: 1320px;
+    text-align: left;
+}
+
+/* Botón */
+.volver-coleccion-btn {
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 999px;
+    padding: 1.2rem 3.5rem;
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: #111;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.volver-coleccion-btn:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.volver-coleccion-btn p {
+    position: relative;
+}
+
+.volver-coleccion-btn p::before {
+    content: '';
+    display: block;
+    width: 18rem;
+    max-width: calc(100% - 4rem);
+    height: 1px;
+    margin: 0 auto 1.5rem;
+    background-color: rgba(17, 17, 17, 0.18);
+}
+
+/* ========================================= */
 /* GRID */
 /* ========================================= */
 .producto-grid {
