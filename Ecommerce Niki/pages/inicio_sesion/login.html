@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malku - Iniciar Sesión</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../css/inicio_sesion/login.css">
+</head>
+
+<body>
+
+    <!-- ================= CABECERA (header) ================= -->
+    <header class="site-header">
+
+        <nav class="header-container">
+
+            <!-- Logo de la marca -->
+            <a href="../../index.html" class="logo">
+                <img src="../../imagenes/icon_malku.png" alt="Logo Malku">
+                <span>MALKU</span>
+            </a>
+
+            <!-- Navegación principal para escritorio -->
+            <nav>
+                <ul>
+                    <li><a href="../coleccion.html">COLECCIÓN</a></li>
+                    <li><a href="../nosotros.html">NOSOTROS</a></li>
+                    <li><a href="../contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <span>🔍</span>
+                <span>
+                    <a href="../carrito.html">🛒</a>
+                </span>
+                <span>
+                    <a href="login.html">👤</a>
+                </span>
+            </div>
+
+            <!-- Botón de menú para dispositivos móviles -->
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <div class="off-canvas-menu" id="off-canvas-menu">
+                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+                <nav>
+                    <ul>
+                        <li><a href="../coleccion.html">COLECCIÓN</a></li>
+                        <li><a href="../nosotros.html">NOSOTROS</a></li>
+                        <li><a href="../contacto.html">CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main id="login-page">
+
+        <section class="login-section">
+
+            <div class="login-grid">
+
+                <!-- ================= IMAGEN ================= -->
+                <div class="login-image">
+
+                    <img src="../imagenes/login-textura.jpg"
+                        alt="Textura artesanal de lana Malku">
+
+                    <div class="login-brand">
+
+                        <h1>
+                            MALKU
+                        </h1>
+
+                        <span>
+                            Excelencia artesanal desde 1992
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= FORMULARIO ================= -->
+                <div class="login-content">
+
+                    <div class="login-container">
+
+                        <!-- Label -->
+                        <span class="login-label">
+                            Autenticación
+                        </span>
+
+                        <!-- Heading -->
+                        <h2>
+                            Bienvenido nuevamente
+                        </h2>
+
+                        <p class="login-description">
+                            Ingresá tus credenciales para acceder
+                            a tu colección personal y archivo.
+                        </p>
+
+                        <!-- Form -->
+                        <form class="login-form">
+
+                            <!-- Email -->
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email
+                                </label>
+
+                                <input type="email"
+                                    id="email"
+                                    placeholder="name@example.com">
+
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+
+                                <div class="password-top">
+
+                                    <label for="password">
+                                        Contraseña
+                                    </label>
+
+                                    <a href="#">
+                                        ¿Olvidaste tu contraseña?
+                                    </a>
+
+                                </div>
+
+                                <input type="password"
+                                    id="password"
+                                    placeholder="••••••••">
+
+                            </div>
+
+                            <!-- Button -->
+                            <button type="submit"
+                                    class="btn-login">
+                                Iniciar sesión
+                            </button>
+
+                            <!-- Divider -->
+                            <div class="login-divider">
+
+                                <span>
+                                    o
+                                </span>
+
+                            </div>
+
+                            <!-- Create account -->
+                            <a href="registro.html"
+                            class="btn-create-account">
+                                Crear cuenta
+                            </a>
+
+                        </form>
+
+                        <!-- Footer -->
+                        <div class="login-footer">
+
+                            <p>
+                                Al iniciar sesión aceptás nuestros
+                                términos y políticas de privacidad.
+                            </p>
+
+                            <p>
+                                MALKU garantiza los más altos estándares
+                                de protección y confidencialidad de datos.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= PIE DE PÁGINA (footer) ================= -->
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+
+            <div class="footer-brand">
+                <h4>Malku</h4>
+                <p>Lujo esencial para un mundo que valora lo perdurable.</p>
+            </div>
+
+            <div>
+                <h5>Explorar</h5>
+                <ul>
+                    <li><a href="../coleccion.html">Colección</a></li>
+                    <li><a href="../nosotros.html">Nosotros</a></li>
+                    <li><a href="../contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Soporte</h5>
+                <ul>
+                    <li><a href="../internos/envios_devoluciones.html">Envíos</a></li>
+                    <li><a href="../internos/envios_devoluciones.html">Devoluciones</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5>Seguinos</h5>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom contenedor">
+            <p>© 2026 Malku. Todos los derechos reservados.</p>
+            <div>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
