@@ -2,20 +2,18 @@
 /* LOGIN */
 /* ============================= */
 
-#login-page {
+#registro-page {
     background: #f5f1e8;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+    min-height: 100vh;
 }
 
-.login-section {
-    width: min(1200px, 100%);
-    margin: 0 auto;
-    padding: 0;
-    height: 100%;
+/* ============================= */
+/* SECTION */
+/* ============================= */
+
+.registro-section {
+    padding-top: 0;
+    padding-bottom: 2rem;
 }
 
 /* ============================= */
@@ -90,18 +88,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f5f1e8;
     height: 100%;
     padding: 0;
 }
 
 .login-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 750px;
     padding: 2.5rem 2.5rem;
-    background: transparent;
 }
 
+/* Label */
 .login-label {
     display: inline-block;
     margin-bottom: 0.8rem;
@@ -111,7 +108,10 @@
     color: #8e8a82;
 }
 
+/* Heading */
 .login-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
     margin: 0;
     font-size: clamp(2.6rem, 4vw, 3.2rem);
     font-weight: 300;
@@ -121,14 +121,19 @@
     margin-bottom: 1rem;
 }
 
+/* Descripcion */
 .login-description {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.95;
-    max-width: 320px;
+    max-width: 450px;
     color: #8e8a82;
     margin-bottom: 1rem;
 }
+
+/* ============================= */
+/* FORM */
+/* ============================= */
 
 .login-form {
     display: grid;
@@ -189,7 +194,7 @@
 
 .btn-login,
 .btn-create-account {
-    width: 90%;
+    width: 70%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -242,7 +247,6 @@
 
 .login-footer {
     margin-top: 1rem;
-    text-align: center;
 }
 
 .login-footer p {
