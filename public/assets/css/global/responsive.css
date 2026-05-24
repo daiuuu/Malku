@@ -1,0 +1,156 @@
+/* ============================= */
+/* TABLETS */
+/* ============================= */
+
+@media (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+
+    .contenedor {
+        width: 92%;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    /* ================= HEADER ================= */
+    .header-container {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .logo span {
+        font-size: 1.2rem;
+    }
+
+    /* Oculta navegación desktop */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Botón hamburguesa */
+    .menu-toggle {
+        display: block;
+
+        font-size: 1.5rem;
+
+        background: none;
+        border: none;
+
+        cursor: pointer;
+
+        color: #2e2e2e;
+    }
+
+    /* ================= OFF CANVAS ================= */
+    .off-canvas-menu {
+        display: block;
+    }
+
+    .off-canvas-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* ================= TIPOGRAFÍA ================= */
+    h1 {
+        font-size: 3.2rem;
+        line-height: 1;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 0.92rem;
+    }
+
+    /* ================= FOOTER ================= */
+    .site-footer {
+        padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .footer-bottom div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .footer-bottom a {
+        margin-left: 0;
+    }
+}
+
+/* ============================= */
+/* SMALL MOBILE */
+/* ============================= */
+
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    .header-container {
+        padding: 1rem;
+    }
+
+    .logo img {
+        height: 18px;
+    }
+
+    .logo span {
+        font-size: 1rem;
+    }
+
+    .icons {
+        gap: 0.8rem;
+    }
+
+    .icons span,
+    .icons span a {
+        width: 18px;
+        height: 18px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .off-canvas-menu {
+        width: 100%;
+    }
+}

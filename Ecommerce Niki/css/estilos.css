@@ -351,19 +351,14 @@ a, button {
     padding: 0.8rem 2rem;
     border: 1px solid #2e2e2e;
     background: rgba(255,255,255,0.9);
-
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     text-decoration: none;
-
     color: #2e2e2e;
 }
 
 .btn:hover {
-    background: #79836D;
-    color: white;
-}over {
     background: #79836D;
     color: white;
 }
