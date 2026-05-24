@@ -1,0 +1,403 @@
+/* ========================================= */
+/* MALKU — ENVÍOS & DEVOLUCIONES */
+/* ========================================= */
+
+#envios-page {
+    background: #F5F1E8;
+}
+
+/* ========================================= */
+/* HERO */
+/* ========================================= */
+.envios-hero {
+    padding: 5rem 0 7rem;
+}
+
+.envios-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.envios-hero-texto {
+    max-width: 520px;
+}
+
+.envios-hero-texto h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: #111;
+    margin-bottom: 2rem;
+}
+
+.envios-hero-texto p {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: #8d8b84;
+    font-weight: 300;
+    max-width: 430px;
+}
+
+.envios-hero-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 0.95;
+    display: block;
+    border-radius: 4px;
+}
+
+/* ========================================= */
+/* POLÍTICAS */
+/* ========================================= */
+.politicas-envio {
+    background: #ffffff;
+    padding: 7rem 0;
+}
+
+.politicas-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+}
+
+/* Shipping Card */
+.shipping-card h2 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    color: #111;
+}
+
+.shipping-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.shipping-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.shipping-top h3 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #111;
+    margin-bottom: 0.6rem;
+}
+
+.shipping-top span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #9a978f;
+}
+
+.shipping-precio {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #111;
+    white-space: nowrap;
+}
+
+.shipping-desc {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #7d7b75;
+    max-width: 600px;
+}
+
+
+/* Commitment Card */
+.compromiso-card {
+    background: #ebe5d8;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.compromiso-icono {
+    font-size: 2rem;
+    color: #79836d;
+    margin-bottom: 2rem;
+}
+
+.compromiso-card h3 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    color: #111;
+}
+
+.compromiso-card p {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: #6f6d67;
+    margin-bottom: 2rem;
+}
+
+.compromiso-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.compromiso-tags span {
+    border: 1px solid rgba(0,0,0,0.12);
+    padding: 0.6rem 1rem;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #555;
+}
+
+
+/* ========================================= */
+/* TRACK ORDER */
+/* ========================================= */
+.track-order {
+    padding: 7rem 0;
+    background: #F5F1E8;
+}
+
+.track-container {
+    text-align: center;
+    max-width: 850px;
+}
+
+.track-container h2 {
+    font-size: 2.6rem;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+    color: #111;
+}
+
+.track-container p {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: #8b887f;
+    margin-bottom: 3rem;
+}
+
+.track-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.track-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding: 1rem 0;
+    font-size: 0.85rem;
+    color: #111;
+    font-family: inherit;
+}
+
+.track-form input:focus {
+    outline: none;
+    border-color: #79836d;
+}
+
+.track-form button {
+    background: #79836d;
+    color: white;
+    border: none;
+    padding: 1.15rem 2.8rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.track-form button:hover {
+    background: #6d7663;
+}
+
+
+/* ========================================= */
+/* DEVOLUCIONES */
+/* ========================================= */
+.devoluciones {
+    background: #ffffff;
+    padding: 7rem 0;
+}
+
+.devoluciones-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5rem;
+}
+
+.devoluciones-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: #111;
+}
+
+.devoluciones-intro p {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: #7e7b75;
+}
+
+.devoluciones-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.info-block h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #111;
+    margin-bottom: 1rem;
+}
+
+.info-block p {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: #7c7973;
+}
+
+
+/* ========================================= */
+/* FAQ */
+/* ========================================= */
+.faq-section {
+    padding: 7rem 0 9rem;
+}
+
+.faq-container {
+    max-width: 900px;
+}
+
+.faq-container h2 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #111;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.7rem 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.faq-question span:first-child {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #111;
+}
+
+.faq-icon {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #444;
+}
+
+.site-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 3rem;
+}
+
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+@media (max-width: 1100px) {
+    .envios-hero-grid,
+    .politicas-grid,
+    .devoluciones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .envios-hero-texto {
+        max-width: 100%;
+    }
+
+    .compromiso-card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .envios-hero {
+        padding-top: 3rem;
+    }
+
+    .envios-hero-texto h1 {
+        font-size: 4rem;
+        letter-spacing: -2px;
+    }
+
+    .track-form {
+        flex-direction: column;
+    }
+
+    .devoluciones-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .envios-hero-texto h1 {
+        font-size: 3rem;
+    }
+
+    .shipping-top {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .compromiso-card {
+        padding: 2.5rem;
+    }
+
+    .faq-container h2 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,259 @@
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.hero {
+    height: 90vh;
+    background: url("../imagenes/hero.jpg") center/cover no-repeat;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.hero p {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: rgba(255,255,255,0.9);
+}
+
+/* ============================= */
+/* COLECCIÓN */
+/* ============================= */
+
+.coleccion {
+    padding: 6rem 0;
+    background: #F5F1E8;
+}
+
+.coleccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+}
+
+.explorar {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--neutral);
+}
+
+.explorar:hover {
+    color: var(--primary);
+}
+
+/* GRID PRODUCTOS */
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.producto img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    margin-bottom: 1rem;
+
+    transition: transform 0.4s ease;
+}
+
+.producto:hover img {
+    transform: scale(1.05);
+}
+
+.producto h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.producto p {
+    font-size: 0.8rem;
+    color: var(--neutral);
+}
+
+/* ============================= */
+/* HISTORIA */
+/* ============================= */
+
+.historia {
+    padding: 6rem 0;
+    background: white;
+}
+
+.historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.historia-texto h2 {
+    margin: 1rem 0 1.5rem 0;
+}
+
+.historia-texto p {
+    max-width: 400px;
+    margin-bottom: 2rem;
+}
+
+/* Features */
+
+.historia-features {
+    display: flex;
+    gap: 3rem;
+    border-top: 1px solid rgba(120, 119, 116, 0.3);
+    padding-top: 2rem;
+}
+
+.historia-features h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+}
+
+.historia-features p {
+    font-size: 0.8rem;
+}
+
+.historia-imagen img {
+    width: 100%;
+    display: block;
+}
+
+/* ============================= */
+/* SUSCRIPCIÓN */
+/* ============================= */
+
+.suscripcion {
+    padding: 5rem 0;
+    background: #FCFAF5;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.suscripcion h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.suscripcion p {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+/* Formulario */
+
+.form-suscripcion {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.form-suscripcion input {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    width: 250px;
+    background: transparent;
+    outline: none;
+}
+
+.form-suscripcion input:focus {
+    border-bottom: 1px solid var(--primary);
+}
+
+.form-suscripcion button {
+    background: var(--primary);
+    border: none;
+    padding: 0.7rem 1.5rem;
+
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    color: white;
+    cursor: pointer;
+}
+
+.form-suscripcion button:hover {
+    opacity: 0.85;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 1024px) {
+
+    .grid-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .historia-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .historia-texto {
+        text-align: center;
+    }
+
+    .historia-texto p {
+        margin: 0 auto 2rem auto;
+    }
+
+    .historia-features {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
+
+    .form-suscripcion {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-suscripcion input {
+        width: 100%;
+        max-width: 300px;
+    }
+}
