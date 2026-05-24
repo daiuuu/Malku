@@ -21,9 +21,11 @@
             <h5 class="footer-title">Explorar</h5>
 
             <ul class="footer-links">
-                <li><a href="/coleccion">Colección</a></li>
-                <li><a href="/nosotros">Nosotros</a></li>
-                <li><a href="/contacto">Contacto</a></li>
+
+                <li><a href="<?= BASE_URL; ?>/coleccion">Colección</a></li>
+                <li><a href="<?= BASE_URL; ?>/nosotros">Nosotros</a></li>
+                <li><a href="<?= BASE_URL; ?>/contacto">Contacto</a></li>
+
             </ul>
 
         </div>
@@ -34,8 +36,10 @@
             <h5 class="footer-title">Soporte</h5>
 
             <ul class="footer-links">
-                <li><a href="/envios">Envíos</a></li>
-                <li><a href="/devoluciones">Devoluciones</a></li>
+
+                <li><a href="<?= BASE_URL; ?>/envios">Envíos</a></li>
+                <li><a href="<?= BASE_URL; ?>/devoluciones">Devoluciones</a></li>
+
             </ul>
 
         </div>
@@ -46,8 +50,10 @@
             <h5 class="footer-title">Seguinos</h5>
 
             <ul class="footer-links">
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Facebook</a></li>
+
+                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+
             </ul>
 
         </div>
@@ -57,17 +63,24 @@
     <!-- ================= FOOTER INFERIOR ================= -->
     <div class="footer-bottom contenedor">
 
-        <p>© <?= date('Y') ?> Malku. Todos los derechos reservados.</p>
+        <p>
+            © <?= date('Y') ?> Malku. Todos los derechos reservados.
+        </p>
 
         <!-- ================= LINKS LEGALES ================= -->
         <div class="footer-legal">
-            <a href="/terminos">Términos</a>
-            <a href="/privacidad">Privacidad</a>
+
+            <a href="<?= BASE_URL; ?>/terminos">Términos</a>
+            <a href="<?= BASE_URL; ?>/privacidad">Privacidad</a>
+
         </div>
 
     </div>
 
 </footer>
+
+<!-- ================= JS GLOBAL ================= -->
+<script src="<?= BASE_URL; ?>/assets/js/global/menu.js"></script>
 
 </body>
 </html>

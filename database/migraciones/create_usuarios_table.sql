@@ -17,3 +17,20 @@ CREATE TABLE usuarios (
 
     ultimo_acceso TIMESTAMP NULL
 );
+
+ALTER TABLE usuarios
+
+ADD foto_perfil VARCHAR(255) AFTER telefono,
+
+ADD email_verificado BOOLEAN DEFAULT FALSE AFTER estado,
+
+ADD token_recuperacion VARCHAR(255) AFTER email_verificado,
+
+MODIFY estado ENUM(
+    'activo',
+    'bloqueado',
+    'pendiente'
+) DEFAULT 'activo',
+
+ADD updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ON UPDATE CURRENT_TIMESTAMP AFTER ultimo_acceso;

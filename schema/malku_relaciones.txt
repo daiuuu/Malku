@@ -1,0 +1,252 @@
+Acá voy a documentar las relaciones entre tablas para que sea más fácil editar las tablas a futuro========================================
+MALKU - RELACIONES BASE DE DATOS
+========================================
+
+==================================================
+USUARIOS
+==================================================
+
+usuarios.id
+    ├── pedidos.usuario_id
+    ├── carrito.usuario_id
+    ├── favoritos.usuario_id
+    ├── direcciones.usuario_id
+    ├── membresias.usuario_id
+    └── stock_movimientos.usuario_admin_id
+
+--------------------------------------------------
+
+Relaciones:
+- Un usuario puede tener MUCHOS pedidos
+- Un usuario puede tener UN carrito activo
+- Un usuario puede tener MUCHOS favoritos
+- Un usuario puede tener MUCHAS direcciones
+- Un usuario puede tener MUCHAS membresías
+- Un admin puede generar MUCHOS movimientos de stock
+
+==================================================
+CATEGORIAS
+==================================================
+
+categorias.id
+    └── productos.categoria_id
+
+--------------------------------------------------
+
+Relaciones:
+- Una categoría puede tener MUCHOS productos
+
+==================================================
+PRODUCTOS
+==================================================
+
+productos.id
+    ├── producto_imagenes.producto_id
+    ├── carrito_detalle.producto_id
+    ├── pedido_detalle.producto_id
+    ├── favoritos.producto_id
+    └── stock_movimientos.producto_id
+
+--------------------------------------------------
+
+Relaciones:
+- Un producto puede tener MUCHAS imágenes
+- Un producto puede estar en MUCHOS carritos
+- Un producto puede estar en MUCHOS pedidos
+- Un producto puede ser favorito de MUCHOS usuarios
+- Un producto puede tener MUCHOS movimientos de stock
+
+==================================================
+PRODUCTO_IMAGENES
+==================================================
+
+producto_imagenes.producto_id
+    └── productos.id
+
+--------------------------------------------------
+
+Relaciones:
+- Muchas imágenes pertenecen a UN producto
+
+==================================================
+CARRITO
+==================================================
+
+carrito.id
+    └── carrito_detalle.carrito_id
+
+carrito.usuario_id
+    └── usuarios.id
+
+--------------------------------------------------
+
+Relaciones:
+- Un carrito pertenece a UN usuario
+- Un carrito puede tener MUCHOS productos
+
+==================================================
+CARRITO_DETALLE
+==================================================
+
+carrito_detalle.carrito_id
+    └── carrito.id
+
+carrito_detalle.producto_id
+    └── productos.id
+
+--------------------------------------------------
+
+Relaciones:
+- Muchos registros detalle pertenecen a UN carrito
+- Muchos registros detalle pueden referenciar UN producto
+
+==================================================
+PEDIDOS
+==================================================
+
+pedidos.id
+    └── pedido_detalle.pedido_id
+
+pedidos.usuario_id
+    └── usuarios.id
+
+pedidos.direccion_id
+    └── direcciones.id
+
+pedidos.cupon_id
+    └── cupones.id
+
+--------------------------------------------------
+
+Relaciones:
+- Un pedido pertenece a UN usuario
+- Un pedido puede tener MUCHOS productos
+- Un pedido puede usar UNA dirección
+- Un pedido puede usar UN cupón
+
+==================================================
+PEDIDO_DETALLE
+==================================================
+
+pedido_detalle.pedido_id
+    └── pedidos.id
+
+pedido_detalle.producto_id
+    └── productos.id
+
+--------------------------------------------------
+
+Relaciones:
+- Muchos detalles pertenecen a UN pedido
+- Muchos detalles pueden referenciar UN producto
+
+==================================================
+FAVORITOS
+==================================================
+
+favoritos.usuario_id
+    └── usuarios.id
+
+favoritos.producto_id
+    └── productos.id
+
+--------------------------------------------------
+
+Relaciones:
+- Un usuario puede tener MUCHOS favoritos
+- Un producto puede estar en MUCHOS favoritos
+
+==================================================
+DIRECCIONES
+==================================================
+
+direcciones.usuario_id
+    └── usuarios.id
+
+--------------------------------------------------
+
+Relaciones:
+- Un usuario puede tener MUCHAS direcciones
+- Una dirección puede ser usada en MUCHOS pedidos
+
+==================================================
+CONTACTO
+==================================================
+
+Sin relaciones directas.
+
+--------------------------------------------------
+
+Función:
+- Guarda mensajes enviados desde el formulario de contacto
+
+==================================================
+CUPONES
+==================================================
+
+cupones.id
+    └── pedidos.cupon_id
+
+--------------------------------------------------
+
+Relaciones:
+- Un cupón puede utilizarse en MUCHOS pedidos
+
+==================================================
+STOCK_MOVIMIENTOS
+==================================================
+
+stock_movimientos.producto_id
+    └── productos.id
+
+stock_movimientos.usuario_admin_id
+    └── usuarios.id
+
+--------------------------------------------------
+
+Relaciones:
+- Un producto puede tener MUCHOS movimientos
+- Un admin puede generar MUCHOS movimientos
+
+==================================================
+MEMBRESIAS
+==================================================
+
+membresias.usuario_id
+    └── usuarios.id
+
+--------------------------------------------------
+
+Relaciones:
+- Un usuario puede tener MUCHAS membresías
+
+========================================
+RESUMEN GENERAL
+========================================
+
+usuarios
+    ├── carrito
+    ├── pedidos
+    ├── favoritos
+    ├── direcciones
+    ├── membresias
+    └── stock_movimientos
+
+categorias
+    └── productos
+
+productos
+    ├── producto_imagenes
+    ├── carrito_detalle
+    ├── pedido_detalle
+    ├── favoritos
+    └── stock_movimientos
+
+carrito
+    └── carrito_detalle
+
+pedidos
+    └── pedido_detalle
+
+cupones
+    └── pedidos

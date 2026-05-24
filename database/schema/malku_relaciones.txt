@@ -1,1 +1,0 @@
-Acá voy a documentar las relaciones entre tablas para que sea más fácil editar las tablas a futuro
