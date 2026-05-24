@@ -1,0 +1,300 @@
+/* ============================= */
+/* LOGIN */
+/* ============================= */
+
+#registro-page {
+    background: #f5f1e8;
+    min-height: 100vh;
+}
+
+/* ============================= */
+/* SECTION */
+/* ============================= */
+
+.registro-section {
+    padding-top: 0;
+    padding-bottom: 2rem;
+}
+
+/* ============================= */
+/* LAYOUT PRINCIPAL 50 / 50 */
+/* ============================= */
+
+.login-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 96px);
+    align-items: stretch;
+    gap: 0;
+}
+
+/* ============================= */
+/* COLUMNA IZQUIERDA - IMAGEN */
+/* ============================= */
+
+.login-image {
+    position: relative;
+    overflow: hidden;
+    height: 90vh;
+}
+
+.login-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 16, 14, 0.20);
+}
+
+.login-brand {
+    position: absolute;
+    left: 4rem;
+    bottom: 4rem;
+    z-index: 1;
+    color: #ffffff;
+    max-width: 55%;
+}
+
+.login-brand h1 {
+    margin: 0;
+    font-size: clamp(3rem, 4vw, 4.4rem);
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.login-brand span {
+    display: block;
+    margin-top: 1.3rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.23em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================= */
+/* COLUMNA DERECHA - CONTENIDO */
+/* ============================= */
+
+.login-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 750px;
+    padding: 2.5rem 2.5rem;
+}
+
+/* Label */
+.login-label {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #8e8a82;
+}
+
+/* Heading */
+.login-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    margin: 0;
+    font-size: clamp(2.6rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: #1e1e1c;
+    margin-bottom: 1rem;
+}
+
+/* Descripcion */
+.login-description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.95;
+    max-width: 450px;
+    color: #8e8a82;
+    margin-bottom: 1rem;
+}
+
+/* ============================= */
+/* FORM */
+/* ============================= */
+
+.login-form {
+    display: grid;
+    gap: 2rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.form-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #1e1e1c;
+    letter-spacing: 0.08em;
+}
+
+.form-group input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: transparent;
+    padding: 1rem 0 0.55rem;
+    color: #1e1e1c;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-group input::placeholder {
+    color: rgba(142, 138, 130, 0.55);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-bottom-color: #7d876f;
+}
+
+.password-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.password-top a {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8e8a82;
+    text-decoration: none;
+}
+
+.password-top a:hover {
+    color: #1e1e1c;
+}
+
+.btn-login,
+.btn-create-account {
+    width: 70%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.1rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-login {
+    background: #7d876f;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-login:hover {
+    background: #6c7a63;
+    transform: translateY(-1px);
+}
+
+.login-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: #8e8a82;
+    font-size: 0.82rem;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.btn-create-account {
+    background: transparent;
+    color: #1e1e1c;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.btn-create-account:hover {
+    background: rgba(125, 135, 111, 0.08);
+}
+
+.login-footer {
+    margin-top: 1rem;
+}
+
+.login-footer p {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 2.1;
+    color: rgba(30, 30, 28, 0.65);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 960px) {
+    .login-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: calc(100vh - 96px);
+    }
+
+    .login-image {
+        display: none;
+    }
+
+    .login-container {
+        max-width: 100%;
+        padding: 2.5rem 1.8rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .login-grid {
+        min-height: auto;
+    }
+
+    .login-container {
+        padding: 2.5rem 1.4rem;
+    }
+
+    .login-label {
+        margin-bottom: 1.25rem;
+    }
+
+    .login-container h2 {
+        font-size: 2.2rem;
+    }
+
+    .login-description {
+        margin-bottom: 2.5rem;
+    }
+}

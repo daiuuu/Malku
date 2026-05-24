@@ -1,0 +1,363 @@
+/* ========================================= */
+/* MALKU — CARRITO */
+/* ========================================= */
+
+#carrito-page {
+    background: #F5F1E8;
+    min-height: 100vh;
+}
+
+/* ========================================= */
+/* SECTION */
+/* ========================================= */
+.carrito-section {
+    padding: 5rem 0 7rem;
+}
+
+.carrito-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 0.7fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* ========================================= */
+/* TÍTULO */
+/* ========================================= */
+.carrito-titulo {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+}
+
+.carrito-titulo h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 4.8rem;
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    color: #111;
+}
+
+.carrito-titulo span {
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #8d8a83;
+}
+
+/* ========================================= */
+/* ITEMS */
+/* ========================================= */
+.carrito-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Imagen */
+.carrito-imagen {
+    background: #ece7dc;
+    overflow: hidden;
+}
+
+.carrito-imagen img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 0.78;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.carrito-item:hover .carrito-imagen img {
+    transform: scale(1.03);
+}
+
+/* Info */
+.carrito-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carrito-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.carrito-top h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+.carrito-top p {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #7f7c75;
+    margin-bottom: 0.55rem;
+}
+
+.carrito-precio {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #111;
+    white-space: nowrap;
+}
+
+/* ========================================= */
+/* CANTIDAD */
+/* ========================================= */
+.carrito-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.carrito-cantidad button {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #111;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.carrito-cantidad button:hover {
+    opacity: 0.5;
+}
+
+.carrito-cantidad span {
+    font-size: 0.8rem;
+    color: #111;
+}
+
+.carrito-cantidad a {
+    margin-left: 1rem;
+    font-size: 0.58rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #8d8a83;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.carrito-cantidad a:hover {
+    color: #111;
+}
+
+/* ========================================= */
+/* RESUMEN */
+/* ========================================= */
+.resumen-compra {
+    background: #ffffff;
+    padding: 3rem;
+    position: sticky;
+    top: 2rem;
+}
+
+.resumen-compra h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: #111;
+    margin-bottom: 3rem;
+}
+
+/* Líneas */
+.resumen-linea,
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.resumen-linea {
+    margin-bottom: 2rem;
+}
+
+.resumen-linea span,
+.resumen-total span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #8a877f;
+}
+
+.resumen-linea p,
+.resumen-total p {
+    font-size: 1rem;
+    color: #111;
+}
+
+.resumen-linea small {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #a09d96;
+    max-width: 120px;
+    text-align: right;
+    line-height: 1.6;
+}
+
+.resumen-total {
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.resumen-total p {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+
+/* ========================================= */
+/* BOTONES */
+/* ========================================= */
+.resumen-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.btn-checkout,
+.btn-outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    text-decoration: none;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    transition: all 0.3s ease;
+}
+
+.btn-checkout {
+    background: #79836d;
+    color: white;
+}
+
+.btn-checkout:hover {
+    background: #6c7561;
+}
+
+.btn-outline {
+    border: 1px solid rgba(0,0,0,0.12);
+    color: #111;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #111;
+    color: white;
+}
+
+/* ========================================= */
+/* BENEFICIOS */
+/* ========================================= */
+.resumen-beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.beneficio {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.beneficio span {
+    font-size: 0.9rem;
+    color: #79836d;
+    margin-top: 0.15rem;
+}
+
+.beneficio h4 {
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.beneficio p {
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: #8a877f;
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+@media (max-width: 1100px) {
+    .carrito-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resumen-compra {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .carrito-header h1 {
+        font-size: 3.5rem;
+    }
+
+    .carrito-item {
+        grid-template-columns: 1fr;
+    }
+
+    .carrito-imagen {
+        max-width: 260px;
+    }
+
+    .carrito-top {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .carrito-section {
+        padding-top: 3rem;
+    }
+
+    .carrito-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .carrito-header h1 {
+        font-size: 2.8rem;
+        letter-spacing: -2px;
+    }
+
+    .resumen-compra {
+        padding: 2rem;
+    }
+}
