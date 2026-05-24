@@ -1,3 +1,9 @@
+<?php
+
+require_once __DIR__ . '/../../../config/app.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,21 +17,20 @@
     <title><?= $titulo ?? 'Malku' ?></title>
 
     <!-- ================= FAVICON ================= -->
-    <link rel="icon" href="/assets/img/icon_malku.png" type="image/png">
+    <link rel="icon" href="<?= BASE_URL; ?>/assets/img/global/icon_malku.png" type="image/png">
 
     <!-- ================= FUENTES ================= -->
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
     <!-- ================= CSS GLOBAL ================= -->
-    <link rel="stylesheet" href="/assets/css/global/estilos.css">
-    <link rel="stylesheet" href="/assets/css/layouts/header.css">
-    <link rel="stylesheet" href="/assets/css/layouts/footer.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/assets/css/global/estilos.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/assets/css/layouts/header.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/assets/css/layouts/footer.css">
 
     <!-- ================= CSS ESPECÍFICO ================= -->
     <?php if(isset($css)): ?>
 
-        <link rel="stylesheet"
-              href="/assets/css/<?= $css ?>">
+        <link rel="stylesheet" href="<?= BASE_URL; ?>/assets/css/<?= $css ?>">
 
     <?php endif; ?>
 
@@ -39,17 +44,17 @@
         <nav class="header-container">
 
             <!-- ================= LOGO ================= -->
-            <a href="/" class="logo"> <!-- falta completar ruta -->
-                <img src="/assets/img/icon_malku.png" alt="Logo Malku">
+            <a href="<?= BASE_URL; ?>/" class="logo">
+                <img src="<?= BASE_URL; ?>/assets/img/global/icon_malku.png" alt="Logo Malku">
                 <span>MALKU</span>
             </a>
 
             <!-- ================= NAVEGACIÓN DESKTOP ================= -->
             <nav class="desktop-nav">
                 <ul> <!-- falta completar rutas -->
-                    <li><a href="/coleccion">COLECCIÓN</a></li>
-                    <li><a href="/nosotros">NOSOTROS</a></li>
-                    <li><a href="/contacto">CONTACTO</a></li>
+                    <li><a href="<?= BASE_URL; ?>/coleccion">COLECCIÓN</a></li>
+                    <li><a href="<?= BASE_URL; ?>/nosotros">NOSOTROS</a></li>
+                    <li><a href="<?= BASE_URL; ?>/contacto">CONTACTO</a></li>
                 </ul>
             </nav>
 
@@ -57,17 +62,17 @@
             <div class="icons">
 
                 <span>
-                    <a href="/carrito">🛒</a>
+                    <a href="<?= BASE_URL; ?>/carrito">🛒</a>
                 </span>
 
                 <span>
                     <?php if(isset($_SESSION['usuario'])): ?>
-                        <a href="/mi-cuenta">
+                        <a href="<?= BASE_URL; ?>/mi-cuenta">
                             👤
                         </a>
 
                     <?php else: ?>
-                        <a href="/login">
+                        <a href="<?= BASE_URL; ?>/login">
                             👤
                         </a>
 
@@ -85,9 +90,9 @@
 
                 <nav>
                     <ul>
-                        <li><a href="/coleccion">COLECCIÓN</a></li>
-                        <li><a href="/nosotros">NOSOTROS</a></li>
-                        <li><a href="/contacto">CONTACTO</a></li>
+                        <li><a href="<?= BASE_URL; ?>/coleccion">COLECCIÓN</a></li>
+                        <li><a href="<?= BASE_URL; ?>/nosotros">NOSOTROS</a></li>
+                        <li><a href="<?= BASE_URL; ?>/contacto">CONTACTO</a></li>
                     </ul>
                 </nav>
 

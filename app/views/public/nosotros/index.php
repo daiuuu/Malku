@@ -3,10 +3,7 @@
 <main id="nosotros-page">
 
     <!-- ================= HERO ================= -->
-    <section 
-        class="nosotros-hero"
-        style="background-image: url('<?= BASE_URL; ?>/assets/img/nosotros/nosotros_hero.webp');"
-    >
+    <section class="nosotros-hero" style="background-image: url('<?= BASE_URL; ?>/assets/img/nosotros/nosotros_hero.webp');">
 
         <div class="hero-overlay"></div>
 
