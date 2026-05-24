@@ -1,0 +1,40 @@
+/* ============================= */
+/* BASE */
+/* ============================= */
+
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--bone);
+    color: var(--neutral);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
