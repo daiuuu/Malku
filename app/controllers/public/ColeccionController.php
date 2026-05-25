@@ -1,36 +1,40 @@
 <?php
 
-require_once __DIR__ . '/../../models/producto.php';
-require_once __DIR__ . '/../../models/categoria.php';
+require_once __DIR__ . '/../../models/Producto.php';
+require_once __DIR__ . '/../../models/Categoria.php';
 
 class ColeccionController
 {
     public function index()
     {
-        // ================= TÍTULO DINÁMICO ==============
+        // ================= TÍTULO DINÁMICO =================
         $titulo = "Malku - Colección";
 
-        // ================= CSS ESPECÍFICO ===============
+        // ================= CSS ESPECÍFICO ==================
         $css = "public/coleccion.css";
 
-        // ================= MODELOS ======================
+        // ================= MODELOS =========================
         $productoModel = new Producto();
+
         $categoriaModel = new Categoria();
 
-        // ================= FILTROS ======================
-        $buscar = $_GET['buscar'] ?? null;
+        // ================= FILTROS =========================
+        $buscar = trim($_GET['buscar'] ?? '');
+
         $categoria = $_GET['categoria'] ?? null;
+
         $orden = $_GET['orden'] ?? 'nuevos';
 
+        // ================= PAGINACIÓN ======================
         $pagina = isset($_GET['pagina'])
-            ? (int) $_GET['pagina']
+            ? max(1, (int) $_GET['pagina'])
             : 1;
 
         $limite = 6;
 
         $offset = ($pagina - 1) * $limite;
 
-        // ================= PRODUCTOS ====================
+        // ================= PRODUCTOS =======================
         $productos = $productoModel->obtenerColeccion(
             $buscar,
             $categoria,
@@ -39,21 +43,21 @@ class ColeccionController
             $offset
         );
 
-        // ================= TOTAL PRODUCTOS ==============
+        // ================= TOTAL PRODUCTOS =================
         $totalProductos = $productoModel->contarProductos(
             $buscar,
             $categoria
         );
 
-        // ================= PAGINACIÓN ===================
-        $hayMasProductos = (
-            ($offset + $limite) < $totalProductos
-        );
+        // ================= PAGINACIÓN ======================
+        $hayMasProductos =
+            ($offset + $limite) < $totalProductos;
 
-        // ================= CATEGORÍAS ===================
+        // ================= CATEGORÍAS ======================
         $categorias = $categoriaModel->obtenerTodas();
 
-        // ================= CARGAR VISTA =================
-        require_once __DIR__ . '/../../views/public/coleccion/index.php';
+        // ================= CARGAR VISTA ====================
+        require_once __DIR__ .
+            '/../../views/public/coleccion/index.php';
     }
 }
