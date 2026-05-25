@@ -41,4 +41,50 @@ class Producto
                 $productoId
             );
     }
+
+    // ================= OBTENER PRODUCTO POR ID =================
+    public function obtenerProductoPorId(
+        $id
+    )
+    {
+        try
+        {
+            // ================= SQL =================
+            $sql = "
+                SELECT
+                    p.*,
+                    c.nombre AS categoria_nombre
+                FROM productos p
+                INNER JOIN categorias c
+                    ON p.categoria_id = c.id
+                WHERE p.id = :id
+                LIMIT 1
+            ";
+
+            // ================= PREPARAR ============
+            $stmt = $this->conexion->prepare($sql);
+
+            // ================= BIND ================
+            $stmt->bindParam(
+                ':id',
+                $id,
+                PDO::PARAM_INT
+            );
+
+            // ================= EJECUTAR ============
+            $stmt->execute();
+
+            // ================= RETORNO =============
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e)
+        {
+            error_log(
+                'Error obtenerProductoPorId(): ' .
+                $e->getMessage()
+            );
+
+            return false;
+        }
+    }
 }
