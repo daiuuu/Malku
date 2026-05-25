@@ -1,0 +1,246 @@
+<?php require_once __DIR__ . '/../../layouts/header.php'; ?>
+
+<main id="producto-page">
+
+    <!-- ================= VOLVER ================= -->
+    <section class="volver-coleccion-section">
+
+        <div class="contenedor volver-coleccion-container">
+
+            <a
+                href="<?= BASE_URL; ?>/coleccion"
+                class="volver-coleccion-btn"
+            >
+                Volver a colección
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= PRODUCTO ================= -->
+    <section class="producto-section">
+
+        <div class="contenedor producto-grid">
+
+            <!-- ================= IMAGEN ================= -->
+            <div class="producto-galeria">
+
+                <div class="galeria-item galeria-main">
+
+                    <img
+                        src="<?= BASE_URL; ?>/assets/img/productos/<?= $producto['imagen_principal']; ?>"
+                        alt="<?= $producto['nombre']; ?>"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- ================= INFO ================= -->
+            <div class="producto-info">
+
+                <!-- ================= HEADER ================= -->
+                <div class="producto-header">
+
+                    <h1>
+                        <?= $producto['nombre']; ?>
+                    </h1>
+
+                    <span class="precio">
+
+                        $<?= number_format(
+                            $producto['precio'],
+                            0,
+                            ',',
+                            '.'
+                        ); ?>
+
+                    </span>
+
+                </div>
+
+                <!-- ================= DESCRIPCIÓN ================= -->
+                <p class="producto-descripcion">
+
+                    <?= $producto['descripcion']; ?>
+
+                </p>
+
+                <!-- ================= CATEGORÍA ================= -->
+                <div class="producto-bloque">
+
+                    <span class="producto-label">
+                        CATEGORÍA
+                    </span>
+
+                    <p>
+                        <?= $producto['categoria_nombre']; ?>
+                    </p>
+
+                </div>
+
+                <!-- ================= STOCK ================= -->
+                <div class="producto-bloque">
+
+                    <span class="producto-label">
+                        STOCK DISPONIBLE
+                    </span>
+
+                    <p>
+                        <?= $producto['stock']; ?> unidades
+                    </p>
+
+                </div>
+
+                <!-- ================= FORMULARIO ================= -->
+                <form
+                    action="<?= BASE_URL; ?>/carrito/agregar"
+                    method="POST"
+                >
+
+                    <input
+                        type="hidden"
+                        name="producto_id"
+                        value="<?= $producto['id']; ?>"
+                    >
+
+                    <!-- ================= CANTIDAD ================= -->
+                    <div class="producto-bloque">
+
+                        <span class="producto-label">
+                            CANTIDAD
+                        </span>
+
+                        <input
+                            type="number"
+                            name="cantidad"
+                            value="1"
+                            min="1"
+                            max="<?= $producto['stock']; ?>"
+                        >
+
+                    </div>
+
+                    <!-- ================= BOTÓN ================= -->
+                    <button
+                        type="submit"
+                        class="add-cart-btn"
+                    >
+                        AGREGAR AL CARRITO
+                    </button>
+
+                </form>
+
+                <!-- ================= ACORDEÓN ================= -->
+                <div class="producto-acordeon">
+
+                    <details>
+
+                        <summary>
+                            MATERIALES
+                        </summary>
+
+                        <p>
+                            <?= $producto['materiales']; ?>
+                        </p>
+
+                    </details>
+
+                    <details>
+
+                        <summary>
+                            INSTRUCCIONES DE CUIDADO
+                        </summary>
+
+                        <p>
+                            <?= $producto['cuidados']; ?>
+                        </p>
+
+                    </details>
+
+                    <details>
+
+                        <summary>
+                            ENVÍOS Y DEVOLUCIONES
+                        </summary>
+
+                        <p>
+
+                            Consultá nuestra política de
+                            envíos y devoluciones.
+
+                        </p>
+
+                    </details>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= RELACIONADOS ================= -->
+    <section class="related-section">
+
+        <div class="contenedor">
+
+            <h2 class="related-title">
+                También te puede gustar
+            </h2>
+
+            <div class="related-grid">
+
+                <?php foreach($relacionados as $item): ?>
+
+                    <article class="related-card">
+
+                        <a
+                            href="<?= BASE_URL; ?>/producto?id=<?= $item['id']; ?>"
+                        >
+
+                            <div class="related-image">
+
+                                <img
+                                    src="<?= BASE_URL; ?>/assets/img/productos/<?= $item['imagen_principal']; ?>"
+                                    alt="<?= $item['nombre']; ?>"
+                                >
+
+                            </div>
+
+                            <div class="related-info">
+
+                                <h3>
+                                    <?= $item['nombre']; ?>
+                                </h3>
+
+                                <span>
+
+                                    $<?= number_format(
+                                        $item['precio'],
+                                        0,
+                                        ',',
+                                        '.'
+                                    ); ?>
+
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+                <?php endforeach; ?>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<?php require_once __DIR__ . '/../../layouts/footer.php'; ?>

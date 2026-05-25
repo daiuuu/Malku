@@ -31,38 +31,56 @@
             <div class="filtros-left">
 
                 <!-- ================= BUSCADOR ================= -->
-                <form 
+                <form
                     class="filtros-buscador"
                     method="GET"
                     action="<?= BASE_URL; ?>/coleccion"
                 >
 
-                    <input 
+                    <input
                         type="text"
                         name="buscar"
-                        placeholder="Buscar productos..."
                         id="buscador-productos"
-                        value="<?= $_GET['buscar'] ?? ''; ?>"
+                        placeholder="Buscar productos..."
+                        value="<?= htmlspecialchars($_GET['buscar'] ?? ''); ?>"
                     >
 
-                    <button type="submit" class="btn-buscador">
+                    <button
+                        type="submit"
+                        class="btn-buscador"
+                    >
                         🔍
                     </button>
 
                 </form>
 
                 <!-- ================= FILTRO CATEGORÍA ================= -->
-                <form method="GET" action="<?= BASE_URL; ?>/coleccion">
+                <form
+                    method="GET"
+                    action="<?= BASE_URL; ?>/coleccion"
+                >
 
                     <?php if(isset($_GET['buscar'])): ?>
-                        <input 
+
+                        <input
                             type="hidden"
                             name="buscar"
-                            value="<?= $_GET['buscar']; ?>"
+                            value="<?= htmlspecialchars($_GET['buscar']); ?>"
                         >
+
                     <?php endif; ?>
 
-                    <select 
+                    <?php if(isset($_GET['orden'])): ?>
+
+                        <input
+                            type="hidden"
+                            name="orden"
+                            value="<?= htmlspecialchars($_GET['orden']); ?>"
+                        >
+
+                    <?php endif; ?>
+
+                    <select
                         name="categoria"
                         class="filtro-btn"
                         onchange="this.form.submit()"
@@ -72,17 +90,21 @@
                             Todas las categorías
                         </option>
 
-                        <?php foreach($categorias as $categoria): ?>
+                        <?php foreach($categorias as $categoriaItem): ?>
 
-                            <option 
-                                value="<?= $categoria['id']; ?>"
+                            <option
+                                value="<?= $categoriaItem['id']; ?>"
+
                                 <?= (
                                     isset($_GET['categoria']) &&
-                                    $_GET['categoria'] == $categoria['id']
-                                ) ? 'selected' : ''; ?>
+                                    $_GET['categoria'] == $categoriaItem['id']
+                                )
+                                    ? 'selected'
+                                    : '';
+                                ?>
                             >
 
-                                <?= $categoria['nombre']; ?>
+                                <?= htmlspecialchars($categoriaItem['nombre']); ?>
 
                             </option>
 
@@ -101,48 +123,75 @@
                     Ordenar por:
                 </span>
 
-                <form method="GET" action="<?= BASE_URL; ?>/coleccion">
+                <form
+                    method="GET"
+                    action="<?= BASE_URL; ?>/coleccion"
+                >
 
                     <?php if(isset($_GET['buscar'])): ?>
-                        <input 
+
+                        <input
                             type="hidden"
                             name="buscar"
-                            value="<?= $_GET['buscar']; ?>"
+                            value="<?= htmlspecialchars($_GET['buscar']); ?>"
                         >
+
                     <?php endif; ?>
 
                     <?php if(isset($_GET['categoria'])): ?>
-                        <input 
+
+                        <input
                             type="hidden"
                             name="categoria"
-                            value="<?= $_GET['categoria']; ?>"
+                            value="<?= htmlspecialchars($_GET['categoria']); ?>"
                         >
+
                     <?php endif; ?>
 
-                    <select 
+                    <select
                         name="orden"
                         class="filtro-btn"
                         onchange="this.form.submit()"
                     >
 
-                        <option value="nuevos">
+                        <option
+                            value="nuevos"
+
+                            <?= (
+                                ($_GET['orden'] ?? 'nuevos')
+                                == 'nuevos'
+                            )
+                                ? 'selected'
+                                : '';
+                            ?>
+                        >
                             Más nuevos
                         </option>
 
-                        <option 
+                        <option
                             value="precio_asc"
+
                             <?= (
-                                ($_GET['orden'] ?? '') == 'precio_asc'
-                            ) ? 'selected' : ''; ?>
+                                ($_GET['orden'] ?? '')
+                                == 'precio_asc'
+                            )
+                                ? 'selected'
+                                : '';
+                            ?>
                         >
                             Menor precio
                         </option>
 
-                        <option 
+                        <option
                             value="precio_desc"
+
                             <?= (
-                                ($_GET['orden'] ?? '') == 'precio_desc'
-                            ) ? 'selected' : ''; ?>
+                                ($_GET['orden'] ?? '')
+                                == 'precio_desc'
+                            )
+                                ? 'selected'
+                                : '';
+                            ?>
                         >
                             Mayor precio
                         </option>
@@ -170,17 +219,17 @@
 
                         <article class="producto-card">
 
-                            <a 
-                                href="<?= BASE_URL; ?>/producto?id=<?= $producto['id']; ?>"
+                            <a
+                                href="<?= BASE_URL; ?>/producto/<?= htmlspecialchars($producto['slug']); ?>"
                                 class="producto-link"
                             >
 
                                 <!-- ================= IMAGEN ================= -->
                                 <div class="producto-imagen">
 
-                                    <img 
-                                        src="<?= BASE_URL; ?>/assets/img/productos/<?= $producto['imagen_principal']; ?>"
-                                        alt="<?= $producto['nombre']; ?>"
+                                    <img
+                                        src="<?= BASE_URL; ?>/assets/img/productos/<?= htmlspecialchars($producto['imagen_principal']); ?>"
+                                        alt="<?= htmlspecialchars($producto['nombre']); ?>"
                                     >
 
                                     <?php if($producto['destacado'] == 1): ?>
@@ -199,7 +248,7 @@
                                     <div class="producto-top">
 
                                         <h3>
-                                            <?= $producto['nombre']; ?>
+                                            <?= htmlspecialchars($producto['nombre']); ?>
                                         </h3>
 
                                         <p class="precio">
@@ -215,11 +264,10 @@
 
                                     </div>
 
-
                                     <!-- ================= CATEGORÍA ================= -->
                                     <span class="producto-color">
 
-                                        <?= $producto['categoria_nombre']; ?>
+                                        <?= htmlspecialchars($producto['categoria_nombre']); ?>
 
                                     </span>
 
@@ -256,11 +304,19 @@
 
             <?php if($hayMasProductos): ?>
 
-                <a 
-                    href="<?= BASE_URL; ?>/coleccion?pagina=<?= $pagina + 1; ?>"
+                <?php
+
+                $queryParams = $_GET;
+
+                $queryParams['pagina'] = $pagina + 1;
+
+                ?>
+
+                <a
+                    href="<?= BASE_URL; ?>/coleccion?<?= http_build_query($queryParams); ?>"
                     class="load-more-btn"
                 >
-                    Cargar más
+                    Siguiente página
                 </a>
 
             <?php endif; ?>
