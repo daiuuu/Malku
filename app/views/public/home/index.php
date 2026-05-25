@@ -53,7 +53,7 @@
 
                         <article class="producto">
 
-                            <a href="<?= BASE_URL; ?>/producto?id=<?= $producto['id']; ?>">
+                            <a href="<?= BASE_URL; ?>/producto/<?= $producto['slug']; ?>">
 
                                 <img 
                                     src="<?= BASE_URL; ?>/assets/img/productos/<?= $producto['imagen_principal']; ?>" 

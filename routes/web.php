@@ -34,13 +34,16 @@ require_once __DIR__ .
 require_once __DIR__ .
     '/../app/controllers/public/AuthController.php';
 
+/*
 require_once __DIR__ .
     '/../app/controllers/public/CheckoutController.php';
+*/
 
 // ======================================================
 // CONTROLLERS USUARIO
 // ======================================================
 
+/*
 require_once __DIR__ .
     '/../app/controllers/usuario/DashboardUsuarioController.php';
 
@@ -58,11 +61,13 @@ require_once __DIR__ .
 
 require_once __DIR__ .
     '/../app/controllers/usuario/MembresiaUsuarioController.php';
+*/
 
 // ======================================================
 // CONTROLLERS ADMIN
 // ======================================================
 
+/*
 require_once __DIR__ .
     '/../app/controllers/admin/DashboardAdminController.php';
 
@@ -89,6 +94,7 @@ require_once __DIR__ .
 
 require_once __DIR__ .
     '/../app/controllers/admin/AnalyticsAdminController.php';
+*/
 
 // ======================================================
 // URL ACTUAL
@@ -105,6 +111,7 @@ $url = trim($url, '/');
 // ======================================================
 // ROUTES
 // ======================================================
+
 switch(true)
 {
     // ==================================================
@@ -132,17 +139,11 @@ switch(true)
     // ==================================================
     // PRODUCTO DETALLE
     // ==================================================
-    case preg_match(
-        '/^producto\/([a-zA-Z0-9\-]+)$/',
-        $url,
-        $matches
-    ):
-
-        $slug = $matches[1];
+    case ($url === 'producto'):
 
         $controller = new ProductoController();
 
-        $controller->show($slug);
+        $controller->detalle($slug);
 
         break;
 
@@ -235,17 +236,6 @@ switch(true)
         break;
 
     // ==================================================
-    // PROCESAR LOGIN
-    // ==================================================
-    case ($url === 'login/procesar'):
-
-        $controller = new AuthController();
-
-        $controller->procesarLogin();
-
-        break;
-
-    // ==================================================
     // REGISTRO
     // ==================================================
     case ($url === 'registro'):
@@ -257,17 +247,6 @@ switch(true)
         break;
 
     // ==================================================
-    // PROCESAR REGISTRO
-    // ==================================================
-    case ($url === 'registro/procesar'):
-
-        $controller = new AuthController();
-
-        $controller->procesarRegistro();
-
-        break;
-
-    // ==================================================
     // LOGOUT
     // ==================================================
     case ($url === 'logout'):
@@ -275,144 +254,6 @@ switch(true)
         $controller = new AuthController();
 
         $controller->logout();
-
-        break;
-
-    // ==================================================
-    // CHECKOUT
-    // ==================================================
-    case ($url === 'checkout'):
-
-        $controller = new CheckoutController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // PROCESAR CHECKOUT
-    // ==================================================
-    case ($url === 'checkout/procesar'):
-
-        $controller = new CheckoutController();
-
-        $controller->procesar();
-
-        break;
-
-    // ==================================================
-    // FAVORITOS
-    // ==================================================
-    case ($url === 'favoritos'):
-
-        $controller = new FavoritoUsuarioController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // AGREGAR FAVORITO
-    // ==================================================
-    case ($url === 'favoritos/agregar'):
-
-        $controller = new FavoritoUsuarioController();
-
-        $controller->agregar();
-
-        break;
-
-    // ==================================================
-    // ELIMINAR FAVORITO
-    // ==================================================
-    case ($url === 'favoritos/eliminar'):
-
-        $controller = new FavoritoUsuarioController();
-
-        $controller->eliminar();
-
-        break;
-
-    // ==================================================
-    // PERFIL USUARIO
-    // ==================================================
-    case ($url === 'mi-perfil'):
-
-        $controller = new PerfilUsuarioController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ACTUALIZAR PERFIL
-    // ==================================================
-    case ($url === 'mi-perfil/actualizar'):
-
-        $controller = new PerfilUsuarioController();
-
-        $controller->actualizar();
-
-        break;
-
-    // ==================================================
-    // PEDIDOS USUARIO
-    // ==================================================
-    case ($url === 'mis-pedidos'):
-
-        $controller = new PedidoUsuarioController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // DETALLE PEDIDO
-    // ==================================================
-    case preg_match(
-        '/^mis-pedidos\/([0-9]+)$/',
-        $url,
-        $matches
-    ):
-
-        $pedidoId = $matches[1];
-
-        $controller = new PedidoUsuarioController();
-
-        $controller->detalle($pedidoId);
-
-        break;
-
-    // ==================================================
-    // DIRECCIONES
-    // ==================================================
-    case ($url === 'mis-direcciones'):
-
-        $controller = new DireccionUsuarioController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // MEMBRESÍA
-    // ==================================================
-    case ($url === 'membresia'):
-
-        $controller = new MembresiaUsuarioController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // DASHBOARD USUARIO
-    // ==================================================
-    case ($url === 'dashboard'):
-
-        $controller = new DashboardUsuarioController();
-
-        $controller->index();
 
         break;
 
@@ -433,139 +274,6 @@ switch(true)
 
         require_once __DIR__ .
             '/../app/views/public/internos/envios_devoluciones.php';
-
-        break;
-
-    // ==================================================
-    // PANEL ADMIN
-    // ==================================================
-    case ($url === 'admin'):
-
-        $controller = new DashboardAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ADMIN PRODUCTOS
-    // ==================================================
-    case ($url === 'admin/productos'):
-
-        $controller = new ProductoAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // CREAR PRODUCTO
-    // ==================================================
-    case ($url === 'admin/productos/crear'):
-
-        $controller = new ProductoAdminController();
-
-        $controller->crear();
-
-        break;
-
-    // ==================================================
-    // EDITAR PRODUCTO
-    // ==================================================
-    case preg_match(
-        '/^admin\/productos\/editar\/([0-9]+)$/',
-        $url,
-        $matches
-    ):
-
-        $productoId = $matches[1];
-
-        $controller = new ProductoAdminController();
-
-        $controller->editar($productoId);
-
-        break;
-
-    // ==================================================
-    // ELIMINAR PRODUCTO
-    // ==================================================
-    case preg_match(
-        '/^admin\/productos\/eliminar\/([0-9]+)$/',
-        $url,
-        $matches
-    ):
-
-        $productoId = $matches[1];
-
-        $controller = new ProductoAdminController();
-
-        $controller->eliminar($productoId);
-
-        break;
-
-    // ==================================================
-    // ADMIN PEDIDOS
-    // ==================================================
-    case ($url === 'admin/pedidos'):
-
-        $controller = new PedidoAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ADMIN USUARIOS
-    // ==================================================
-    case ($url === 'admin/usuarios'):
-
-        $controller = new UsuarioAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ADMIN CONTACTO
-    // ==================================================
-    case ($url === 'admin/contacto'):
-
-        $controller = new ContactoAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ADMIN CUPONES
-    // ==================================================
-    case ($url === 'admin/cupones'):
-
-        $controller = new CuponAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ADMIN STOCK
-    // ==================================================
-    case ($url === 'admin/stock'):
-
-        $controller = new StockAdminController();
-
-        $controller->index();
-
-        break;
-
-    // ==================================================
-    // ADMIN ANALYTICS
-    // ==================================================
-    case ($url === 'admin/analytics'):
-
-        $controller = new AnalyticsAdminController();
-
-        $controller->index();
 
         break;
 
@@ -606,18 +314,6 @@ switch(true)
                 >
                     Página no encontrada
                 </p>
-
-                <a
-                    href="' . BASE_URL . '"
-                    style="
-                        text-decoration: none;
-                        color: black;
-                        border: 1px solid black;
-                        padding: 12px 24px;
-                    "
-                >
-                    Volver al inicio
-                </a>
 
             </main>
         ';

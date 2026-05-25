@@ -24,7 +24,13 @@ Ruta principal del proyecto en localhost.
 Ajustar si cambia la carpeta del proyecto.
 */
 
-define('BASE_URL', 'http://localhost/MALKU/public');
+if(!defined('BASE_URL'))
+{
+    define(
+        'BASE_URL',
+        'http://localhost/Proyecto-Ecommerce-Niki/public'
+    );
+}
 
 /* ============================= */
 /* ZONA HORARIA */
