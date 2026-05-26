@@ -254,12 +254,26 @@
                 <!-- BOTONES -->
                 <div class="resumen-botones">
 
+                    <?php if(isset($_SESSION['usuario'])): ?>
+
                     <a
                         href="<?= BASE_URL; ?>/checkout"
                         class="btn-checkout"
                     >
                         Finalizar compra →
                     </a>
+
+                <?php else: ?>
+
+                    <button
+                        type="button"
+                        class="btn-checkout"
+                        id="abrir-login-modal"
+                    >
+                        Finalizar compra →
+                    </button>
+
+                <?php endif; ?>
 
                     <a
                         href="<?= BASE_URL; ?>/coleccion"
@@ -324,5 +338,63 @@
     </section>
 
 </main>
+
+<?php if(!isset($_SESSION['usuario'])): ?>
+
+    <!-- ================= MODAL LOGIN ================= -->
+    <div class="modal-auth-overlay" id="modal-auth">
+
+        <div class="modal-auth">
+
+            <button
+                class="cerrar-modal-auth"
+                id="cerrar-modal-auth"
+            >
+                ×
+            </button>
+
+            <span class="modal-auth-subtitulo">
+                EXPERIENCIA MALKU
+            </span>
+
+            <h2>
+                Descubrí una experiencia personalizada
+            </h2>
+
+            <p>
+                Iniciá sesión para acceder a tus pedidos,
+                beneficios exclusivos y una experiencia
+                de compra inspirada en el universo Malku.
+            </p>
+
+            <div class="modal-auth-botones">
+
+                <a
+                    href="<?= BASE_URL; ?>/login"
+                    class="btn-auth-login"
+                >
+                    Iniciar sesión
+                </a>
+
+                <span>
+                    o
+                </span>
+
+                <a
+                    href="<?= BASE_URL; ?>/registro"
+                    class="btn-auth-register"
+                >
+                    Crear cuenta
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<?php endif; ?>
+
+<script src="<?= BASE_URL; ?>/assets/js/global/carrito_auth_modal.js"></script>
 
 <?php require_once __DIR__ . '/../../layouts/footer.php'; ?>
