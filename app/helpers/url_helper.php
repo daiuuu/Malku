@@ -11,7 +11,8 @@ if (!defined('BASE_URL')) {
 
     $HOST = $_SERVER['HTTP_HOST'];
 
-    $PASTA_PROYECTO = '/Proyecto-Ecommerce-Niki/public';
+    // ================= SIN /public =================
+    $PASTA_PROYECTO = '/Proyecto-Ecommerce-Niki';
 
     define(
         'BASE_URL',

@@ -9,10 +9,9 @@ html {
 
 body {
     font-family: 'Work Sans', sans-serif;
-    background-color: var(--bone);
-    color: var(--neutral);
+    background-color: #F5F1E8;
+    color: #787774;
     line-height: 1.6;
-    min-height: 100vh;
 }
 
 img {

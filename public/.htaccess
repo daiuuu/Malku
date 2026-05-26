@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# =====================================================
+# BASE DEL PROYECTO
+# =====================================================
+
+RewriteBase /Proyecto-Ecommerce-Niki/public/
+
+# =====================================================
+# SI EXISTE ARCHIVO O CARPETA, NO REESCRIBIR
+# =====================================================
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# =====================================================
+# REDIRIGIR TODO A INDEX.PHP
+# =====================================================
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

@@ -20,7 +20,7 @@ require_once __DIR__ . '/../../../config/app.php';
     <link rel="icon" href="<?= BASE_URL; ?>/assets/img/global/icon_malku.png" type="image/png">
 
     <!-- ================= FUENTES ================= -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
     <!-- ================= CSS GLOBAL ================= -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/assets/css/global/estilos.css">
@@ -45,7 +45,7 @@ require_once __DIR__ . '/../../../config/app.php';
 
             <!-- ================= LOGO ================= -->
             <a href="<?= BASE_URL; ?>/" class="logo">
-                <img src="<?= BASE_URL; ?>/assets/img/global/icon_malku.png" alt="Logo Malku">
+                <img src="<?= BASE_URL; ?>/assets/img/icon_malku.png" alt="Logo Malku">
                 <span>MALKU</span>
             </a>
 
@@ -82,10 +82,10 @@ require_once __DIR__ . '/../../../config/app.php';
             </div>
 
             <!-- ================= MENÚ MOBILE ================= -->
-            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <!-- <button class="menu-toggle" aria-label="Abrir menú">☰</button> -->
 
             <!-- ================= OFF CANVAS ================= -->
-            <div class="off-canvas-menu" id="off-canvas-menu">
+            <!-- <div class="off-canvas-menu" id="off-canvas-menu">
                 <button class="close-btn" aria-label="Cerrar menú">&times;</button>
 
                 <nav>
@@ -96,7 +96,7 @@ require_once __DIR__ . '/../../../config/app.php';
                     </ul>
                 </nav>
 
-            </div>
+            </div> -->
 
         </nav>
 

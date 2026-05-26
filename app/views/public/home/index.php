@@ -3,7 +3,7 @@
 <main id="inicio">
 
     <!-- ================= HERO ================= -->
-    <section class="hero" style="background-image: url('<?= BASE_URL; ?>/assets/img/inicio/hero_section_malku.webp');">
+    <section class="hero" style="background-image: url('<?= BASE_URL; ?>/assets/img/hero_section_malku.webp');">
 
         <div class="hero-overlay"></div>
 
@@ -139,7 +139,7 @@
 
             <div class="historia-imagen">
 
-                <img src="<?= BASE_URL; ?>/assets/img/inicio/legado_del_condor.webp" alt="El legado del cóndor">
+                <img src="<?= BASE_URL; ?>/assets/img/legado_del_condor.webp" alt="El legado del cóndor">
 
             </div>
 

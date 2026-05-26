@@ -10,7 +10,7 @@ class HomeController
         $titulo = "Malku - Home";
 
         // ================= CSS ESPECÍFICO ==================
-        $css = "public/inicio.css";
+        $css = "public/home.css";
 
         // ================= MODELO PRODUCTO =================
         $productoModel = new Producto();
