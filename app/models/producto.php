@@ -383,4 +383,36 @@ class Producto
             return [];
         }
     }
+
+    // ================= DESCONTAR STOCK =================
+    public function descontarStock(
+        $productoId,
+        $cantidad
+    )
+    {
+        try
+        {
+            $sql = "
+                UPDATE productos
+                SET stock = stock - :cantidad
+                WHERE id = :id
+            ";
+
+            $stmt =
+                $this->conexion->prepare($sql);
+
+            return $stmt->execute([
+                ':cantidad' => $cantidad,
+                ':id' => $productoId
+            ]);
+        }
+        catch(PDOException $e)
+        {
+            error_log(
+                $e->getMessage()
+            );
+
+            return false;
+        }
+    }
 }

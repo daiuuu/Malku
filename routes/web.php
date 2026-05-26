@@ -34,10 +34,8 @@ require_once __DIR__ .
 require_once __DIR__ .
     '/../app/controllers/public/AuthController.php';
 
-/*
 require_once __DIR__ .
     '/../app/controllers/public/CheckoutController.php';
-*/
 
 // ======================================================
 // CONTROLLERS USUARIO
@@ -137,9 +135,22 @@ switch(true)
         break;
 
     // ==================================================
+    // COLECCIÓN - AJAX CARGAR MÁS
+    // ==================================================
+    case ($url === 'coleccion/buscar'):
+
+        $controller = new ColeccionController();
+
+        $controller->buscar();
+
+        break;
+
+    // ==================================================
     // PRODUCTO DETALLE
     // ==================================================
-    case ($url === 'producto'):
+    case (strpos($url, 'producto/') === 0):
+
+        $slug = substr($url, strlen('producto/'));
 
         $controller = new ProductoController();
 
@@ -274,6 +285,33 @@ switch(true)
 
         require_once __DIR__ .
             '/../app/views/public/internos/envios_devoluciones.php';
+
+        break;
+    
+    // ================= CHECKOUT =================
+    case ($url === 'checkout'):
+
+        $controller = new CheckoutController();
+
+        $controller->index();
+
+        break;
+
+    // ================= PROCESAR CHECKOUT =================
+    case ($url === 'checkout/procesar'):
+
+        $controller = new CheckoutController();
+
+        $controller->procesar();
+
+        break;
+
+    // ================= CHECKOUT ÉXITO =================
+    case ($url === 'checkout/exito'):
+
+        $controller = new CheckoutController();
+
+        $controller->exito();
 
         break;
 

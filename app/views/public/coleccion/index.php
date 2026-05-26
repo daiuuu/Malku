@@ -217,7 +217,10 @@
 
                     <?php foreach($productos as $producto): ?>
 
-                        <article class="producto-card">
+                        <article class="producto-card"
+                            data-name="<?= htmlspecialchars(strtolower($producto['nombre'])); ?>"
+                            data-categoria="<?= htmlspecialchars(strtolower($producto['categoria_nombre'])); ?>"
+                        >
 
                             <a
                                 href="<?= BASE_URL; ?>/producto/<?= htmlspecialchars($producto['slug']); ?>"
@@ -228,7 +231,7 @@
                                 <div class="producto-imagen">
 
                                     <img
-                                        src="<?= BASE_URL; ?>/assets/img/productos/<?= htmlspecialchars($producto['imagen_principal']); ?>"
+                                        src="<?= BASE_URL; ?>/assets/img/<?= htmlspecialchars($producto['imagen_principal']); ?>"
                                         alt="<?= htmlspecialchars($producto['nombre']); ?>"
                                     >
 
@@ -316,7 +319,7 @@
                     href="<?= BASE_URL; ?>/coleccion?<?= http_build_query($queryParams); ?>"
                     class="load-more-btn"
                 >
-                    Siguiente página
+                    Cargar más productos
                 </a>
 
             <?php endif; ?>

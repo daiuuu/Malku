@@ -81,6 +81,10 @@
 
 <!-- ================= JS GLOBAL ================= -->
 <script src="<?= BASE_URL; ?>/assets/js/global/menu.js"></script>
+<script>
+    window.BASE_URL = '<?= BASE_URL; ?>';
+</script>
+<script src="<?= BASE_URL; ?>/assets/js/global/coleccion.js"></script>
 
 </body>
 </html>
