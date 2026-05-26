@@ -1,30 +1,19 @@
 <?php
 
-require_once __DIR__ . '/../../models/Producto.php';
+require_once __DIR__ .
+    '/../../models/Producto.php';
 
 class ProductoController
 {
-    public function detalle()
+    // ================= DETALLE PRODUCTO =================
+    public function detalle($slug)
     {
-        // ================= VALIDAR ID =================
-        if(!isset($_GET['id']))
-        {
-            header(
-                'Location: ' .
-                BASE_URL .
-                '/coleccion'
-            );
-            exit;
-        }
-
-        $id = (int) $_GET['id'];
-
         // ================= MODELO =====================
         $productoModel = new Producto();
 
         // ================= PRODUCTO ===================
         $producto =
-            $productoModel->obtenerPorId($id);
+            $productoModel->obtenerPorSlug($slug);
 
         // ================= VALIDAR ====================
         if(!$producto)
@@ -34,6 +23,7 @@ class ProductoController
                 BASE_URL .
                 '/coleccion'
             );
+
             exit;
         }
 

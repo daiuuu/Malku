@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../models/Contacto.php';
 
 class ContactoRepository
@@ -39,31 +39,12 @@ class ContactoRepository
 
             $stmt = $this->conexion->prepare($sql);
 
-            $stmt->bindParam(
-                ':nombre',
-                $contacto->getNombre(),
-                PDO::PARAM_STR
-            );
-
-            $stmt->bindParam(
-                ':email',
-                $contacto->getEmail(),
-                PDO::PARAM_STR
-            );
-
-            $stmt->bindParam(
-                ':asunto',
-                $contacto->getAsunto(),
-                PDO::PARAM_STR
-            );
-
-            $stmt->bindParam(
-                ':mensaje',
-                $contacto->getMensaje(),
-                PDO::PARAM_STR
-            );
-
-            return $stmt->execute();
+            return $stmt->execute([
+                ':nombre' => $contacto->getNombre(),
+                ':email' => $contacto->getEmail(),
+                ':asunto' => $contacto->getAsunto(),
+                ':mensaje' => $contacto->getMensaje()
+            ]);
         }
         catch(PDOException $e)
         {

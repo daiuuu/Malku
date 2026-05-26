@@ -3,7 +3,7 @@
 <main id="nosotros-page">
 
     <!-- ================= HERO ================= -->
-    <section class="nosotros-hero" style="background-image: url('<?= BASE_URL; ?>/assets/img/nosotros/nosotros_hero.webp');">
+    <section class="nosotros-hero" style="background-image: url('<?= BASE_URL; ?>/assets/img/hero_nosotros_malku.webp');">
 
         <div class="hero-overlay"></div>
 
@@ -80,7 +80,7 @@
             <div class="legado-icono">
 
                 <img 
-                    src="<?= BASE_URL; ?>/assets/img/global/icon_malku.png" 
+                    src="<?= BASE_URL; ?>/assets/img/icon_malku.png" 
                     alt="Ícono Malku"
                 >
 
@@ -217,7 +217,7 @@
                     <div class="mini-logo">
 
                         <img 
-                            src="<?= BASE_URL; ?>/assets/img/global/icon_malku.png" 
+                            src="<?= BASE_URL; ?>/assets/img/icon_malku.png" 
                             alt="Malku"
                         >
 

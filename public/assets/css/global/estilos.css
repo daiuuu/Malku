@@ -1,17 +1,10 @@
 /* ============================= */
-/* CORE */
+/* GLOBAL */
 /* ============================= */
 
-@import url('core/reset.css');
-@import url('core/variables.css');
-@import url('core/base.css');
-@import url('core/tipografia.css');
-@import url('core/utilidades.css');
-@import url('core/responsive.css');
-
-/* ============================= */
-/* LAYOUTS */
-/* ============================= */
-
-@import url('layouts/header.css');
-@import url('layouts/footer.css');
+@import url('reset.css');
+@import url('variables.css');
+@import url('base.css');
+@import url('tipografia.css');
+@import url('utilidades.css');
+@import url('responsive.css');
