@@ -41,7 +41,7 @@ require_once __DIR__ . '/../../../config/app.php';
     <!-- ================= HEADER ================= -->
     <header class="site-header">
 
-        <nav class="header-container">
+        <div class="header-container">
 
             <!-- ================= LOGO ================= -->
             <a href="<?= BASE_URL; ?>/" class="logo">
@@ -82,11 +82,17 @@ require_once __DIR__ . '/../../../config/app.php';
             </div>
 
             <!-- ================= MENÚ MOBILE ================= -->
-            <!-- <button class="menu-toggle" aria-label="Abrir menú">☰</button> -->
+            <!-- <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                ☰
+            </button> -->
+
+            <!-- ================= OVERLAY ================= -->
+            <!-- <div class="menu-overlay" id="menu-overlay"></div> -->
 
             <!-- ================= OFF CANVAS ================= -->
             <!-- <div class="off-canvas-menu" id="off-canvas-menu">
-                <button class="close-btn" aria-label="Cerrar menú">&times;</button>
+
+                <button class="close-btn" id="close-btn" aria-label="Cerrar menú">&times;</button>
 
                 <nav>
                     <ul>
@@ -98,6 +104,6 @@ require_once __DIR__ . '/../../../config/app.php';
 
             </div> -->
 
-        </nav>
+        </div>
 
     </header>

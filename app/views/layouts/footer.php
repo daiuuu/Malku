@@ -37,8 +37,8 @@
 
             <ul class="footer-links">
 
-                <li><a href="<?= BASE_URL; ?>/envios">Envíos</a></li>
-                <li><a href="<?= BASE_URL; ?>/devoluciones">Devoluciones</a></li>
+                <li><a href="<?= BASE_URL; ?>/envios-devoluciones">Envíos</a></li>
+                <li><a href="<?= BASE_URL; ?>/envios-devoluciones#devoluciones">Devoluciones</a></li>
 
             </ul>
 

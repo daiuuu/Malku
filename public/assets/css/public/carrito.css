@@ -323,13 +323,9 @@
     justify-content: center;
     padding: 2rem;
     z-index: 9999;
-
     opacity: 0;
     visibility: hidden;
-
-    transition:
-        opacity 0.35s ease,
-        visibility 0.35s ease;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
 .modal-auth-overlay.activo {
@@ -344,9 +340,7 @@
     padding: 4rem;
     position: relative;
     text-align: center;
-
     transform: translateY(20px);
-
     transition: transform 0.35s ease;
 }
 
@@ -358,10 +352,8 @@
     position: absolute;
     top: 1.2rem;
     right: 1.4rem;
-
     background: transparent;
     border: none;
-
     font-size: 2rem;
     cursor: pointer;
     color: #111;
@@ -369,15 +361,11 @@
 
 .modal-auth-subtitulo {
     display: inline-block;
-
     font-size: 0.62rem;
     font-weight: 600;
-
     letter-spacing: 0.28em;
     text-transform: uppercase;
-
     color: #8d8a83;
-
     margin-bottom: 1.5rem;
 }
 
@@ -386,12 +374,9 @@
     font-size: 3rem;
     font-style: italic;
     font-weight: 300;
-
     line-height: 1;
     letter-spacing: -2px;
-
     color: #111;
-
     margin-bottom: 1.5rem;
 }
 
@@ -399,7 +384,6 @@
     font-size: 0.9rem;
     line-height: 1.9;
     color: #6d6a64;
-
     margin-bottom: 2.5rem;
 }
 
@@ -414,17 +398,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 1.2rem;
-
     text-decoration: none;
-
     font-size: 0.68rem;
     font-weight: 600;
-
     text-transform: uppercase;
     letter-spacing: 0.24em;
-
     transition: all 0.3s ease;
 }
 

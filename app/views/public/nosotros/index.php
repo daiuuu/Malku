@@ -199,7 +199,7 @@
                 </article>
 
                 <!-- CARD 3 -->
-                <article class="s-card s-card-dark">
+                <article class="s-card s-card-primary">
 
                     <div class="s-icon">
                         ▲
@@ -208,6 +208,10 @@
                     <h3>
                         Residuos Cero
                     </h3>
+
+                    <p>
+                        Adoptamos prácticas que minimizan el desperdicio en cada etapa: reutilizamos retazos, optimizamos cortes y diseñamos pensando en la durabilidad.
+                    </p>
 
                 </article>
 

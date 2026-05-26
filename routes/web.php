@@ -37,6 +37,9 @@ require_once __DIR__ .
 require_once __DIR__ .
     '/../app/controllers/public/CheckoutController.php';
 
+require_once __DIR__ .
+    '/../app/controllers/public/EnviosDevolucionesController.php';
+
 // ======================================================
 // CONTROLLERS USUARIO
 // ======================================================
@@ -269,22 +272,22 @@ switch(true)
         break;
 
     // ==================================================
-    // ENVÍOS
+    // ENVÍOS & DEVOLUCIONES
     // ==================================================
+    // Alias corto: /envios -> misma vista de envíos y devoluciones
     case ($url === 'envios'):
 
-        require_once __DIR__ .
-            '/../app/views/public/internos/envios_devoluciones.php';
+        $controller = new EnviosDevolucionesController();
+
+        $controller->index();
 
         break;
 
-    // ==================================================
-    // DEVOLUCIONES
-    // ==================================================
-    case ($url === 'devoluciones'):
+    case ($url === 'envios-devoluciones'):
 
-        require_once __DIR__ .
-            '/../app/views/public/internos/envios_devoluciones.php';
+        $controller = new EnviosDevolucionesController();
+
+        $controller->index();
 
         break;
     

@@ -395,6 +395,7 @@
 
 <?php endif; ?>
 
+<script src="<?= BASE_URL; ?>/assets/js/global/carrito_flash.js"></script>
 <script src="<?= BASE_URL; ?>/assets/js/global/carrito_auth_modal.js"></script>
 
 <?php require_once __DIR__ . '/../../layouts/footer.php'; ?>
