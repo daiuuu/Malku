@@ -102,6 +102,10 @@
                                     Contraseña
                                 </label>
 
+                                <a href="#">
+                                        ¿Olvidaste tu contraseña?
+                                </a>
+
                             </div>
 
                             <input
