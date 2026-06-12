@@ -37,8 +37,8 @@
 
             <ul class="footer-links">
 
-                <li><a href="<?= BASE_URL; ?>/envios">Envíos</a></li>
-                <li><a href="<?= BASE_URL; ?>/devoluciones">Devoluciones</a></li>
+                <li><a href="<?= BASE_URL; ?>/envios-devoluciones">Envíos</a></li>
+                <li><a href="<?= BASE_URL; ?>/envios-devoluciones#devoluciones">Devoluciones</a></li>
 
             </ul>
 
@@ -81,6 +81,10 @@
 
 <!-- ================= JS GLOBAL ================= -->
 <script src="<?= BASE_URL; ?>/assets/js/global/menu.js"></script>
+<script>
+    window.BASE_URL = '<?= BASE_URL; ?>';
+</script>
+<script src="<?= BASE_URL; ?>/assets/js/global/coleccion.js"></script>
 
 </body>
 </html>

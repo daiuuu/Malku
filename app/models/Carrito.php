@@ -112,4 +112,10 @@ class Carrito
 
         return $cantidad;
     }
+
+    // ================= OBTENER PRODUCTOS ==============
+    public function obtenerProductos()
+    {
+        return $this->obtenerCarrito();
+    }
 }

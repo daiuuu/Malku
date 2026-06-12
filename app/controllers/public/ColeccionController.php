@@ -60,4 +60,53 @@ class ColeccionController
         require_once __DIR__ .
             '/../../views/public/coleccion/index.php';
     }
+
+    public function buscar()
+    {
+        $productoModel = new Producto();
+
+        $buscar = trim($_GET['buscar'] ?? '');
+        $categoria = $_GET['categoria'] ?? null;
+        $orden = $_GET['orden'] ?? 'nuevos';
+        $pagina = isset($_GET['pagina']) ? max(1, (int) $_GET['pagina']) : 1;
+
+        $limite = 6;
+        $offset = ($pagina - 1) * $limite;
+
+        $productos = $productoModel->obtenerColeccion(
+            $buscar,
+            $categoria,
+            $orden,
+            $limite,
+            $offset
+        );
+
+        $totalProductos = $productoModel->contarProductos(
+            $buscar,
+            $categoria
+        );
+
+        $result = [];
+
+        foreach ($productos as $producto) {
+            $result[] = [
+                'id' => $producto['id'],
+                'nombre' => $producto['nombre'],
+                'slug' => $producto['slug'],
+                'precio' => (float) $producto['precio'],
+                'imagen_principal' => $producto['imagen_principal'],
+                'categoria_nombre' => $producto['categoria_nombre'] ?? '',
+                'destacado' => isset($producto['destacado']) ? (bool) $producto['destacado'] : false,
+            ];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'productos' => $result,
+            'total' => $totalProductos,
+            'page' => $pagina,
+            'hasMore' => ($offset + $limite) < $totalProductos,
+        ]);
+        exit;
+    }
 }

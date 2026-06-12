@@ -29,7 +29,7 @@
                 <div class="galeria-item galeria-main">
 
                     <img
-                        src="<?= BASE_URL; ?>/assets/img/productos/<?= $producto['imagen_principal']; ?>"
+                        src="<?= BASE_URL; ?>/assets/img/<?= $producto['imagen_principal']; ?>"
                         alt="<?= $producto['nombre']; ?>"
                     >
 
@@ -112,13 +112,35 @@
                             CANTIDAD
                         </span>
 
-                        <input
-                            type="number"
-                            name="cantidad"
-                            value="1"
-                            min="1"
-                            max="<?= $producto['stock']; ?>"
-                        >
+                        <div class="cantidad-selector">
+
+                            <button
+                                type="button"
+                                class="cantidad-btn"
+                                id="cantidad-menos"
+                            >
+                                −
+                            </button>
+
+                            <input
+                                type="number"
+                                name="cantidad"
+                                value="1"
+                                min="1"
+                                max="<?= $producto['stock']; ?>"
+                                id="cantidad-input"
+                                class="cantidad-input"
+                            >
+
+                            <button
+                                type="button"
+                                class="cantidad-btn"
+                                id="cantidad-mas"
+                            >
+                                +
+                            </button>
+
+                        </div>
 
                     </div>
 
@@ -142,7 +164,10 @@
                         </summary>
 
                         <p>
-                            <?= $producto['materiales']; ?>
+                            <?= !empty($producto['materiales'])
+                                ? $producto['materiales']
+                                : 'Información no disponible';
+                            ?>
                         </p>
 
                     </details>
@@ -154,7 +179,10 @@
                         </summary>
 
                         <p>
-                            <?= $producto['cuidados']; ?>
+                            <?= !empty($producto['cuidados'])
+                                ? $producto['cuidados']
+                                : 'Información no disponible';
+                            ?>
                         </p>
 
                     </details>
@@ -168,8 +196,9 @@
                         <p>
 
                             Consultá nuestra política de
-                            envíos y devoluciones.
-
+                            <a href="<?= BASE_URL; ?>/envios-devoluciones">
+                                envíos y devoluciones
+                            </a>.
                         </p>
 
                     </details>
@@ -198,13 +227,13 @@
                     <article class="related-card">
 
                         <a
-                            href="<?= BASE_URL; ?>/producto?id=<?= $item['id']; ?>"
+                            href="<?= BASE_URL; ?>/producto/<?= htmlspecialchars($item['slug']); ?>"
                         >
 
                             <div class="related-image">
 
                                 <img
-                                    src="<?= BASE_URL; ?>/assets/img/productos/<?= $item['imagen_principal']; ?>"
+                                    src="<?= BASE_URL; ?>/assets/img/<?= htmlspecialchars($item['imagen_principal']); ?>"
                                     alt="<?= $item['nombre']; ?>"
                                 >
 
@@ -213,7 +242,7 @@
                             <div class="related-info">
 
                                 <h3>
-                                    <?= $item['nombre']; ?>
+                                    <?= htmlspecialchars($item['nombre']); ?>
                                 </h3>
 
                                 <span>

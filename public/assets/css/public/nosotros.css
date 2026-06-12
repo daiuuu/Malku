@@ -263,21 +263,12 @@
     color: rgba(255,255,255,0.8);
 }
 
-.s-card-dark {
-    background: #111;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
 .s-card-horizontal {
     background: #e9e3d8;
     flex-direction: row;
     align-items: center;
     gap: 2rem;
 }
-
 
 /* Íconos */
 

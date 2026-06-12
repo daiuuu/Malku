@@ -179,3 +179,109 @@
     margin-bottom: 2rem;
     cursor: pointer;
 }
+
+/* ============================= */
+/* OVERLAY */
+/* ============================= */
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 150;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================= */
+/* RESPONSIVE TABLET */
+/* ============================= */
+
+@media screen and (max-width: 992px) {
+
+    .header-container {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .desktop-nav ul {
+        gap: 1.5rem;
+    }
+
+}
+
+/* ============================= */
+/* RESPONSIVE MOBILE */
+/* ============================= */
+
+@media screen and (max-width: 768px) {
+
+    .header-container {
+        padding: 1rem 1.2rem;
+    }
+
+    /* ocultar nav desktop */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* mostrar boton menu */
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    /* logo */
+    .logo span {
+        font-size: 1.1rem;
+    }
+
+    .logo img {
+        height: 18px;
+    }
+
+    /* iconos */
+    .icons {
+        gap: 0.8rem;
+    }
+
+    .icons span {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* menu lateral */
+    .off-canvas-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 260px;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.08);
+    }
+
+    .off-canvas-menu nav ul {
+        margin-top: 2rem;
+    }
+
+}
+
+/* ============================= */
+/* RESPONSIVE SMALL MOBILE */
+/* ============================= */
+
+@media screen and (max-width: 480px) {
+
+    .header-container {
+        padding: 0.9rem 1rem;
+    }
+
+    .logo span {
+        font-size: 1rem;
+    }
+
+}
