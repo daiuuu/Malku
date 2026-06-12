@@ -70,6 +70,18 @@
 
                     <?php endif; ?>
 
+                    <?php if(isset($_SESSION['login_exito'])): ?>
+
+                        <div class="mensaje-exito">
+
+                            <?= $_SESSION['login_exito']; ?>
+
+                        </div>
+
+                        <?php unset($_SESSION['login_exito']); ?>
+
+                    <?php endif; ?>
+
                     <form
                         class="login-form"
                         method="POST"
@@ -102,8 +114,8 @@
                                     Contraseña
                                 </label>
 
-                                <a href="#">
-                                        ¿Olvidaste tu contraseña?
+                                <a href="<?= BASE_URL; ?>/recuperar-password">
+                                    ¿Olvidaste tu contraseña?
                                 </a>
 
                             </div>

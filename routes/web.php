@@ -44,10 +44,10 @@ require_once __DIR__ .
 // CONTROLLERS USUARIO
 // ======================================================
 
-/*
 require_once __DIR__ .
     '/../app/controllers/usuario/DashboardUsuarioController.php';
 
+/*
 require_once __DIR__ .
     '/../app/controllers/usuario/PedidoUsuarioController.php';
 
@@ -250,6 +250,17 @@ switch(true)
         break;
 
     // ==================================================
+    // LOGIN POST
+    // ==================================================
+    case ($url === 'login/autenticar'):
+
+        $controller = new AuthController();
+
+        $controller->autenticar();
+
+        break;
+
+    // ==================================================
     // REGISTRO
     // ==================================================
     case ($url === 'registro'):
@@ -261,6 +272,53 @@ switch(true)
         break;
 
     // ==================================================
+    // REGISTRO POST
+    // ==================================================
+    case ($url === 'registro/guardar'):
+
+        $controller = new AuthController();
+
+        $controller->guardarRegistro();
+
+        break;
+
+    // ==================================================
+    // RECUPERAR CONTRASEÑA
+    // ==================================================
+    case ($url === 'recuperar-password'):
+
+        $controller = new AuthController();
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $controller->enviarRecuperacion();
+        }
+        else
+        {
+            $controller->recuperarPassword();
+        }
+
+        break;
+
+    // ==================================================
+    // NUEVA CONTRASEÑA (GET muestra form, POST procesa)
+    // ==================================================
+    case ($url === 'nueva-password'):
+
+        $controller = new AuthController();
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $controller->procesarNuevaPassword();
+        }
+        else
+        {
+            $controller->mostrarNuevaPassword();
+        }
+
+        break;
+
+    // ==================================================
     // LOGOUT
     // ==================================================
     case ($url === 'logout'):
@@ -268,6 +326,37 @@ switch(true)
         $controller = new AuthController();
 
         $controller->logout();
+
+        break;
+
+    // ==================================================
+    // PANEL ADMIN
+    // ==================================================
+    case ($url === 'admin'):
+
+        require_once __DIR__ .
+            '/../app/middleware/AuthMiddleware.php';
+
+        AuthMiddleware::verificar();
+
+        AuthMiddleware::esAdmin();
+
+        $titulo = 'Panel Administrativo | Malku';
+
+        require_once __DIR__ .
+            '/../app/views/admin/dashboard/index.php';
+
+        break;
+
+    // ==================================================
+    // PANEL USUARIO
+    // ==================================================
+    case ($url === 'usuario'):
+
+        $controller =
+            new DashboardUsuarioController();
+
+        $controller->index();
 
         break;
 

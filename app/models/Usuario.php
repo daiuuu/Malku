@@ -18,9 +18,9 @@ class Usuario
     // ================= CREAR USUARIO ==============
     public function crearUsuario(
         $nombre,
+        $apellido,
         $email,
-        $password,
-        $newsletter
+        $password
     )
     {
         try
@@ -37,18 +37,22 @@ class Usuario
                 INSERT INTO usuarios
                 (
                     nombre,
+                    apellido,
                     email,
                     password,
-                    newsletter,
-                    rol
+                    rol,
+                    estado,
+                    email_verificado
                 )
                 VALUES
                 (
                     :nombre,
+                    :apellido,
                     :email,
                     :password,
-                    :newsletter,
-                    'usuario'
+                    'usuario',
+                    'activo',
+                    0
                 )
             ";
 
@@ -64,6 +68,12 @@ class Usuario
             );
 
             $stmt->bindParam(
+                ':apellido',
+                $apellido,
+                PDO::PARAM_STR
+            );
+
+            $stmt->bindParam(
                 ':email',
                 $email,
                 PDO::PARAM_STR
@@ -73,12 +83,6 @@ class Usuario
                 ':password',
                 $passwordHash,
                 PDO::PARAM_STR
-            );
-
-            $stmt->bindParam(
-                ':newsletter',
-                $newsletter,
-                PDO::PARAM_INT
             );
 
             // ================= EXECUTE ==============
@@ -133,6 +137,90 @@ class Usuario
         {
             error_log(
                 'Error obtenerUsuarioPorEmail(): ' .
+                $e->getMessage()
+            );
+
+            return false;
+        }
+    }
+
+    // ================= OBTENER POR ID =================
+    public function obtenerPorId(
+        $id
+    )
+    {
+        try
+        {
+            // ================= SQL ==================
+            $sql = "
+                SELECT *
+                FROM usuarios
+                WHERE id = :id
+                LIMIT 1
+            ";
+
+            // ================= PREPARE ==============
+            $stmt =
+                $this->conexion->prepare($sql);
+
+            // ================= BIND =================
+            $stmt->bindParam(
+                ':id',
+                $id,
+                PDO::PARAM_INT
+            );
+
+            // ================= EXECUTE ==============
+            $stmt->execute();
+
+            // ================= RETURN ===============
+            return $stmt->fetch(
+                PDO::FETCH_ASSOC
+            );
+        }
+        catch(PDOException $e)
+        {
+            error_log(
+                'Error obtenerPorId(): ' .
+                $e->getMessage()
+            );
+
+            return false;
+        }
+    }
+
+    // ================= ACTUALIZAR ÚLTIMO ACCESO =================
+    public function actualizarUltimoAcceso(
+        $id
+    )
+    {
+        try
+        {
+            // ================= SQL ==================
+            $sql = "
+                UPDATE usuarios
+                SET ultimo_acceso = NOW()
+                WHERE id = :id
+            ";
+
+            // ================= PREPARE ==============
+            $stmt =
+                $this->conexion->prepare($sql);
+
+            // ================= BIND =================
+            $stmt->bindParam(
+                ':id',
+                $id,
+                PDO::PARAM_INT
+            );
+
+            // ================= EXECUTE ==============
+            return $stmt->execute();
+        }
+        catch(PDOException $e)
+        {
+            error_log(
+                'Error actualizarUltimoAcceso(): ' .
                 $e->getMessage()
             );
 

@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../../middleware/AuthMiddleware.php';
 require_once __DIR__ . '/../../services/AuthService.php';
 
 class AuthController
@@ -16,6 +17,8 @@ class AuthController
     // ================= LOGIN VIEW ==================
     public function login()
     {
+        AuthMiddleware::invitado();
+
         $titulo =
             'Malku - Iniciar Sesión';
 
@@ -29,6 +32,8 @@ class AuthController
     // ================= REGISTRO VIEW ===============
     public function registro()
     {
+        AuthMiddleware::invitado();
+
         $titulo =
             'Malku - Registro';
 
@@ -69,10 +74,26 @@ class AuthController
             exit;
         }
 
-        header(
-            'Location: ' .
-            BASE_URL
-        );
+        // ================= REDIRECT POR ROL =================
+        $rol =
+            $_SESSION['usuario']['rol'];
+
+        if($rol === 'admin')
+        {
+            header(
+                'Location: ' .
+                BASE_URL .
+                '/admin'
+            );
+        }
+        else
+        {
+            header(
+                'Location: ' .
+                BASE_URL .
+                '/usuario'
+            );
+        }
 
         exit;
     }
@@ -83,24 +104,22 @@ class AuthController
         $nombre =
             trim($_POST['nombre'] ?? '');
 
+        $apellido =
+            trim($_POST['apellido'] ?? '');
+
         $email =
             trim($_POST['email'] ?? '');
 
         $password =
             trim($_POST['password'] ?? '');
 
-        $newsletter =
-            isset($_POST['newsletter'])
-            ? 1
-            : 0;
-
         $resultado =
             $this->authService
                 ->registrar(
                     $nombre,
+                    $apellido,
                     $email,
-                    $password,
-                    $newsletter
+                    $password
                 );
 
         if(!$resultado['success'])
@@ -118,7 +137,134 @@ class AuthController
         }
 
         $_SESSION['registro_exito'] =
-            'Cuenta creada correctamente.';
+            'Cuenta creada correctamente. Podés iniciar sesión.';
+
+        header(
+            'Location: ' .
+            BASE_URL .
+            '/login'
+        );
+
+        exit;
+    }
+
+    // ================= RECUPERAR PASSWORD VIEW ====
+    public function recuperarPassword()
+    {
+        AuthMiddleware::invitado();
+
+        $titulo =
+            'Malku - Recuperar Contraseña';
+
+        $css =
+            'auth/recuperar_password.css';
+
+        require_once __DIR__ .
+            '/../../views/public/auth/recuperar_password.php';
+    }
+
+    // ================= RECUPERAR PASSWORD POST ====
+    public function enviarRecuperacion()
+    {
+        $email =
+            trim($_POST['email'] ?? '');
+
+        $resultado =
+            $this->authService
+                ->iniciarRecuperacion(
+                    $email
+                );
+
+        if(!$resultado['success'])
+        {
+            $_SESSION['recuperar_error'] =
+                $resultado['message'];
+
+            header(
+                'Location: ' .
+                BASE_URL .
+                '/recuperar-password'
+            );
+
+            exit;
+        }
+
+        $_SESSION['recuperar_exito'] =
+            $resultado['message'];
+
+        header(
+            'Location: ' .
+            BASE_URL .
+            '/recuperar-password'
+        );
+
+        exit;
+    }
+
+    // ================= NUEVA PASSWORD VIEW ========
+    public function mostrarNuevaPassword()
+    {
+        $token =
+            trim($_GET['token'] ?? '');
+
+        if(empty($token))
+        {
+            header(
+                'Location: ' .
+                BASE_URL .
+                '/recuperar-password'
+            );
+
+            exit;
+        }
+
+        $titulo =
+            'Malku - Nueva Contraseña';
+
+        $css =
+            'auth/recuperar_password.css';
+
+        require_once __DIR__ .
+            '/../../views/public/auth/nueva_password.php';
+    }
+
+    // ================= NUEVA PASSWORD POST ========
+    public function procesarNuevaPassword()
+    {
+        $token =
+            trim($_POST['token'] ?? '');
+
+        $password =
+            trim($_POST['password'] ?? '');
+
+        $confirmPassword =
+            trim($_POST['confirm_password'] ?? '');
+
+        $resultado =
+            $this->authService
+                ->restablecerPassword(
+                    $token,
+                    $password,
+                    $confirmPassword
+                );
+
+        if(!$resultado['success'])
+        {
+            $_SESSION['nueva_password_error'] =
+                $resultado['message'];
+
+            header(
+                'Location: ' .
+                BASE_URL .
+                '/nueva-password?token=' .
+                urlencode($token)
+            );
+
+            exit;
+        }
+
+        $_SESSION['login_exito'] =
+            $resultado['message'];
 
         header(
             'Location: ' .

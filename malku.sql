@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2026 a las 00:02:34
+-- Tiempo de generación: 13-06-2026 a las 00:19:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -66,6 +66,16 @@ CREATE TABLE `categorias` (
   `estado` enum('activa','oculta') DEFAULT 'activa',
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre`, `slug`, `descripcion`, `imagen`, `estado`, `fecha_creacion`) VALUES
+(1, 'Ponchos', 'ponchos', 'Ponchos artesanales tejidos en lana natural.', NULL, 'activa', '2026-05-26 14:54:27'),
+(2, 'Sweaters', 'sweaters', 'Sweaters de diseño contemporáneo inspirados en los Andes.', NULL, 'activa', '2026-05-26 14:54:27'),
+(3, 'Bufandas', 'bufandas', 'Bufandas y accesorios tejidos artesanalmente.', NULL, 'activa', '2026-05-26 14:54:27'),
+(4, 'Mantas', 'mantas', 'Mantas confeccionadas en fibras naturales.', NULL, 'activa', '2026-05-26 14:54:27');
 
 -- --------------------------------------------------------
 
@@ -215,8 +225,24 @@ CREATE TABLE `productos` (
   `destacado` tinyint(1) DEFAULT 0,
   `estado` enum('activo','oculto','agotado') DEFAULT 'activo',
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `fecha_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `fecha_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `materiales` text DEFAULT NULL,
+  `cuidados` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `slug`, `descripcion`, `precio`, `stock`, `imagen_principal`, `destacado`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `materiales`, `cuidados`) VALUES
+(1, 1, 'Poncho Apu Beige', 'poncho-apu-beige', 'Poncho artesanal tejido en lana natural color beige.', 125000.00, 10, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', '100% lana natural artesanal.', 'Lavar a mano con agua fría. No usar secadora.'),
+(2, 1, 'Poncho Inti Negro', 'poncho-inti-negro', 'Poncho premium inspirado en la estética andina contemporánea.', 148000.00, 8, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Lana premium tejida artesanalmente.', 'Lavar a mano. Secar sobre superficie plana.'),
+(3, 2, 'Sweater Killa Gris', 'sweater-killa-gris', 'Sweater tejido a mano con fibras suaves y cálidas.', 98000.00, 15, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Tejido suave de lana y algodón.', 'Lavar con agua fría y jabón neutro.'),
+(4, 2, 'Sweater Malku Crudo', 'sweater-malku-crudo', 'Diseño minimalista inspirado en la naturaleza andina.', 112000.00, 7, '', 0, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Lana merino y fibras naturales.', 'No centrifugar. Secado horizontal.'),
+(5, 3, 'Bufanda Suri Blanca', 'bufanda-suri-blanca', 'Bufanda liviana confeccionada en lana premium.', 42000.00, 20, '', 0, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Lana premium liviana.', 'Lavar a mano. No planchar.'),
+(6, 3, 'Bufanda Andina Terracota', 'bufanda-andina-terracota', 'Accesorio artesanal con textura suave y elegante.', 46000.00, 18, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Tejido artesanal de lana suave.', 'Evitar agua caliente. Secar a la sombra.'),
+(7, 4, 'Manta Pachamama', 'manta-pachamama', 'Manta artesanal ideal para espacios cálidos y elegantes.', 158000.00, 5, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Lana gruesa tejida a mano.', 'Limpieza delicada en frío.'),
+(8, 4, 'Manta Cóndor', 'manta-condor', 'Diseño exclusivo inspirado en el vuelo del cóndor andino.', 174000.00, 4, '', 0, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Fibras naturales premium.', 'No usar lavadora automática.');
 
 -- --------------------------------------------------------
 
@@ -273,6 +299,14 @@ CREATE TABLE `usuarios` (
   `ultimo_acceso` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `telefono`, `foto_perfil`, `rol`, `estado`, `email_verificado`, `token_recuperacion`, `fecha_registro`, `ultimo_acceso`, `updated_at`) VALUES
+(1, 'Daiana', 'Soria Piola', 'daianasoriapiola@gmail.com', '$2y$10$2b2W0xQk7A9K2P8xQmJ7QeB0M6Fj5Y7Lx4JtKqV9hWmFfN5a8sG6W', '1126313354', NULL, 'admin', 'activo', 1, '08acde08d767e357def2fc120820d8afe46caadb03d7116bf6f5a261ef38fac0', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-12 21:35:45'),
+(2, 'Tahiel', 'Paniagua', 'tahi2k11@gmail.com', '$2y$10$2b2W0xQk7A9K2P8xQmJ7QeB0M6Fj5Y7Lx4JtKqV9hWmFfN5a8sG6W', '1164420774', NULL, '', 'activo', 1, '34d3c7e5e12598cf04874528f710afe79a0a829a63bab5b7044ad59f62520294', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-12 22:12:55');
 
 --
 -- Índices para tablas volcadas
@@ -402,7 +436,7 @@ ALTER TABLE `carrito_detalle`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -450,7 +484,7 @@ ALTER TABLE `pedido_detalle`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `producto_imagenes`
@@ -468,7 +502,7 @@ ALTER TABLE `stock_movimientos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

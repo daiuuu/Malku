@@ -16,6 +16,88 @@ class Pedido
             $database->conectar();
     }
 
+    // ================= ÚLTIMO PEDIDO POR USUARIO =================
+    public function obtenerUltimoPorUsuario(
+        $usuarioId
+    )
+    {
+        try
+        {
+            $sql = "
+                SELECT *
+                FROM pedidos
+                WHERE usuario_id = :usuario_id
+                ORDER BY fecha_creacion DESC
+                LIMIT 1
+            ";
+
+            $stmt =
+                $this->conexion->prepare($sql);
+
+            $stmt->bindParam(
+                ':usuario_id',
+                $usuarioId,
+                PDO::PARAM_INT
+            );
+
+            $stmt->execute();
+
+            return $stmt->fetch(
+                PDO::FETCH_ASSOC
+            );
+        }
+        catch(PDOException $e)
+        {
+            error_log(
+                'Error obtenerUltimoPorUsuario(): ' .
+                $e->getMessage()
+            );
+
+            return false;
+        }
+    }
+
+    // ================= CONTAR POR USUARIO =================
+    public function contarPorUsuario(
+        $usuarioId
+    )
+    {
+        try
+        {
+            $sql = "
+                SELECT COUNT(*) AS total
+                FROM pedidos
+                WHERE usuario_id = :usuario_id
+            ";
+
+            $stmt =
+                $this->conexion->prepare($sql);
+
+            $stmt->bindParam(
+                ':usuario_id',
+                $usuarioId,
+                PDO::PARAM_INT
+            );
+
+            $stmt->execute();
+
+            $fila = $stmt->fetch(
+                PDO::FETCH_ASSOC
+            );
+
+            return (int)($fila['total'] ?? 0);
+        }
+        catch(PDOException $e)
+        {
+            error_log(
+                'Error contarPorUsuario(): ' .
+                $e->getMessage()
+            );
+
+            return 0;
+        }
+    }
+
     // ================= CREAR =================
     public function crear(
         $usuarioId,

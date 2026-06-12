@@ -1,0 +1,483 @@
+@import './sidebar.css';
+
+/* ============================= */
+/* LAYOUT BASE */
+/* ============================= */
+
+.usuario-main {
+    margin-left: 280px;
+    min-height: 100vh;
+    background: #F5F1E8;
+}
+
+.usuario-main .site-footer,
+body:has(.usuario-main) .site-footer {
+    margin-left: 280px;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.user-hero {
+    padding: 5rem 4rem 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.user-hero-inner {
+    max-width: 760px;
+}
+
+.user-hero-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #79836d;
+    margin-bottom: 1.4rem;
+}
+
+.user-hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(3.8rem, 6vw, 5.8rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #111111;
+    margin: 0 0 2rem;
+}
+
+.user-hero-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.35);
+}
+
+/* ============================= */
+/* ESTADÍSTICAS */
+/* ============================= */
+
+.user-stats-section {
+    padding: 3rem 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+}
+
+.stat-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 2rem 1.8rem;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.stat-card:hover {
+    border-color: rgba(121, 131, 109, 0.3);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #111111;
+    margin-bottom: 0.6rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #111111;
+    margin-bottom: 0.4rem;
+}
+
+.stat-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(17, 17, 17, 0.38);
+    line-height: 1.6;
+}
+
+/* ============================= */
+/* GRID PRINCIPAL */
+/* ============================= */
+
+.user-content-section {
+    padding: 3rem 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.user-content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* ============================= */
+/* CARD BASE */
+/* ============================= */
+
+.content-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.card-header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.card-label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.35);
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: #111111;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* ============================= */
+/* PEDIDO */
+/* ============================= */
+
+.order-info {
+    margin-bottom: 1.8rem;
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.order-row:first-child {
+    padding-top: 0;
+}
+
+.order-key {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.4);
+}
+
+.order-val {
+    font-size: 0.88rem;
+    color: #111111;
+}
+
+.order-total {
+    font-weight: 600;
+}
+
+/* Estados */
+.order-status {
+    display: inline-block;
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.order-status--pendiente {
+    background: rgba(210, 165, 80, 0.12);
+    color: #9a7228;
+}
+
+.order-status--completado,
+.order-status--entregado {
+    background: rgba(121, 131, 109, 0.12);
+    color: #4a5e3f;
+}
+
+.order-status--cancelado {
+    background: rgba(180, 60, 60, 0.1);
+    color: #8b3030;
+}
+
+.order-status--procesando {
+    background: rgba(80, 120, 200, 0.1);
+    color: #3358a0;
+}
+
+.card-link {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #79836d;
+    text-decoration: none;
+    transition: opacity 0.25s ease;
+}
+
+.card-link:hover {
+    opacity: 0.65;
+}
+
+.card-empty {
+    font-size: 0.95rem;
+    color: rgba(17, 17, 17, 0.38);
+    font-style: italic;
+    margin: 0 0 1.5rem;
+    line-height: 1.8;
+}
+
+/* ============================= */
+/* MEMBRESÍA */
+/* ============================= */
+
+.membership-card {
+    background: #111111;
+    border-color: #111111;
+}
+
+.membership-inner {
+    padding: 2.5rem 2rem;
+}
+
+.membership-label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.4);
+    margin-bottom: 0.8rem;
+}
+
+.membership-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.1rem;
+    font-weight: 300;
+    color: #F5F1E8;
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+.membership-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.membership-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.8rem;
+    color: rgba(245, 241, 232, 0.55);
+    line-height: 1.5;
+}
+
+.membership-benefits li::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 1px;
+    background: #79836d;
+    flex-shrink: 0;
+}
+
+.btn-membership {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(245, 241, 232, 0.2);
+    border-radius: 999px;
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #F5F1E8;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-membership:hover {
+    background: #79836d;
+    border-color: #79836d;
+}
+
+/* ============================= */
+/* BANNER EDITORIAL */
+/* ============================= */
+
+.user-banner {
+    position: relative;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #1a1a18;
+    background-image:
+        linear-gradient(
+            rgba(17, 17, 17, 0.58),
+            rgba(17, 17, 17, 0.58)
+        ),
+        url('../../img/dashboard/banner-artesania.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.user-banner-inner {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 2rem;
+    max-width: 600px;
+}
+
+.banner-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: #F5F1E8;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 2.2rem;
+}
+
+.btn-banner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.5rem;
+    border: 1px solid rgba(245, 241, 232, 0.35);
+    border-radius: 999px;
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #F5F1E8;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-banner:hover {
+    background: rgba(245, 241, 232, 0.1);
+    border-color: rgba(245, 241, 232, 0.6);
+}
+
+/* ============================= */
+/* FOOTER OVERRIDE */
+/* ============================= */
+
+.site-footer {
+    margin-left: 280px;
+}
+
+/* ============================= */
+/* RESPONSIVE TABLET */
+/* ============================= */
+
+@media (max-width: 1024px) {
+
+    .usuario-main {
+        margin-left: 0;
+    }
+
+    .site-footer {
+        margin-left: 0;
+    }
+
+    .user-hero {
+        padding: 5rem 2.5rem 3rem;
+    }
+
+    .user-stats-section,
+    .user-content-section {
+        padding: 2.5rem 2.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ============================= */
+/* RESPONSIVE MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .user-hero {
+        padding: 5rem 1.5rem 2.5rem;
+    }
+
+    .user-stats-section,
+    .user-content-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .user-hero-name {
+        font-size: 3.2rem;
+    }
+
+}
+
+/* ============================= */
+/* RESPONSIVE MOBILE PEQUEÑO */
+/* ============================= */
+
+@media (max-width: 520px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .stat-card {
+        padding: 1.4rem 1.2rem;
+    }
+
+    .stat-number {
+        font-size: 2.4rem;
+    }
+
+    .user-banner {
+        min-height: 280px;
+    }
+
+    .banner-quote {
+        font-size: 1.8rem;
+    }
+
+}
