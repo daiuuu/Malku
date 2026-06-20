@@ -80,7 +80,7 @@ class CuponRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function crear(array $datos)
+    public function crear(array $datos): int
     {
         $stmt = $this->db->prepare("
             INSERT INTO cupones
@@ -88,7 +88,7 @@ class CuponRepository
             VALUES
                 (:codigo, :tipo, :valor, :minimo, :maximos, :uid, :activo, :expira, :origen, :nota)
         ");
-        return $stmt->execute([
+        $stmt->execute([
             ':codigo'  => strtoupper(trim($datos['codigo'])),
             ':tipo'    => $datos['tipo'],
             ':valor'   => (float)$datos['valor'],
@@ -100,6 +100,19 @@ class CuponRepository
             ':origen'  => $datos['origen'] ?? 'manual',
             ':nota'    => $datos['nota'] ?? null,
         ]);
+        return (int)$this->db->lastInsertId();
+    }
+
+    public function activarPorId(int $id): bool
+    {
+        $stmt = $this->db->prepare("UPDATE cupones SET activo = 1 WHERE id = :id");
+        return $stmt->execute([':id' => $id]);
+    }
+
+    public function actualizarNota(int $id, string $nota): bool
+    {
+        $stmt = $this->db->prepare("UPDATE cupones SET nota = :nota WHERE id = :id");
+        return $stmt->execute([':nota' => $nota, ':id' => $id]);
     }
 
     public function actualizar($id, array $datos)
@@ -174,5 +187,14 @@ class CuponRepository
             return round($total * $cupon['valor'] / 100);
         }
         return min($total, (float)$cupon['valor']);
+    }
+
+    public function generarCodigoUnico(string $prefix = 'GIFT'): string
+    {
+        do {
+            $codigo = $prefix . '-' . strtoupper(substr(md5(uniqid('', true)), 0, 6));
+        } while ($this->obtenerPorCodigo($codigo));
+
+        return $codigo;
     }
 }
