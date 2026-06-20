@@ -209,6 +209,54 @@ class MailService
         }
     }
 
+    // ================= RESPUESTA ADMIN A CONSULTA =================
+    public function enviarRespuestaContacto($emailDestino, $nombre, $asunto, $respuesta)
+    {
+        try {
+            $mail = $this->crearMailer();
+            $mail->addAddress($emailDestino, $nombre);
+            $mail->isHTML(true);
+            $mail->Subject = 'Re: ' . $asunto . ' — Malku';
+            $respuestaHtml = nl2br(htmlspecialchars($respuesta));
+            $mail->Body = "
+                <html>
+                <body style='font-family: Arial, sans-serif; background: #f5f1e8; padding: 40px 20px; margin: 0;'>
+                    <div style='background: #ffffff; max-width: 560px; margin: 0 auto; padding: 48px 40px; border: 1px solid rgba(0,0,0,0.07);'>
+
+                        <p style='margin: 0 0 8px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #79836d;'>
+                            Malku — Atelier
+                        </p>
+
+                        <h2 style='margin: 0 0 32px; font-size: 22px; font-weight: 300; color: #111; letter-spacing: -0.5px;'>
+                            Respuesta a tu consulta
+                        </h2>
+
+                        <p style='margin: 0 0 8px; font-size: 15px; line-height: 1.8; color: #555;'>
+                            Hola {$nombre},
+                        </p>
+
+                        <div style='margin: 24px 0; padding: 20px 24px; background: #f5f1e8; border-left: 3px solid #79836d; font-size: 15px; line-height: 1.8; color: #333;'>
+                            {$respuestaHtml}
+                        </div>
+
+                        <hr style='border: none; border-top: 1px solid rgba(0,0,0,0.07); margin: 32px 0 24px;'>
+
+                        <p style='margin: 0 0 4px; font-size: 13px; color: #555;'>— Atelier Malku</p>
+                        <p style='margin: 0; font-size: 11px; color: #bbb; letter-spacing: 1px;'>© Malku — Todos los derechos reservados</p>
+
+                    </div>
+                </body>
+                </html>
+            ";
+            $mail->AltBody = "Hola {$nombre},\n\n{$respuesta}\n\n— Atelier Malku";
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            error_log('MailService::enviarRespuestaContacto() - ' . $e->getMessage());
+            return false;
+        }
+    }
+
     // ================= ENVIAR CONSULTA =================
     public function enviarConsultaContacto(
         Contacto $contacto

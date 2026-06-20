@@ -45,6 +45,13 @@ class ContactoRepository
         )->fetchColumn();
     }
 
+    public function obtenerPorId($id)
+    {
+        $stmt = $this->conexion->prepare("SELECT * FROM contacto WHERE id = :id LIMIT 1");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function cambiarEstado($id, $estado)
     {
         $stmt = $this->conexion->prepare("UPDATE contacto SET estado = :estado WHERE id = :id");

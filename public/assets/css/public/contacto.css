@@ -391,3 +391,105 @@
         width: 100%;
     }
 }
+
+
+/* ============================= */
+/* TOAST NOTIFICACIÓN            */
+/* ============================= */
+
+.contacto-toast {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-left: 3px solid #7d876f;
+    border-radius: 0 10px 10px 0;
+    padding: 1.3rem 3.2rem 1.3rem 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 360px;
+    overflow: hidden;
+    animation: toastIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.contacto-toast.toast--out {
+    animation: toastOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.contacto-toast__icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7d876f;
+    margin-bottom: 0.4rem;
+}
+
+.contacto-toast__icon svg {
+    flex-shrink: 0;
+}
+
+.contacto-toast__text {
+    font-size: 0.875rem;
+    color: #1e1e1c;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.contacto-toast__close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.9rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #b0a898;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.contacto-toast__close:hover {
+    color: #1e1e1c;
+}
+
+.contacto-toast__bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #7d876f;
+    transform-origin: left center;
+    animation: toastBar 4s linear forwards;
+}
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastOut {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(24px); }
+}
+
+@keyframes toastBar {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+}
+
+@media (max-width: 600px) {
+    .contacto-toast {
+        top: auto;
+        bottom: 1.5rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+}

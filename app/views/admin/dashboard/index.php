@@ -130,7 +130,7 @@
         <div class="admin-card__head">
             <p class="admin-card__title">Accesos rápidos</p>
         </div>
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;padding:1.25rem 1.5rem;">
+        <div class="admin-quick-links">
             <a href="<?= BASE_URL ?>/admin/productos/crear"  class="btn-admin btn-admin-sm">+ Producto</a>
             <a href="<?= BASE_URL ?>/admin/categorias/crear" class="btn-admin-secondary btn-admin-sm">+ Categoría</a>
             <a href="<?= BASE_URL ?>/admin/pedidos"          class="btn-admin-secondary btn-admin-sm">Ver Pedidos</a>

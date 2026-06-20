@@ -46,7 +46,7 @@
                 <td style="font-size:0.8rem;color:#8e8a82"><?= htmlspecialchars($p['email'] ?? '—') ?></td>
                 <td>$<?= number_format($p['total'] ?? 0, 0, ',', '.') ?></td>
                 <td><span class="badge badge--<?= $p['estado'] ?>"><?= ucfirst($p['estado']) ?></span></td>
-                <td style="font-size:0.8rem;color:#8e8a82"><?= date('d/m/Y', strtotime($p['fecha_creacion'])) ?></td>
+                <td style="font-size:0.8rem;color:#8e8a82"><?= date('d/m/Y', strtotime($p['fecha_pedido'])) ?></td>
                 <td>
                     <a href="<?= BASE_URL ?>/admin/pedidos/<?= $p['id'] ?>" class="btn-admin-secondary btn-admin-sm">Ver detalle</a>
                 </td>

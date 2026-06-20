@@ -14,6 +14,7 @@ class StockAdminController
     public function index()
     {
         $productos = $this->repo->obtenerTodos();
+        $css       = 'admin/admin.css?v=2';
         $titulo    = 'Stock | Admin Malku';
         require_once __DIR__ . '/../../views/admin/stock/index.php';
     }

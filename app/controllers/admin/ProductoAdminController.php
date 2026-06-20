@@ -17,6 +17,7 @@ class ProductoAdminController
     public function index()
     {
         $productos = $this->repo->obtenerTodos();
+        $css       = 'admin/admin.css?v=2';
         $titulo    = 'Productos | Admin Malku';
         require_once __DIR__ . '/../../views/admin/productos/index.php';
     }
@@ -24,6 +25,7 @@ class ProductoAdminController
     public function crear()
     {
         $categorias = $this->catRepo->obtenerActivas();
+        $css        = 'admin/admin.css?v=2';
         $titulo     = 'Nuevo Producto | Admin Malku';
         require_once __DIR__ . '/../../views/admin/productos/crear.php';
     }
@@ -36,16 +38,16 @@ class ProductoAdminController
         }
 
         $datos = [
-            'categoria_id'    => (int)($_POST['categoria_id'] ?? 0),
-            'nombre'          => trim($_POST['nombre'] ?? ''),
-            'slug'            => $this->slugify(trim($_POST['nombre'] ?? '')),
-            'descripcion'     => trim($_POST['descripcion'] ?? ''),
-            'precio'          => (float)($_POST['precio'] ?? 0),
-            'stock'           => (int)($_POST['stock'] ?? 0),
-            'destacado'       => isset($_POST['destacado']) ? 1 : 0,
-            'estado'          => $_POST['estado'] ?? 'activo',
-            'materiales'      => trim($_POST['materiales'] ?? ''),
-            'cuidados'        => trim($_POST['cuidados'] ?? ''),
+            'categoria_id'     => (int)($_POST['categoria_id'] ?? 0),
+            'nombre'           => trim($_POST['nombre'] ?? ''),
+            'slug'             => $this->slugify(trim($_POST['nombre'] ?? '')),
+            'descripcion'      => trim($_POST['descripcion'] ?? ''),
+            'precio'           => (float)($_POST['precio'] ?? 0),
+            'stock'            => (int)($_POST['stock'] ?? 0),
+            'destacado'        => isset($_POST['destacado']) ? 1 : 0,
+            'estado'           => $_POST['estado'] ?? 'activo',
+            'materiales'       => trim($_POST['materiales'] ?? ''),
+            'cuidados'         => trim($_POST['cuidados'] ?? ''),
             'imagen_principal' => '',
         ];
 
@@ -80,6 +82,7 @@ class ProductoAdminController
             exit;
         }
 
+        $css    = 'admin/admin.css?v=2';
         $titulo = 'Editar Producto | Admin Malku';
         require_once __DIR__ . '/../../views/admin/productos/editar.php';
     }
@@ -141,8 +144,8 @@ class ProductoAdminController
 
     private function subirImagen($file, $productoId)
     {
-        $ext      = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $allowed  = ['jpg', 'jpeg', 'png', 'webp'];
+        $ext     = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $allowed = ['jpg', 'jpeg', 'png', 'webp'];
         if (!in_array($ext, $allowed) || $file['error'] !== UPLOAD_ERR_OK) return null;
 
         $dir = ROOT_PATH . '/public/assets/img/productos/';

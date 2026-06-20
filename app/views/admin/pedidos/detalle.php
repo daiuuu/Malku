@@ -15,7 +15,7 @@
         <div>
             <h1 class="admin-page-title">Pedido #<?= str_pad($pedido['id'], 5, '0', STR_PAD_LEFT) ?></h1>
             <p class="admin-page-subtitle">
-                <?= date('d/m/Y \a \l\a\s H:i', strtotime($pedido['fecha_creacion'])) ?> —
+                <?= date('d/m/Y \a \l\a\s H:i', strtotime($pedido['fecha_pedido'])) ?> —
                 <span class="badge badge--<?= $pedido['estado'] ?>"><?= ucfirst($pedido['estado']) ?></span>
             </p>
         </div>
@@ -91,7 +91,7 @@
                             <label for="estado">Nuevo estado</label>
                             <select id="estado" name="estado">
                                 <?php
-                                $estados = ['pendiente','pagado','preparando','despachado','entregado','cancelado'];
+                                $estados = ['pendiente','pagado','enviado','entregado','cancelado'];
                                 foreach ($estados as $e):
                                 ?>
                                 <option value="<?= $e ?>" <?= $pedido['estado'] === $e ? 'selected' : '' ?>>

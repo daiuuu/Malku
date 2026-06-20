@@ -24,10 +24,10 @@ class AnalyticsAdminController
                 "SELECT COUNT(*) FROM usuarios WHERE rol != 'admin'"
             )->fetchColumn();
             $ventasHoy = (float)$db->query(
-                "SELECT COALESCE(SUM(total),0) FROM pedidos WHERE DATE(fecha_creacion) = CURDATE()"
+                "SELECT COALESCE(SUM(total),0) FROM pedidos WHERE DATE(fecha_pedido) = CURDATE()"
             )->fetchColumn();
             $ventasSemana = (float)$db->query(
-                "SELECT COALESCE(SUM(total),0) FROM pedidos WHERE fecha_creacion >= NOW() - INTERVAL 7 DAY"
+                "SELECT COALESCE(SUM(total),0) FROM pedidos WHERE fecha_pedido >= NOW() - INTERVAL 7 DAY"
             )->fetchColumn();
         } catch (Exception $e) {
             $nuevosEsteMes = 0;
@@ -36,6 +36,7 @@ class AnalyticsAdminController
             $ventasSemana  = 0;
         }
 
+        $css    = 'admin/admin.css?v=2';
         $titulo = 'Analytics | Admin Malku';
         require_once __DIR__ . '/../../views/admin/analisis/index.php';
     }

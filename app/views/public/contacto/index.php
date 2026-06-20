@@ -25,38 +25,31 @@
 
     </section>
 
-    <!-- ================= MENSAJES ================= -->
+    <!-- ================= TOAST ================= -->
     <?php if(isset($_SESSION['contacto_exito'])): ?>
-
-        <div class="contenedor">
-
-            <div class="mensaje-exito">
-
-                <?= $_SESSION['contacto_exito']; ?>
-
-            </div>
-
+    <div class="contacto-toast" id="contacto-toast" role="alert">
+        <div class="contacto-toast__icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Mensaje enviado
         </div>
-
-        <?php unset($_SESSION['contacto_exito']); ?>
-
-    <?php endif; ?>
+        <p class="contacto-toast__text"><?= htmlspecialchars($_SESSION['contacto_exito']) ?></p>
+        <button class="contacto-toast__close" aria-label="Cerrar">&times;</button>
+        <div class="contacto-toast__bar"></div>
+    </div>
+    <?php unset($_SESSION['contacto_exito']); endif; ?>
 
     <?php if(isset($_SESSION['contacto_error'])): ?>
-
-        <div class="contenedor">
-
-            <div class="mensaje-error">
-
-                <?= $_SESSION['contacto_error']; ?>
-
-            </div>
-
+    <div class="contacto-toast contacto-toast--error" id="contacto-toast" role="alert"
+         style="border-left-color:#9b3535">
+        <div class="contacto-toast__icon" style="color:#9b3535">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Error
         </div>
-
-        <?php unset($_SESSION['contacto_error']); ?>
-
-    <?php endif; ?>
+        <p class="contacto-toast__text"><?= htmlspecialchars($_SESSION['contacto_error']) ?></p>
+        <button class="contacto-toast__close" aria-label="Cerrar">&times;</button>
+        <div class="contacto-toast__bar" style="background:#9b3535"></div>
+    </div>
+    <?php unset($_SESSION['contacto_error']); endif; ?>
 
     <!-- ================= CONTACTO PRINCIPAL ================= -->
     <section class="contacto-main">
@@ -299,5 +292,20 @@ unset($_SESSION['old_asunto']);
 unset($_SESSION['old_mensaje']);
 
 ?>
+
+<script>
+(function () {
+    var toast = document.getElementById('contacto-toast');
+    if (!toast) return;
+
+    function dismiss() {
+        toast.classList.add('toast--out');
+        setTimeout(function () { toast.remove(); }, 320);
+    }
+
+    toast.querySelector('.contacto-toast__close').addEventListener('click', dismiss);
+    setTimeout(dismiss, 4000);
+}());
+</script>
 
 <?php require_once __DIR__ . '/../../layouts/footer.php'; ?>

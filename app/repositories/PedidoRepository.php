@@ -17,7 +17,7 @@ class PedidoRepository
             SELECT p.*, u.nombre, u.apellido, u.email
             FROM pedidos p
             LEFT JOIN usuarios u ON p.usuario_id = u.id
-            ORDER BY p.fecha_creacion DESC
+            ORDER BY p.fecha_pedido DESC
         ")->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -51,28 +51,26 @@ class PedidoRepository
     public function contarHoy()
     {
         return (int)$this->db->query(
-            "SELECT COUNT(*) FROM pedidos WHERE DATE(fecha_creacion) = CURDATE()"
+            "SELECT COUNT(*) FROM pedidos WHERE DATE(fecha_pedido) = CURDATE()"
         )->fetchColumn();
     }
 
     public function totalMes()
     {
-        $val = $this->db->query(
+        return (float)$this->db->query(
             "SELECT COALESCE(SUM(total),0) FROM pedidos
-             WHERE MONTH(fecha_creacion) = MONTH(NOW())
-             AND YEAR(fecha_creacion) = YEAR(NOW())"
+             WHERE MONTH(fecha_pedido) = MONTH(NOW())
+             AND YEAR(fecha_pedido) = YEAR(NOW())"
         )->fetchColumn();
-        return (float)$val;
     }
 
     public function totalMesAnterior()
     {
-        $val = $this->db->query(
+        return (float)$this->db->query(
             "SELECT COALESCE(SUM(total),0) FROM pedidos
-             WHERE MONTH(fecha_creacion) = MONTH(NOW() - INTERVAL 1 MONTH)
-             AND YEAR(fecha_creacion) = YEAR(NOW() - INTERVAL 1 MONTH)"
+             WHERE MONTH(fecha_pedido) = MONTH(NOW() - INTERVAL 1 MONTH)
+             AND YEAR(fecha_pedido) = YEAR(NOW() - INTERVAL 1 MONTH)"
         )->fetchColumn();
-        return (float)$val;
     }
 
     public function ultimosCinco()
@@ -81,7 +79,7 @@ class PedidoRepository
             SELECT p.*, u.nombre, u.apellido
             FROM pedidos p
             LEFT JOIN usuarios u ON p.usuario_id = u.id
-            ORDER BY p.fecha_creacion DESC LIMIT 5
+            ORDER BY p.fecha_pedido DESC LIMIT 5
         ")->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -89,13 +87,13 @@ class PedidoRepository
     {
         return $this->db->query("
             SELECT
-                MONTH(fecha_creacion) AS mes,
-                YEAR(fecha_creacion) AS anio,
-                COUNT(*) AS cantidad,
-                SUM(total) AS total
+                MONTH(fecha_pedido) AS mes,
+                YEAR(fecha_pedido)  AS anio,
+                COUNT(*)            AS cantidad,
+                SUM(total)          AS total
             FROM pedidos
-            WHERE fecha_creacion >= NOW() - INTERVAL 12 MONTH
-            GROUP BY YEAR(fecha_creacion), MONTH(fecha_creacion)
+            WHERE fecha_pedido >= NOW() - INTERVAL 12 MONTH
+            GROUP BY YEAR(fecha_pedido), MONTH(fecha_pedido)
             ORDER BY anio ASC, mes ASC
         ")->fetchAll(PDO::FETCH_ASSOC);
     }
