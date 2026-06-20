@@ -81,10 +81,16 @@
 
 <!-- ================= JS GLOBAL ================= -->
 <script src="<?= BASE_URL; ?>/assets/js/global/menu.js"></script>
-<script>
-    window.BASE_URL = '<?= BASE_URL; ?>';
-</script>
+<script>window.BASE_URL = '<?= BASE_URL; ?>';</script>
 <script src="<?= BASE_URL; ?>/assets/js/global/coleccion.js"></script>
+
+<?php if ($_esAdmin ?? false): ?>
+<script src="<?= BASE_URL ?>/assets/js/admin/admin.js"></script>
+<?php endif; ?>
+
+<?php if (isset($js)): ?>
+<script src="<?= BASE_URL ?>/assets/js/<?= $js ?>"></script>
+<?php endif; ?>
 
 </body>
 </html>
