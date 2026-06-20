@@ -73,13 +73,17 @@ $_esLogueado = isset($_SESSION['usuario']);
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/configuracion/contacto">Datos de Contacto</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/configuracion/envios">Envíos & Devoluciones</a>
                         <div class="account-menu__divider"></div>
-                        <a class="account-menu__item" href="<?= BASE_URL ?>/">Ver Sitio</a>
                         <a class="account-menu__item account-menu__item--danger" href="<?= BASE_URL ?>/logout">Cerrar Sesión</a>
 
                     <?php else: ?>
 
                         <span class="account-menu__label"><?= htmlspecialchars($_SESSION['usuario']['nombre']) ?></span>
-                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario">Mi Cuenta</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario">Dashboard</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/pedidos">Mis Pedidos</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/favoritos">Favoritos</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/direcciones">Direcciones</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/perfil">Mi Perfil</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/membresia">Membresía</a>
                         <div class="account-menu__divider"></div>
                         <a class="account-menu__item account-menu__item--danger" href="<?= BASE_URL ?>/logout">Cerrar Sesión</a>
 

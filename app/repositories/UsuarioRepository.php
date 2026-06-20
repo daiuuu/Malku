@@ -358,6 +358,24 @@ class UsuarioRepository
         }
     }
 
+    // ================= ACTUALIZAR PERFIL =================
+    public function actualizarPerfil($id, $nombre, $apellido, $email, $telefono)
+    {
+        $stmt = $this->conexion->prepare("
+            UPDATE usuarios
+            SET nombre = :nombre, apellido = :apellido, email = :email,
+                telefono = :telefono, updated_at = NOW()
+            WHERE id = :id
+        ");
+        return $stmt->execute([
+            ':nombre'   => $nombre,
+            ':apellido' => $apellido,
+            ':email'    => $email,
+            ':telefono' => $telefono,
+            ':id'       => $id,
+        ]);
+    }
+
     // ================= OBTENER POR ID =================
     public function obtenerPorId(
         $id

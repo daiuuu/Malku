@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2026 a las 02:36:34
+-- Tiempo de generación: 20-06-2026 a las 04:59:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -80,6 +80,43 @@ INSERT INTO `categorias` (`id`, `nombre`, `slug`, `descripcion`, `imagen`, `esta
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `configuracion`
+--
+
+CREATE TABLE `configuracion` (
+  `clave` varchar(100) NOT NULL,
+  `valor` text DEFAULT NULL,
+  `grupo` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `configuracion`
+--
+
+INSERT INTO `configuracion` (`clave`, `valor`, `grupo`) VALUES
+('contacto_ciudad', 'Buenos Aires, Argentina', 'contacto'),
+('contacto_direccion', 'Av. General Paz 1240', 'contacto'),
+('contacto_email', 'holaniki@malku.com', 'contacto'),
+('contacto_facebook', '#', 'contacto'),
+('contacto_horario', 'Lun—Vie, 10am—6pm', 'contacto'),
+('contacto_instagram', '#', 'contacto'),
+('contacto_telefono', '+54 9 11 6454-7751', 'contacto'),
+('contacto_telefono_wa', '5491164547751', 'contacto'),
+('dev_atencion_desc', 'Acompañamos cada solicitud de manera individual para preservar la experiencia artesanal de la marca.', 'envios'),
+('dev_cambios_desc', 'Para cambios de talle o color, recomendamos iniciar el proceso apenas recibas tu pedido para garantizar disponibilidad.', 'envios'),
+('dev_intro', 'Queremos que cada pieza MALKU forme parte de tu historia. Si algo no resulta exactamente como esperabas, ofrecemos un proceso de cambio simple y respetuoso.', 'envios'),
+('dev_reembolso_desc', 'Una vez inspeccionada la pieza, el reintegro será procesado al método de pago original dentro de los siguientes 5 a 7 días hábiles.', 'envios'),
+('dev_ventana_desc', 'Los productos pueden devolverse dentro de los 14 días posteriores a la entrega, siempre que conserven su estado original y etiquetas intactas.', 'envios'),
+('dev_ventana_dias', '14', 'envios'),
+('envios_ba_desc', 'Entregas dentro de 24 a 72 horas hábiles mediante logística premium y seguimiento en tiempo real.', 'envios'),
+('envios_ba_precio', 'Gratis en compras +$250.000', 'envios'),
+('envios_compromiso', 'Creemos que el lujo nunca debe existir a costa de la tierra. Todos los pedidos MALKU utilizan materiales reciclables y procesos de logística responsables que reducen el impacto ambiental.', 'envios'),
+('envios_nacional_desc', 'Cobertura en todo el país con tiempos estimados entre 3 y 7 días hábiles según la provincia.', 'envios'),
+('envios_nacional_precio', 'Calculado al finalizar compra.', 'envios');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `contacto`
 --
 
@@ -94,6 +131,14 @@ CREATE TABLE `contacto` (
   `estado` enum('pendiente','leido','respondido') DEFAULT 'pendiente',
   `fecha_envio` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `contacto`
+--
+
+INSERT INTO `contacto` (`id`, `nombre`, `apellido`, `email`, `telefono`, `asunto`, `mensaje`, `estado`, `fecha_envio`) VALUES
+(1, 'asd asd', NULL, 'asd@gmail.com', NULL, 'asdasd', 'asdasdasdasdasdad', 'pendiente', '2026-06-20 02:20:44'),
+(2, 'qwe qwe', NULL, 'qwe@gmail.com', NULL, 'qweqwe', 'qweqweqweqweqweqwe', 'pendiente', '2026-06-20 02:29:06');
 
 -- --------------------------------------------------------
 
@@ -235,7 +280,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `slug`, `descripcion`, `precio`, `stock`, `imagen_principal`, `destacado`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `materiales`, `cuidados`) VALUES
-(1, 1, 'Poncho Apu Beige', 'poncho-apu-beige', 'Poncho artesanal tejido en lana natural color beige.', 125000.00, 10, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', '100% lana natural artesanal.', 'Lavar a mano con agua fría. No usar secadora.'),
+(1, 1, 'Poncho Apu Beige', 'poncho-apu-beige', 'Poncho artesanal tejido en lana natural color beige.', 125000.00, 9, '', 1, 'activo', '2026-05-26 14:55:17', '2026-06-20 02:38:56', '100% lana natural artesanal.', 'Lavar a mano con agua fría. No usar secadora.'),
 (2, 1, 'Poncho Inti Negro', 'poncho-inti-negro', 'Poncho premium inspirado en la estética andina contemporánea.', 148000.00, 8, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Lana premium tejida artesanalmente.', 'Lavar a mano. Secar sobre superficie plana.'),
 (3, 2, 'Sweater Killa Gris', 'sweater-killa-gris', 'Sweater tejido a mano con fibras suaves y cálidas.', 98000.00, 15, '', 1, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Tejido suave de lana y algodón.', 'Lavar con agua fría y jabón neutro.'),
 (4, 2, 'Sweater Malku Crudo', 'sweater-malku-crudo', 'Diseño minimalista inspirado en la naturaleza andina.', 112000.00, 7, '', 0, 'activo', '2026-05-26 14:55:17', '2026-05-26 15:34:19', 'Lana merino y fibras naturales.', 'No centrifugar. Secado horizontal.'),
@@ -305,8 +350,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `telefono`, `foto_perfil`, `rol`, `estado`, `email_verificado`, `token_recuperacion`, `fecha_registro`, `ultimo_acceso`, `updated_at`) VALUES
-(1, 'Daiana', 'Soria Piola', 'daianasoriapiola@gmail.com', '$2y$10$rZlj3dbXyqI2htHkqPFUjuaSa7txpzHflSDnpoxA.HIzH2zuCdTF6', '1126313354', NULL, 'admin', 'activo', 1, '08acde08d767e357def2fc120820d8afe46caadb03d7116bf6f5a261ef38fac0', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-20 00:36:24'),
-(2, 'Tahiel', 'Paniagua', 'tahi2k11@gmail.com', '$2y$10$2b2W0xQk7A9K2P8xQmJ7QeB0M6Fj5Y7Lx4JtKqV9hWmFfN5a8sG6W', '1164420774', NULL, '', 'activo', 1, '34d3c7e5e12598cf04874528f710afe79a0a829a63bab5b7044ad59f62520294', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-12 22:12:55');
+(1, 'Daiana', 'Soria Piola', 'daianasoriapiola@gmail.com', '$2y$10$rZlj3dbXyqI2htHkqPFUjuaSa7txpzHflSDnpoxA.HIzH2zuCdTF6', '1126313354', NULL, 'admin', 'activo', 1, '08acde08d767e357def2fc120820d8afe46caadb03d7116bf6f5a261ef38fac0', '2026-05-26 19:36:32', '2026-06-20 02:04:07', '2026-06-20 02:04:07'),
+(2, 'Tahiel', 'Paniagua', 'tahi2k11@gmail.com', '$2y$10$rZlj3dbXyqI2htHkqPFUjuaSa7txpzHflSDnpoxA.HIzH2zuCdTF6', '1164420774', NULL, '', 'activo', 1, '34d3c7e5e12598cf04874528f710afe79a0a829a63bab5b7044ad59f62520294', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-20 02:59:23');
 
 --
 -- Índices para tablas volcadas
@@ -334,6 +379,12 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nombre` (`nombre`),
   ADD UNIQUE KEY `slug` (`slug`);
+
+--
+-- Indices de la tabla `configuracion`
+--
+ALTER TABLE `configuracion`
+  ADD PRIMARY KEY (`clave`);
 
 --
 -- Indices de la tabla `contacto`
@@ -442,7 +493,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cupones`

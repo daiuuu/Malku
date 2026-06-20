@@ -27,7 +27,7 @@ class Pedido
                 SELECT *
                 FROM pedidos
                 WHERE usuario_id = :usuario_id
-                ORDER BY fecha_creacion DESC
+                ORDER BY fecha_pedido DESC
                 LIMIT 1
             ";
 
