@@ -70,6 +70,9 @@ $_esLogueado = isset($_SESSION['usuario']);
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/stock">Stock</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/analytics">Analytics</a>
                         <div class="account-menu__divider"></div>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/admin/configuracion/contacto">Datos de Contacto</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/admin/configuracion/envios">Envíos & Devoluciones</a>
+                        <div class="account-menu__divider"></div>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/">Ver Sitio</a>
                         <a class="account-menu__item account-menu__item--danger" href="<?= BASE_URL ?>/logout">Cerrar Sesión</a>
 
@@ -138,6 +141,8 @@ $_esLogueado = isset($_SESSION['usuario']);
                 <li><a href="<?= BASE_URL ?>/admin/contacto">Mensajes</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/stock">Stock</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/analytics">Analytics</a></li>
+                <li><a href="<?= BASE_URL ?>/admin/configuracion/contacto">Datos de Contacto</a></li>
+                <li><a href="<?= BASE_URL ?>/admin/configuracion/envios">Envíos & Dev.</a></li>
                 <li><a href="<?= BASE_URL ?>/logout" class="canvas-danger">Cerrar Sesión</a></li>
             </ul>
         </div>
