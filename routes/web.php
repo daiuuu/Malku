@@ -298,6 +298,39 @@ switch(true)
         break;
 
     // ==================================================
+    // COMPARTIR CARRITO (AJAX)
+    // ==================================================
+    case ($url === 'carrito/compartir'):
+
+        $controller = new CarritoController();
+
+        $controller->compartir();
+
+        break;
+
+    // ==================================================
+    // AGREGAR ITEMS DESDE CARRITO COMPARTIDO
+    // ==================================================
+    case (preg_match('#^carrito/compartido/([A-Z0-9]{8})/agregar$#', $url, $m) === 1):
+
+        $controller = new CarritoController();
+
+        $controller->agregarDesdeCompartido($m[1]);
+
+        break;
+
+    // ==================================================
+    // VER CARRITO COMPARTIDO
+    // ==================================================
+    case (preg_match('#^carrito/compartido/([A-Z0-9]{8})$#', $url, $m) === 1):
+
+        $controller = new CarritoController();
+
+        $controller->verCompartido($m[1]);
+
+        break;
+
+    // ==================================================
     // LOGIN
     // ==================================================
     case ($url === 'login'):
