@@ -80,6 +80,7 @@ $_esLogueado = isset($_SESSION['usuario']);
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/stock">Stock</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/analytics">Analytics</a>
                         <div class="account-menu__divider"></div>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/admin/preguntas">Preguntas Frecuentes</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/configuracion/contacto">Datos de Contacto</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/configuracion/envios">Envíos & Devoluciones</a>
                         <div class="account-menu__divider"></div>

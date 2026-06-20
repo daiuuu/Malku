@@ -337,6 +337,18 @@
     font-size: 1.3rem;
     font-weight: 300;
     color: #444;
+    transition: transform 0.2s ease;
+}
+
+.faq-answer {
+    padding: 0 0 1.6rem;
+}
+
+.faq-answer p {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: #6d6a63;
+    max-width: 760px;
 }
 
 .site-footer {

@@ -155,6 +155,7 @@ $cfg    = $cfg    ?? [];
 
 
     <!-- ================= FAQ ================= -->
+    <?php if (!empty($preguntas)): ?>
     <section class="faq-section">
 
         <div class="contenedor faq-container">
@@ -163,31 +164,54 @@ $cfg    = $cfg    ?? [];
 
             <div class="faq-list">
 
+                <?php foreach ($preguntas as $pq): ?>
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Impuestos y tasas internacionales</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Piezas artesanales personalizadas</span>
-                        <span class="faq-icon">+</span>
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        type="button"
+                    >
+                        <span><?= htmlspecialchars($pq['pregunta']) ?></span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
-                </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Extensión de devoluciones festivas</span>
-                        <span class="faq-icon">+</span>
-                    </button>
+                    <div class="faq-answer" hidden>
+                        <p><?= nl2br(htmlspecialchars($pq['respuesta'])) ?></p>
+                    </div>
+
                 </div>
+                <?php endforeach; ?>
 
             </div>
 
         </div>
 
     </section>
+    <?php endif; ?>
+
+    <script>
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var item   = btn.closest('.faq-item');
+            var answer = item.querySelector('.faq-answer');
+            var icon   = btn.querySelector('.faq-icon');
+            var open   = btn.getAttribute('aria-expanded') === 'true';
+
+            // Close any open item
+            document.querySelectorAll('.faq-item').forEach(function (el) {
+                el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                el.querySelector('.faq-answer').hidden = true;
+                el.querySelector('.faq-icon').textContent = '+';
+            });
+
+            if (!open) {
+                btn.setAttribute('aria-expanded', 'true');
+                answer.hidden = false;
+                icon.textContent = '−';
+            }
+        });
+    });
+    </script>
 
 </main>
