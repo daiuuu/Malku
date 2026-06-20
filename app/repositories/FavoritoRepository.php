@@ -52,4 +52,17 @@ class FavoritoRepository
         $stmt = $this->db->prepare("DELETE FROM favoritos WHERE id = :id AND usuario_id = :uid");
         return $stmt->execute([':id' => $favoritoId, ':uid' => $usuarioId]);
     }
+
+    public function eliminarPorProductoId($productoId, $usuarioId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM favoritos WHERE producto_id = :pid AND usuario_id = :uid");
+        return $stmt->execute([':pid' => $productoId, ':uid' => $usuarioId]);
+    }
+
+    public function obtenerProductoIdsPorUsuario($usuarioId)
+    {
+        $stmt = $this->db->prepare("SELECT producto_id FROM favoritos WHERE usuario_id = :uid");
+        $stmt->execute([':uid' => $usuarioId]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 }

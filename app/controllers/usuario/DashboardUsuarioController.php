@@ -5,6 +5,8 @@ require_once __DIR__ . '/../../repositories/PedidoRepository.php';
 require_once __DIR__ . '/../../repositories/DireccionRepository.php';
 require_once __DIR__ . '/../../repositories/FavoritoRepository.php';
 require_once __DIR__ . '/../../repositories/UsuarioRepository.php';
+require_once __DIR__ . '/../../repositories/MembresiaRepository.php';
+require_once __DIR__ . '/../../repositories/CuponRepository.php';
 
 class DashboardUsuarioController
 {
@@ -12,6 +14,8 @@ class DashboardUsuarioController
     private $direccionRepo;
     private $favoritoRepo;
     private $usuarioRepo;
+    private $membresiaRepo;
+    private $cuponRepo;
 
     public function __construct()
     {
@@ -19,6 +23,8 @@ class DashboardUsuarioController
         $this->direccionRepo = new DireccionRepository();
         $this->favoritoRepo  = new FavoritoRepository();
         $this->usuarioRepo   = new UsuarioRepository();
+        $this->membresiaRepo = new MembresiaRepository();
+        $this->cuponRepo     = new CuponRepository();
     }
 
     private function verificar()
@@ -359,6 +365,52 @@ class DashboardUsuarioController
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
 
+    // ================= TOGGLE FAVORITO =================
+    public function toggleFavorito()
+    {
+        $this->verificar();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . BASE_URL . '/usuario/favoritos');
+            exit;
+        }
+
+        $uid        = $this->usuarioId();
+        $productoId = (int)($_POST['producto_id'] ?? 0);
+
+        if ($productoId) {
+            if ($this->favoritoRepo->existe($uid, $productoId)) {
+                $this->favoritoRepo->eliminarPorProductoId($productoId, $uid);
+            } else {
+                $this->favoritoRepo->agregar($uid, $productoId);
+            }
+        }
+
+        $redirect = $_POST['redirect'] ?? BASE_URL . '/usuario/favoritos';
+        header('Location: ' . $redirect);
+        exit;
+    }
+
+    // ================= AGREGAR FAVORITO =================
+    public function agregarFavorito()
+    {
+        $this->verificar();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . BASE_URL . '/usuario/favoritos');
+            exit;
+        }
+
+        $uid        = $this->usuarioId();
+        $productoId = (int)($_POST['producto_id'] ?? 0);
+
+        if ($productoId) {
+            $this->favoritoRepo->agregar($uid, $productoId);
+        }
+
+        $redirect = $_POST['redirect'] ?? BASE_URL . '/usuario/favoritos';
+        header('Location: ' . $redirect);
+        exit;
+    }
+
     // ================= ELIMINAR FAVORITO =================
     public function eliminarFavorito()
     {
@@ -388,7 +440,18 @@ class DashboardUsuarioController
             }
         }
 
-        if ($totalGastado >= 500000) {
+        // Membresía manual asignada por admin (tiene prioridad si está activa)
+        $membresiaManual = $this->membresiaRepo->obtenerActivaPorUsuario($uid);
+
+        if ($membresiaManual) {
+            $tipoMap = [
+                'basica'    => ['Bronce', 'bronce', 'Plata',  200000 - $totalGastado],
+                'premium'   => ['Plata',  'plata',  'Oro',    500000 - $totalGastado],
+                'exclusive' => ['Oro',    'oro',    null,     0],
+            ];
+            [$tier, $tierKey, $siguiente, $faltante] = $tipoMap[$membresiaManual['tipo']] ?? ['Bronce', 'bronce', 'Plata', 200000 - $totalGastado];
+            $faltante = max(0, $faltante);
+        } elseif ($totalGastado >= 500000) {
             $tier      = 'Oro';
             $tierKey   = 'oro';
             $siguiente = null;
@@ -405,11 +468,32 @@ class DashboardUsuarioController
             $faltante  = 200000 - $totalGastado;
         }
 
+        // Load benefits from DB, grouped by tier
+        $beneficiosTier = ['bronce' => [], 'plata' => [], 'oro' => []];
+        foreach ($this->membresiaRepo->obtenerBeneficios() as $b) {
+            $beneficiosTier[$b['tier']][] = $b;
+        }
+
         $titulo = 'Membresía Malku | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
         require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/membresia/index.php';
+        require_once __DIR__ . '/../../views/layouts/footer.php';
+    }
+
+    // ================= CUPONES =================
+    public function cupones()
+    {
+        $this->verificar();
+        $uid     = $this->usuarioId();
+        $cupones = $this->cuponRepo->obtenerPorUsuario($uid);
+
+        $titulo = 'Mis Cupones | Malku';
+        $css    = 'usuario/usuario.css';
+        require_once __DIR__ . '/../../views/layouts/header.php';
+        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
+        require_once __DIR__ . '/../../views/usuario/cupones/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
 }

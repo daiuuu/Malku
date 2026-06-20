@@ -15,9 +15,7 @@ require_once __DIR__ .
 class PedidoService
 {
     // ================= CREAR PEDIDO =================
-    public function crearPedido(
-        $usuarioId
-    )
+    public function crearPedido($usuarioId, $descuento = 0)
     {
         $carritoModel =
             new Carrito();
@@ -51,10 +49,12 @@ class PedidoService
         }
 
         // ================= CREAR PEDIDO =================
+        $totalFinal = max(0, $total - (float)$descuento);
+
         $pedidoId =
             $pedidoModel->crear(
                 $usuarioId,
-                $total
+                $totalFinal
             );
 
         if(!$pedidoId)
