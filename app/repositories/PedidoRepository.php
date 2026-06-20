@@ -97,4 +97,41 @@ class PedidoRepository
             ORDER BY anio ASC, mes ASC
         ")->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function obtenerPorUsuario($usuarioId)
+    {
+        $stmt = $this->db->prepare("
+            SELECT * FROM pedidos WHERE usuario_id = :uid ORDER BY fecha_pedido DESC
+        ");
+        $stmt->execute([':uid' => $usuarioId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerUltimoPorUsuario($usuarioId)
+    {
+        $stmt = $this->db->prepare("
+            SELECT * FROM pedidos WHERE usuario_id = :uid ORDER BY fecha_pedido DESC LIMIT 1
+        ");
+        $stmt->execute([':uid' => $usuarioId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function contarPorUsuario($usuarioId)
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM pedidos WHERE usuario_id = :uid");
+        $stmt->execute([':uid' => $usuarioId]);
+        return (int)$stmt->fetchColumn();
+    }
+
+    public function contarProductosCompradosPorUsuario($usuarioId)
+    {
+        $stmt = $this->db->prepare("
+            SELECT COALESCE(SUM(pd.cantidad), 0)
+            FROM pedido_detalle pd
+            JOIN pedidos p ON pd.pedido_id = p.id
+            WHERE p.usuario_id = :uid
+        ");
+        $stmt->execute([':uid' => $usuarioId]);
+        return (int)$stmt->fetchColumn();
+    }
 }
