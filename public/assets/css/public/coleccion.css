@@ -158,7 +158,8 @@
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-.filtro-btn::after {
+/* Only show dropdown arrow on the native select */
+select.filtro-btn::after {
     content: '▾';
     display: inline-block;
     font-size: 0.8rem;
@@ -166,8 +167,41 @@
     transform: translateY(-1px);
 }
 
+a.filtro-btn {
+    text-decoration: none;
+}
+
+a.filtro-btn::after {
+    content: none;
+}
+
 .filtro-btn:hover {
     opacity: 0.75;
+}
+
+/* ============================= */
+/* CATEGORÍAS COMO LINKS         */
+/* ============================= */
+
+.filtros-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.5rem;
+}
+
+.filtros-categorias .filtro-btn--active {
+    border-bottom: 1px solid #1e1e1c;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.filtros-categorias .filtro-btn:not(.filtro-btn--active) {
+    opacity: 0.5;
+}
+
+.filtros-categorias .filtro-btn:hover {
+    opacity: 1;
 }
 
 /* ============================= */

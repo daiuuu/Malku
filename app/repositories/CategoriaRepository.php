@@ -36,6 +36,13 @@ class CategoriaRepository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerPorSlug($slug)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM categorias WHERE slug = :slug LIMIT 1");
+        $stmt->execute([':slug' => $slug]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function crear($datos)
     {
         $stmt = $this->db->prepare("

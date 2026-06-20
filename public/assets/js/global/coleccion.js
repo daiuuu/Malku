@@ -25,16 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const buscador = document.getElementById('buscador-productos');
-    const categoriaSelect = document.querySelector('select[name="categoria"]');
     const ordenSelect = document.querySelector('select[name="orden"]');
     const productosGrid = document.querySelector('.productos-grid');
     const loadMoreBtn = document.querySelector('.load-more-btn');
     const loadMoreText = document.querySelector('.load-more-container p');
-    const filtrosForms = document.querySelectorAll('.filtros form');
     const noProductsMsgClass = 'sin-productos-js';
     let currentPage = 1;
     let currentQuery = buscador ? buscador.value.trim() : '';
-    let currentCategory = categoriaSelect ? categoriaSelect.value : '';
+    let currentCategorySlug = window.CATEGORIA_SLUG ?? '';
     let currentOrder = ordenSelect ? ordenSelect.value : 'nuevos';
     let moreResults = true;
     let isLoading = false;
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buildUrl = (page = 1) => {
         const params = new URLSearchParams();
         if (currentQuery) params.set('buscar', currentQuery);
-        if (currentCategory) params.set('categoria', currentCategory);
+        if (currentCategorySlug) params.set('categoria_slug', currentCategorySlug);
         if (currentOrder) params.set('orden', currentOrder);
         if (page > 1) params.set('pagina', page);
         return `${window.BASE_URL}/coleccion/buscar?${params.toString()}`;
@@ -115,12 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    filtrosForms.forEach((form) => {
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-        });
-    });
-
     const fetchProducts = async (page = 1, append = false) => {
         if (isLoading || !productosGrid) return;
         isLoading = true;
@@ -173,33 +165,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (productosGrid) {
+        // Live search as user types (AJAX preview; form submit does full page load)
         if (buscador) {
             buscador.addEventListener('input', debounce((event) => {
                 currentQuery = event.target.value.trim();
                 resetAndFetch();
             }, 300));
-
-            buscador.closest('form')?.addEventListener('submit', (event) => {
-                event.preventDefault();
-                currentQuery = buscador.value.trim();
-                resetAndFetch();
-            });
         }
 
-        if (categoriaSelect) {
-            categoriaSelect.addEventListener('change', () => {
-                currentCategory = categoriaSelect.value;
-                resetAndFetch();
-            });
-        }
-
+        // Sort changes navigate to the correct slug URL via form submit (onchange)
         if (ordenSelect) {
             ordenSelect.addEventListener('change', () => {
                 currentOrder = ordenSelect.value;
-                resetAndFetch();
             });
         }
 
+        // "Cargar más" appends via AJAX
         if (loadMoreBtn) {
             loadMoreBtn.addEventListener('click', (event) => {
                 event.preventDefault();

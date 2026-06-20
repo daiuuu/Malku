@@ -88,6 +88,31 @@ require_once __DIR__ .
     '/../app/repositories/CuponRepository.php';
 
 // ======================================================
+// ERROR RENDERER
+// ======================================================
+
+function renderError(int $code, string $titulo, string $mensaje, array $acciones = [])
+{
+    http_response_code($code);
+
+    $errorCode    = $code;
+    $errorTitulo  = $titulo;
+    $errorMensaje = $mensaje;
+    $errorAcciones = $acciones ?: [
+        ['label' => 'Ir al inicio',  'url' => BASE_URL . '/',          'primary' => true],
+        ['label' => 'Ver colección', 'url' => BASE_URL . '/coleccion', 'primary' => false],
+    ];
+
+    $titulo = $code . ' — ' . $titulo . ' | Malku';
+    $css    = 'global/error.css';
+
+    require_once __DIR__ . '/../app/views/layouts/header.php';
+    require_once __DIR__ . '/../app/views/errors/error.php';
+    require_once __DIR__ . '/../app/views/layouts/footer.php';
+    exit;
+}
+
+// ======================================================
 // URL ACTUAL
 // ======================================================
 
@@ -105,6 +130,25 @@ $url = trim($url, '/');
 
 switch(true)
 {
+    // ==================================================
+    // ERRORES APACHE (ErrorDocument)
+    // ==================================================
+    case ($url === '_error_404'):
+        renderError(404, 'Página no encontrada',
+            'La página que buscás no existe o fue movida.'
+        );
+
+    case ($url === '_error_403'):
+        renderError(403, 'Acceso denegado',
+            'No tenés permiso para ver esta página.'
+        );
+
+    case ($url === '_error_500'):
+        renderError(500, 'Error del servidor',
+            'Ocurrió un error interno. Estamos trabajando para resolverlo. Intentá de nuevo en unos minutos.',
+            [['label' => 'Volver al inicio', 'url' => BASE_URL . '/', 'primary' => true]]
+        );
+
     // ==================================================
     // HOME
     // ==================================================
@@ -135,6 +179,17 @@ switch(true)
         $controller = new ColeccionController();
 
         $controller->buscar();
+
+        break;
+
+    // ==================================================
+    // COLECCIÓN - FILTRO POR SLUG DE CATEGORÍA
+    // ==================================================
+    case (preg_match('#^coleccion/([a-z0-9-]+)$#', $url, $m) === 1):
+
+        $controller = new ColeccionController();
+
+        $controller->index($m[1]);
 
         break;
 
@@ -529,8 +584,13 @@ switch(true)
             $c->guardarEnvios();
 
         } else {
-            http_response_code(404);
-            echo '<h1>404 — Sección no encontrada</h1>';
+            renderError(404, 'Sección no encontrada',
+                'La sección de administración que buscás no existe.',
+                [
+                    ['label' => 'Ir al panel',   'url' => BASE_URL . '/admin',           'primary' => true],
+                    ['label' => 'Ver productos',  'url' => BASE_URL . '/admin/productos', 'primary' => false],
+                ]
+            );
         }
 
         break;
@@ -609,8 +669,13 @@ switch(true)
             $c->membresia();
 
         } else {
-            http_response_code(404);
-            echo '<h1>404 — Sección no encontrada</h1>';
+            renderError(404, 'Sección no encontrada',
+                'La página de tu cuenta que buscás no existe.',
+                [
+                    ['label' => 'Mi cuenta',   'url' => BASE_URL . '/usuario',         'primary' => true],
+                    ['label' => 'Mis pedidos', 'url' => BASE_URL . '/usuario/pedidos', 'primary' => false],
+                ]
+            );
         }
 
         break;
@@ -681,41 +746,7 @@ switch(true)
     // ==================================================
     default:
 
-        http_response_code(404);
-
-        echo '
-            <main
-                style="
-                    min-height: 100vh;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                    font-family: Arial;
-                    gap: 20px;
-                "
-            >
-
-                <h1
-                    style="
-                        font-size: 70px;
-                        margin: 0;
-                    "
-                >
-                    404
-                </h1>
-
-                <p
-                    style="
-                        font-size: 18px;
-                        color: #555;
-                    "
-                >
-                    Página no encontrada
-                </p>
-
-            </main>
-        ';
-
-        break;
+        renderError(404, 'Página no encontrada',
+            'La página que buscás no existe o fue movida a otra dirección.'
+        );
 }

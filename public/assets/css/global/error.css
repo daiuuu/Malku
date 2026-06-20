@@ -1,0 +1,91 @@
+.error-page {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1.5rem;
+    background: #f5f1e8;
+}
+
+.error-inner {
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+}
+
+.error-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(6rem, 18vw, 10rem);
+    line-height: 1;
+    color: #1e1e1c;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.25rem;
+    opacity: 0.15;
+}
+
+.error-title {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1e1e1c;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 1.25rem;
+}
+
+.error-divider {
+    width: 40px;
+    height: 1px;
+    background: #7d876f;
+    margin: 0 auto 1.5rem;
+}
+
+.error-message {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #6b6560;
+    line-height: 1.85;
+    margin: 0 0 2.5rem;
+}
+
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+}
+
+.error-btn:hover { opacity: 0.75; }
+
+.error-btn--primary {
+    background: #1e1e1c;
+    color: #f5f1e8;
+}
+
+.error-btn--secondary {
+    background: transparent;
+    color: #1e1e1c;
+    border: 1px solid #1e1e1c;
+}
+
+.error-hint {
+    margin-top: 3rem;
+    font-size: 0.78rem;
+    color: #b0a898;
+    font-family: 'Work Sans', sans-serif;
+}
