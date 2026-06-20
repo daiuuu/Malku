@@ -85,6 +85,9 @@ require_once __DIR__ .
     '/../app/controllers/admin/MembresiaAdminController.php';
 
 require_once __DIR__ .
+    '/../app/controllers/admin/PreguntaFrecuenteAdminController.php';
+
+require_once __DIR__ .
     '/../app/repositories/CuponRepository.php';
 
 // ======================================================
@@ -576,6 +579,31 @@ switch(true)
         } elseif ($url === 'admin/membresias/beneficios/eliminar') {
             $c = new MembresiaAdminController();
             $c->beneficioEliminar();
+
+        // ---- PREGUNTAS FRECUENTES ----
+        } elseif ($url === 'admin/preguntas') {
+            $c = new PreguntaFrecuenteAdminController();
+            $c->index();
+
+        } elseif ($url === 'admin/preguntas/crear') {
+            $c = new PreguntaFrecuenteAdminController();
+            $c->crear();
+
+        } elseif ($url === 'admin/preguntas/guardar') {
+            $c = new PreguntaFrecuenteAdminController();
+            $c->guardar();
+
+        } elseif (preg_match('#^admin/preguntas/editar/(\d+)$#', $url, $m)) {
+            $c = new PreguntaFrecuenteAdminController();
+            $c->editar((int)$m[1]);
+
+        } elseif ($url === 'admin/preguntas/actualizar') {
+            $c = new PreguntaFrecuenteAdminController();
+            $c->actualizar();
+
+        } elseif ($url === 'admin/preguntas/eliminar') {
+            $c = new PreguntaFrecuenteAdminController();
+            $c->eliminar();
 
         // ---- CONFIGURACIÓN ----
         } elseif ($url === 'admin/configuracion/contacto') {
