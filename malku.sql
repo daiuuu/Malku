@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2026 a las 00:19:04
+-- Tiempo de generación: 20-06-2026 a las 02:36:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -305,7 +305,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `telefono`, `foto_perfil`, `rol`, `estado`, `email_verificado`, `token_recuperacion`, `fecha_registro`, `ultimo_acceso`, `updated_at`) VALUES
-(1, 'Daiana', 'Soria Piola', 'daianasoriapiola@gmail.com', '$2y$10$2b2W0xQk7A9K2P8xQmJ7QeB0M6Fj5Y7Lx4JtKqV9hWmFfN5a8sG6W', '1126313354', NULL, 'admin', 'activo', 1, '08acde08d767e357def2fc120820d8afe46caadb03d7116bf6f5a261ef38fac0', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-12 21:35:45'),
+(1, 'Daiana', 'Soria Piola', 'daianasoriapiola@gmail.com', '$2y$10$rZlj3dbXyqI2htHkqPFUjuaSa7txpzHflSDnpoxA.HIzH2zuCdTF6', '1126313354', NULL, 'admin', 'activo', 1, '08acde08d767e357def2fc120820d8afe46caadb03d7116bf6f5a261ef38fac0', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-20 00:36:24'),
 (2, 'Tahiel', 'Paniagua', 'tahi2k11@gmail.com', '$2y$10$2b2W0xQk7A9K2P8xQmJ7QeB0M6Fj5Y7Lx4JtKqV9hWmFfN5a8sG6W', '1164420774', NULL, '', 'activo', 1, '34d3c7e5e12598cf04874528f710afe79a0a829a63bab5b7044ad59f62520294', '2026-05-26 19:36:32', '2026-05-26 19:36:32', '2026-06-12 22:12:55');
 
 --

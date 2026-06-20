@@ -92,7 +92,7 @@ class UsuarioRepository
                     :apellido,
                     :email,
                     :password,
-                    'usuario',
+                    'cliente',
                     'activo',
                     0
                 )

@@ -165,4 +165,6 @@
 
 </main>
 
+<script src="<?= BASE_URL; ?>/assets/js/auth/login.js"></script>
+
 <?php require_once __DIR__ . '/../../layouts/footer.php'; ?>

@@ -343,6 +343,8 @@ switch(true)
 
         $titulo = 'Panel Administrativo | Malku';
 
+        $css = 'admin/dashboard.css';
+
         require_once __DIR__ .
             '/../app/views/admin/dashboard/index.php';
 

@@ -1,0 +1,100 @@
+/* ============================= */
+/* ADMIN DASHBOARD */
+/* ============================= */
+
+.admin-dashboard {
+    min-height: calc(100vh - 96px);
+    background: #f5f1e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+}
+
+.admin-container {
+    max-width: 680px;
+    width: 100%;
+}
+
+.admin-label {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #8e8a82;
+    margin-bottom: 0.8rem;
+}
+
+.admin-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(2.4rem, 4vw, 3rem);
+    font-weight: 300;
+    color: #1e1e1c;
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.admin-subtitle {
+    font-size: 0.95rem;
+    color: #8e8a82;
+    line-height: 1.8;
+    margin: 0 0 2.5rem;
+}
+
+.admin-notice {
+    background: rgba(125, 135, 111, 0.1);
+    border-left: 3px solid #7d876f;
+    padding: 1rem 1.3rem;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 2.5rem;
+}
+
+.admin-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #4a5540;
+    line-height: 1.7;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-admin-logout,
+.btn-admin-home {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-admin-logout {
+    background: #7d876f;
+    color: #fff;
+    border: none;
+}
+
+.btn-admin-logout:hover {
+    background: #6c7a63;
+    transform: translateY(-1px);
+}
+
+.btn-admin-home {
+    background: transparent;
+    color: #1e1e1c;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.btn-admin-home:hover {
+    background: rgba(125, 135, 111, 0.08);
+}
