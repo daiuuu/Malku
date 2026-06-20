@@ -81,18 +81,4 @@
     </div>
 </div>
 
-<script>
-function confirmarEliminar(id, nombre) {
-    document.getElementById('modal-id').value = id;
-    document.getElementById('modal-msg').textContent = '¿Querés ocultar "' + nombre + '"?';
-    document.getElementById('modal-eliminar').classList.add('active');
-}
-function cerrarModal() {
-    document.getElementById('modal-eliminar').classList.remove('active');
-}
-document.getElementById('modal-eliminar').addEventListener('click', function(e) {
-    if (e.target === this) cerrarModal();
-});
-</script>
-
 <?php require_once __DIR__ . '/../../layouts/footer.php'; ?>

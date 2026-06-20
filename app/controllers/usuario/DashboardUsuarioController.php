@@ -53,7 +53,6 @@ class DashboardUsuarioController
         $titulo = 'Mi Cuenta | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/dashboard/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -70,7 +69,6 @@ class DashboardUsuarioController
         $titulo = 'Mis Pedidos | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/pedidos/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -92,7 +90,6 @@ class DashboardUsuarioController
         $titulo = 'Pedido #' . str_pad($id, 5, '0', STR_PAD_LEFT) . ' | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/pedidos/detalle.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -111,7 +108,6 @@ class DashboardUsuarioController
         $titulo = 'Mi Perfil | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/perfil/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -211,7 +207,6 @@ class DashboardUsuarioController
         $titulo = 'Mis Direcciones | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/direcciones/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -225,7 +220,6 @@ class DashboardUsuarioController
         $titulo = 'Nueva Dirección | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/direcciones/crear.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -283,7 +277,6 @@ class DashboardUsuarioController
         $titulo = 'Editar Dirección | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/direcciones/editar.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -360,7 +353,6 @@ class DashboardUsuarioController
         $titulo = 'Mis Favoritos | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/favoritos/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -477,7 +469,6 @@ class DashboardUsuarioController
         $titulo = 'Membresía Malku | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/membresia/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
@@ -492,7 +483,6 @@ class DashboardUsuarioController
         $titulo = 'Mis Cupones | Malku';
         $css    = 'usuario/usuario.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
-        require_once __DIR__ . '/../../views/usuario/partials/nav.php';
         require_once __DIR__ . '/../../views/usuario/cupones/index.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';
     }
