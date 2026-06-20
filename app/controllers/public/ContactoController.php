@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../../models/Contacto.php';
 
 require_once __DIR__ . '/../../repositories/ContactoRepository.php';
+require_once __DIR__ . '/../../repositories/ConfiguracionRepository.php';
 
 require_once __DIR__ . '/../../services/MailService.php';
 
@@ -11,9 +12,10 @@ class ContactoController
     // ================= INDEX =================
     public function index()
     {
-        $titulo = 'Malku - Contacto';
-
-        $css = 'public/contacto.css';
+        $titulo  = 'Malku - Contacto';
+        $css     = 'public/contacto.css';
+        $cfgRepo = new ConfiguracionRepository();
+        $cfg     = $cfgRepo->obtenerGrupo('contacto');
 
         require_once __DIR__ .
             '/../../views/public/contacto/index.php';

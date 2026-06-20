@@ -1,24 +1,16 @@
 <?php
 
+require_once __DIR__ . '/../../repositories/ConfiguracionRepository.php';
+
 class EnviosDevolucionesController {
     public function index() {
+        $titulo  = 'Envíos y Devoluciones | Malku';
+        $css     = 'public/envios_devoluciones.css';
+        $cfgRepo = new ConfiguracionRepository();
+        $cfg     = $cfgRepo->obtenerGrupo('envios');
 
-        // ============================= TÍTULO =============================
-        $titulo = 'Envíos y Devoluciones | Malku';
-
-        // ============================= CSS ESPECÍFICO =============================
-        $css = 'public/envios_devoluciones.css';
-
-        // ============================= HEADER =============================
-        require_once __DIR__ .
-            '/../../views/layouts/header.php';
-
-        // ============================= VIEW =============================
-        require_once __DIR__ .
-            '/../../views/public/envios/index.php';
-
-        // ============================= FOOTER =============================
-        require_once __DIR__ .
-            '/../../views/layouts/footer.php';
+        require_once __DIR__ . '/../../views/layouts/header.php';
+        require_once __DIR__ . '/../../views/public/envios/index.php';
+        require_once __DIR__ . '/../../views/layouts/footer.php';
     }
 }

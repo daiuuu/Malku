@@ -155,64 +155,51 @@
             <!-- ================= INFO CONTACTO ================= -->
             <div class="contacto-info">
 
-                <!-- ================= EMAIL ================= -->
+                <!-- EMAIL -->
                 <div class="info-block">
-
-                    <span class="info-label">
-                        Correo electrónico
-                    </span>
-
-                    <a href="mailto:hola@malku.com" class="info-link">hola@malku.com</a>
-
+                    <span class="info-label">Correo electrónico</span>
+                    <a href="mailto:<?= htmlspecialchars($cfg['contacto_email'] ?? 'hola@malku.com') ?>" class="info-link">
+                        <?= htmlspecialchars($cfg['contacto_email'] ?? 'hola@malku.com') ?>
+                    </a>
                 </div>
 
-                <!-- ================= TELÉFONO ================= -->
+                <!-- TELÉFONO -->
                 <div class="info-block">
-
-                    <span class="info-label">
-                        Teléfono
-                    </span>
-
-                    <a href="tel:+5491164547751" class="info-link">+54 9 11 6454-7751</a>
-
+                    <span class="info-label">Teléfono</span>
+                    <a href="tel:<?= htmlspecialchars($cfg['contacto_telefono'] ?? '') ?>" class="info-link">
+                        <?= htmlspecialchars($cfg['contacto_telefono'] ?? '+54 9 11 6454-7751') ?>
+                    </a>
                 </div>
 
-                <!-- ================= DIRECCIÓN ================= -->
+                <!-- DIRECCIÓN -->
                 <div class="info-block">
-
-                    <span class="info-label">
-                        El Atelier
-                    </span>
-
+                    <span class="info-label">El Atelier</span>
                     <p>
-                        Av. General Paz 1240 <br>
-                        Buenos Aires, Argentina
+                        <?= htmlspecialchars($cfg['contacto_direccion'] ?? 'Av. General Paz 1240') ?> <br>
+                        <?= htmlspecialchars($cfg['contacto_ciudad'] ?? 'Buenos Aires, Argentina') ?>
                     </p>
-
                     <span class="info-horario">
-                        Lun—Vie, 10am—6pm
+                        <?= htmlspecialchars($cfg['contacto_horario'] ?? 'Lun—Vie, 10am—6pm') ?>
                     </span>
-
                 </div>
 
-
-                <!-- ================= REDES ================= -->
+                <!-- REDES -->
                 <div class="info-block">
-
-                    <span class="info-label">
-                        Conectar
-                    </span>
-
+                    <span class="info-label">Conectar</span>
                     <div class="redes-contacto">
-
+                        <?php if (!empty($cfg['contacto_instagram']) && $cfg['contacto_instagram'] !== '#'): ?>
+                        <a href="<?= htmlspecialchars($cfg['contacto_instagram']) ?>" target="_blank" rel="noopener">Instagram</a>
+                        <?php else: ?>
                         <a href="#">Instagram</a>
+                        <?php endif; ?>
+                        <?php if (!empty($cfg['contacto_facebook']) && $cfg['contacto_facebook'] !== '#'): ?>
+                        <a href="<?= htmlspecialchars($cfg['contacto_facebook']) ?>" target="_blank" rel="noopener">Facebook</a>
+                        <?php else: ?>
                         <a href="#">Facebook</a>
-
+                        <?php endif; ?>
                     </div>
-
                 </div>
 
-                <!-- ================= DECORACIÓN ================= -->
                 <div class="contacto-decoracion">M</div>
 
             </div>
@@ -239,7 +226,7 @@
                     la esencia y la vida útil de cada prenda artesanal.
                 </p>
 
-                <a href="tel:+5491164547751">Solicitar reparación →</a>
+                <a href="https://wa.me/<?= htmlspecialchars($cfg['contacto_telefono_wa'] ?? '5491164547751') ?>?text=%C2%A1Hola%21%20Vengo%20de%20Malku%20y%20me%20comunico%20por%20una%20consulta%20sobre%20cuidado%20y%20reparaci%C3%B3n%20de%20prendas." target="_blank" rel="noopener">Solicitar reparación →</a>
 
             </article>
 
@@ -256,7 +243,7 @@
                     artesanía y diseño atemporal.
                 </p>
 
-                <a href="#">Aplicar como partner →</a>
+                <a href="https://wa.me/<?= htmlspecialchars($cfg['contacto_telefono_wa'] ?? '5491164547751') ?>?text=%C2%A1Hola%21%20Vengo%20de%20Malku%20y%20me%20comunico%20por%20una%20consulta%20mayorista%20para%20aplicar%20como%20partner." target="_blank" rel="noopener">Aplicar como partner →</a>
 
             </article>
 

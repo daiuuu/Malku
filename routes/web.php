@@ -78,6 +78,9 @@ require_once __DIR__ .
 require_once __DIR__ .
     '/../app/controllers/admin/CuponAdminController.php';
 
+require_once __DIR__ .
+    '/../app/controllers/admin/ConfiguracionAdminController.php';
+
 // ======================================================
 // URL ACTUAL
 // ======================================================
@@ -432,6 +435,23 @@ switch(true)
         } elseif ($url === 'admin/cupones') {
             $c = new CuponAdminController();
             $c->index();
+
+        // ---- CONFIGURACIÓN ----
+        } elseif ($url === 'admin/configuracion/contacto') {
+            $c = new ConfiguracionAdminController();
+            $c->contacto();
+
+        } elseif ($url === 'admin/configuracion/contacto/guardar') {
+            $c = new ConfiguracionAdminController();
+            $c->guardarContacto();
+
+        } elseif ($url === 'admin/configuracion/envios') {
+            $c = new ConfiguracionAdminController();
+            $c->envios();
+
+        } elseif ($url === 'admin/configuracion/envios/guardar') {
+            $c = new ConfiguracionAdminController();
+            $c->guardarEnvios();
 
         } else {
             http_response_code(404);
