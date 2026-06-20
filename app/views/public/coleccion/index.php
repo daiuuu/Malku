@@ -215,37 +215,59 @@
 
                 <?php if(!empty($productos)): ?>
 
-                    <?php foreach($productos as $producto): ?>
+                    <?php foreach($productos as $producto):
+                        $esFav    = in_array($producto['id'], $favoritosIds);
+                        $logueado = isset($_SESSION['usuario']);
+                    ?>
 
                         <article class="producto-card"
                             data-name="<?= htmlspecialchars(strtolower($producto['nombre'])); ?>"
                             data-categoria="<?= htmlspecialchars(strtolower($producto['categoria_nombre'])); ?>"
                         >
 
-                            <a
-                                href="<?= BASE_URL; ?>/producto/<?= htmlspecialchars($producto['slug']); ?>"
-                                class="producto-link"
-                            >
+                            <!-- ================= IMAGEN ================= -->
+                            <div class="producto-imagen">
 
-                                <!-- ================= IMAGEN ================= -->
-                                <div class="producto-imagen">
-
+                                <a
+                                    href="<?= BASE_URL; ?>/producto/<?= htmlspecialchars($producto['slug']); ?>"
+                                    class="producto-link"
+                                >
                                     <img
                                         src="<?= BASE_URL; ?>/assets/img/<?= htmlspecialchars($producto['imagen_principal']); ?>"
                                         alt="<?= htmlspecialchars($producto['nombre']); ?>"
                                     >
+                                </a>
 
-                                    <?php if($producto['destacado'] == 1): ?>
+                                <?php if($producto['destacado'] == 1): ?>
+                                    <span class="producto-tag">Destacado</span>
+                                <?php endif; ?>
 
-                                        <span class="producto-tag">
-                                            Destacado
-                                        </span>
+                                <!-- CORAZÓN -->
+                                <?php if($logueado): ?>
+                                <form class="fav-form" method="POST" action="<?= BASE_URL ?>/usuario/favoritos/toggle">
+                                    <input type="hidden" name="producto_id" value="<?= $producto['id'] ?>">
+                                    <input type="hidden" name="redirect" value="<?= BASE_URL ?>/coleccion<?= !empty($_SERVER['QUERY_STRING']) ? '?' . htmlspecialchars($_SERVER['QUERY_STRING']) : '' ?>">
+                                    <button type="submit" class="fav-btn<?= $esFav ? ' fav-btn--active' : '' ?>" aria-label="<?= $esFav ? 'Quitar de favoritos' : 'Agregar a favoritos' ?>">
+                                        <?php if($esFav): ?>
+                                        <svg viewBox="0 0 24 24" fill="#c0392b" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                        <?php else: ?>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                        <?php endif; ?>
+                                    </button>
+                                </form>
+                                <?php else: ?>
+                                <a href="<?= BASE_URL ?>/login" class="fav-btn" aria-label="Iniciar sesión para guardar">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                </a>
+                                <?php endif; ?>
 
-                                    <?php endif; ?>
+                            </div>
 
-                                </div>
-
-                                <!-- ================= INFO ================= -->
+                            <!-- ================= INFO ================= -->
+                            <a
+                                href="<?= BASE_URL; ?>/producto/<?= htmlspecialchars($producto['slug']); ?>"
+                                class="producto-link"
+                            >
                                 <div class="producto-info">
 
                                     <div class="producto-top">
@@ -255,27 +277,16 @@
                                         </h3>
 
                                         <p class="precio">
-
-                                            $<?= number_format(
-                                                $producto['precio'],
-                                                0,
-                                                ',',
-                                                '.'
-                                            ); ?>
-
+                                            $<?= number_format($producto['precio'], 0, ',', '.'); ?>
                                         </p>
 
                                     </div>
 
-                                    <!-- ================= CATEGORÍA ================= -->
                                     <span class="producto-color">
-
                                         <?= htmlspecialchars($producto['categoria_nombre']); ?>
-
                                     </span>
 
                                 </div>
-
                             </a>
 
                         </article>

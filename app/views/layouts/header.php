@@ -50,6 +50,10 @@ $_esLogueado = isset($_SESSION['usuario']);
         <!-- DESKTOP ICONS -->
         <div class="header-icons">
 
+            <?php if ($_esLogueado && !$_esAdmin): ?>
+            <a href="<?= BASE_URL ?>/usuario/favoritos" class="hicon hicon--heart" aria-label="Mis favoritos"></a>
+            <?php endif; ?>
+
             <a href="<?= BASE_URL ?>/carrito" class="hicon hicon--cart" aria-label="Carrito"></a>
 
             <?php if ($_esLogueado): ?>
@@ -66,6 +70,8 @@ $_esLogueado = isset($_SESSION['usuario']);
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/categorias">Categorías</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/pedidos">Pedidos</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/usuarios">Usuarios</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/admin/membresias">Membresías</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/admin/cupones">Cupones</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/contacto">Mensajes</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/stock">Stock</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/admin/analytics">Analytics</a>
@@ -81,6 +87,7 @@ $_esLogueado = isset($_SESSION['usuario']);
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario">Dashboard</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/pedidos">Mis Pedidos</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/favoritos">Favoritos</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/cupones">Mis Cupones</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/direcciones">Direcciones</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/perfil">Mi Perfil</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/membresia">Membresía</a>
@@ -142,6 +149,7 @@ $_esLogueado = isset($_SESSION['usuario']);
                 <li><a href="<?= BASE_URL ?>/admin/categorias">Categorías</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/pedidos">Pedidos</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/usuarios">Usuarios</a></li>
+                <li><a href="<?= BASE_URL ?>/admin/membresias">Membresías</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/contacto">Mensajes</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/stock">Stock</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/analytics">Analytics</a></li>
@@ -157,6 +165,12 @@ $_esLogueado = isset($_SESSION['usuario']);
             <p class="canvas-group__label"><?= htmlspecialchars($_SESSION['usuario']['nombre']) ?></p>
             <ul>
                 <li><a href="<?= BASE_URL ?>/usuario">Mi Cuenta</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/pedidos">Mis Pedidos</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/favoritos">Favoritos</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/cupones">Mis Cupones</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/direcciones">Direcciones</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/perfil">Mi Perfil</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/membresia">Membresía</a></li>
                 <li><a href="<?= BASE_URL ?>/logout" class="canvas-danger">Cerrar Sesión</a></li>
             </ul>
         </div>

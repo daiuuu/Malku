@@ -32,10 +32,15 @@
                 <div class="u-fav-card__name"><?= htmlspecialchars($fav['nombre']) ?></div>
                 <div class="u-fav-card__price">$<?= number_format($fav['precio'], 0, ',', '.') ?></div>
                 <div class="u-fav-card__actions">
-                    <a href="<?= BASE_URL ?>/producto/<?= htmlspecialchars($fav['slug']) ?>" class="u-btn u-btn--dark u-btn--sm">Ver producto</a>
+                    <a href="<?= BASE_URL ?>/producto/<?= htmlspecialchars($fav['slug']) ?>" class="u-btn u-btn--outline u-btn--sm">Ver producto</a>
+                    <form action="<?= BASE_URL ?>/carrito/agregar" method="POST" style="display:inline">
+                        <input type="hidden" name="producto_id" value="<?= $fav['producto_id'] ?>">
+                        <input type="hidden" name="cantidad" value="1">
+                        <button type="submit" class="u-btn u-btn--dark u-btn--sm">+ Carrito</button>
+                    </form>
                     <form action="<?= BASE_URL ?>/usuario/favoritos/eliminar" method="POST" style="display:inline">
                         <input type="hidden" name="id" value="<?= $fav['favorito_id'] ?>">
-                        <button type="submit" class="u-btn u-btn--outline u-btn--sm" title="Quitar de favoritos">✕</button>
+                        <button type="submit" class="u-btn u-btn--danger u-btn--sm" title="Quitar de favoritos" onclick="return confirm('¿Quitar de favoritos?')">✕</button>
                     </form>
                 </div>
             </div>

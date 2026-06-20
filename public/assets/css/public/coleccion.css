@@ -279,6 +279,57 @@
 
 
 /* ============================= */
+/* BOTÓN FAVORITO (corazón)     */
+/* ============================= */
+
+.fav-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.fav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.22s ease, transform 0.22s ease, background 0.2s ease;
+    text-decoration: none;
+    color: #1e1e1c;
+    backdrop-filter: blur(4px);
+    padding: 0;
+}
+
+.fav-btn svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.producto-card:hover .fav-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fav-btn--active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fav-btn:hover {
+    background: #fff;
+}
+
+/* ============================= */
 /* LOAD MORE */
 /* ============================= */
 

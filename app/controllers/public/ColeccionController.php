@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../models/Producto.php';
 require_once __DIR__ . '/../../models/Categoria.php';
+require_once __DIR__ . '/../../repositories/FavoritoRepository.php';
 
 class ColeccionController
 {
@@ -55,6 +56,13 @@ class ColeccionController
 
         // ================= CATEGORÍAS ======================
         $categorias = $categoriaModel->obtenerTodas();
+
+        // ================= FAVORITOS DEL USUARIO ===========
+        $favoritosIds = [];
+        if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] !== 'admin') {
+            $favRepo      = new FavoritoRepository();
+            $favoritosIds = $favRepo->obtenerProductoIdsPorUsuario((int)$_SESSION['usuario']['id']);
+        }
 
         // ================= CARGAR VISTA ====================
         require_once __DIR__ .

@@ -81,6 +81,12 @@ require_once __DIR__ .
 require_once __DIR__ .
     '/../app/controllers/admin/ConfiguracionAdminController.php';
 
+require_once __DIR__ .
+    '/../app/controllers/admin/MembresiaAdminController.php';
+
+require_once __DIR__ .
+    '/../app/repositories/CuponRepository.php';
+
 // ======================================================
 // URL ACTUAL
 // ======================================================
@@ -436,6 +442,75 @@ switch(true)
             $c = new CuponAdminController();
             $c->index();
 
+        } elseif ($url === 'admin/cupones/crear') {
+            $c = new CuponAdminController();
+            $c->crear();
+
+        } elseif ($url === 'admin/cupones/guardar') {
+            $c = new CuponAdminController();
+            $c->guardar();
+
+        } elseif (preg_match('#^admin/cupones/editar/(\d+)$#', $url, $m)) {
+            $c = new CuponAdminController();
+            $c->editar((int)$m[1]);
+
+        } elseif ($url === 'admin/cupones/actualizar') {
+            $c = new CuponAdminController();
+            $c->actualizar();
+
+        } elseif ($url === 'admin/cupones/eliminar') {
+            $c = new CuponAdminController();
+            $c->eliminar();
+
+        } elseif (preg_match('#^admin/cupones/regalar/(\d+)$#', $url, $m)) {
+            $c = new CuponAdminController();
+            $c->regalar((int)$m[1]);
+
+        // ---- MEMBRESÍAS ----
+        } elseif ($url === 'admin/membresias') {
+            $c = new MembresiaAdminController();
+            $c->index();
+
+        } elseif (preg_match('#^admin/membresias/asignar/(\d+)$#', $url, $m)) {
+            $c = new MembresiaAdminController();
+            $c->asignar((int)$m[1]);
+
+        } elseif ($url === 'admin/membresias/guardar') {
+            $c = new MembresiaAdminController();
+            $c->guardar();
+
+        } elseif ($url === 'admin/membresias/eliminar') {
+            $c = new MembresiaAdminController();
+            $c->eliminar();
+
+        } elseif ($url === 'admin/membresias/cambiar-estado') {
+            $c = new MembresiaAdminController();
+            $c->cambiarEstado();
+
+        } elseif ($url === 'admin/membresias/beneficios') {
+            $c = new MembresiaAdminController();
+            $c->beneficios();
+
+        } elseif ($url === 'admin/membresias/beneficios/crear') {
+            $c = new MembresiaAdminController();
+            $c->beneficioCrear();
+
+        } elseif ($url === 'admin/membresias/beneficios/guardar') {
+            $c = new MembresiaAdminController();
+            $c->beneficioGuardar();
+
+        } elseif (preg_match('#^admin/membresias/beneficios/editar/(\d+)$#', $url, $m)) {
+            $c = new MembresiaAdminController();
+            $c->beneficioEditar((int)$m[1]);
+
+        } elseif ($url === 'admin/membresias/beneficios/actualizar') {
+            $c = new MembresiaAdminController();
+            $c->beneficioActualizar();
+
+        } elseif ($url === 'admin/membresias/beneficios/eliminar') {
+            $c = new MembresiaAdminController();
+            $c->beneficioEliminar();
+
         // ---- CONFIGURACIÓN ----
         } elseif ($url === 'admin/configuracion/contacto') {
             $c = new ConfiguracionAdminController();
@@ -461,14 +536,82 @@ switch(true)
         break;
 
     // ==================================================
-    // PANEL USUARIO
+    // PANEL USUARIO — todas las rutas /usuario/*
     // ==================================================
-    case ($url === 'usuario'):
+    case (strpos($url, 'usuario') === 0):
 
-        $controller =
-            new DashboardUsuarioController();
+        AuthMiddleware::verificar();
 
-        $controller->index();
+        $c = new DashboardUsuarioController();
+
+        // ---- DASHBOARD ----
+        if ($url === 'usuario') {
+            $c->index();
+
+        // ---- PEDIDOS ----
+        } elseif ($url === 'usuario/pedidos') {
+            $c->pedidos();
+
+        } elseif (preg_match('#^usuario/pedidos/(\d+)$#', $url, $m)) {
+            $c->pedidoDetalle((int)$m[1]);
+
+        // ---- PERFIL ----
+        } elseif ($url === 'usuario/perfil') {
+            $c->perfil();
+
+        } elseif ($url === 'usuario/perfil/guardar') {
+            $c->guardarPerfil();
+
+        } elseif ($url === 'usuario/perfil/cambiar-password') {
+            $c->cambiarPassword();
+
+        // ---- DIRECCIONES ----
+        } elseif ($url === 'usuario/direcciones') {
+            $c->direcciones();
+
+        } elseif ($url === 'usuario/direcciones/nueva') {
+            $c->nuevaDireccion();
+
+        } elseif ($url === 'usuario/direcciones/guardar') {
+            $c->guardarDireccion();
+
+        } elseif (preg_match('#^usuario/direcciones/editar/(\d+)$#', $url, $m)) {
+            $c->editarDireccion((int)$m[1]);
+
+        } elseif ($url === 'usuario/direcciones/actualizar') {
+            $c->actualizarDireccion();
+
+        } elseif ($url === 'usuario/direcciones/eliminar') {
+            $c->eliminarDireccion();
+
+        } elseif ($url === 'usuario/direcciones/principal') {
+            $c->marcarPrincipal();
+
+        // ---- FAVORITOS ----
+        } elseif ($url === 'usuario/favoritos') {
+            $c->favoritos();
+
+        } elseif ($url === 'usuario/favoritos/agregar') {
+            $c->agregarFavorito();
+
+        } elseif ($url === 'usuario/favoritos/toggle') {
+            $c->toggleFavorito();
+
+        } elseif ($url === 'usuario/favoritos/eliminar') {
+            $c->eliminarFavorito();
+
+        // ---- CUPONES ----
+        } elseif ($url === 'usuario/cupones') {
+            $c->cupones();
+
+        // ---- MEMBRESÍA ----
+        } elseif ($url === 'usuario/membresia') {
+            $c->membresia();
+
+        } else {
+            http_response_code(404);
+            echo '<h1>404 — Sección no encontrada</h1>';
+        }
 
         break;
 
@@ -499,6 +642,20 @@ switch(true)
 
         $controller->index();
 
+        break;
+
+    // ================= APLICAR CUPÓN EN CHECKOUT =================
+    case ($url === 'checkout/aplicar-cupon'):
+
+        $controller = new CheckoutController();
+        $controller->aplicarCupon();
+        break;
+
+    // ================= QUITAR CUPÓN EN CHECKOUT =================
+    case ($url === 'checkout/quitar-cupon'):
+
+        $controller = new CheckoutController();
+        $controller->quitarCupon();
         break;
 
     // ================= PROCESAR CHECKOUT =================

@@ -1,21 +1,11 @@
 <?php
-$tierBenefits = [
-    'bronce' => [
-        ['icon' => '✦', 'title' => 'Acceso al catálogo completo',    'desc' => 'Navegá toda la colección sin restricciones.'],
-        ['icon' => '✦', 'title' => 'Historial de compras',            'desc' => 'Consultá todos tus pedidos y su estado en tiempo real.'],
-        ['icon' => '✦', 'title' => 'Favoritos ilimitados',            'desc' => 'Guardá las piezas que más te gustan para después.'],
-    ],
-    'plata' => [
-        ['icon' => '✦', 'title' => 'Todos los beneficios Bronce',    'desc' => 'Más los beneficios exclusivos del nivel Plata.'],
-        ['icon' => '✦', 'title' => 'Envío bonificado',                'desc' => 'Envío gratuito en compras superiores a $150.000.'],
-        ['icon' => '✦', 'title' => 'Acceso anticipado',              'desc' => 'Conocé las nuevas colecciones antes que nadie.'],
-    ],
-    'oro' => [
-        ['icon' => '✦', 'title' => 'Todos los beneficios Plata',     'desc' => 'Más el nivel más alto de fidelidad de Malku.'],
-        ['icon' => '✦', 'title' => 'Envío siempre gratis',           'desc' => 'Sin monto mínimo, en todo el país.'],
-        ['icon' => '✦', 'title' => 'Servicio personalizado',         'desc' => 'Atención prioritaria y asesoramiento exclusivo.'],
-    ],
-];
+// $beneficiosTier is passed from the controller (array keyed by tier)
+$tierBenefits = $beneficiosTier ?? [];
+
+// Fallback so the template never breaks if no rows in DB yet
+foreach (['bronce', 'plata', 'oro'] as $_t) {
+    if (!isset($tierBenefits[$_t])) $tierBenefits[$_t] = [];
+}
 
 $progressPct = 0;
 if ($tierKey === 'bronce') {
@@ -60,13 +50,17 @@ if ($tierKey === 'bronce') {
             <h3 class="u-card__title">Tus beneficios <?= $tier ?></h3>
         </div>
         <div class="u-benefits-grid">
+            <?php if (empty($tierBenefits[$tierKey])): ?>
+            <p style="color:var(--u-dark);opacity:.6;font-size:0.9rem">Sin beneficios definidos aún.</p>
+            <?php else: ?>
             <?php foreach ($tierBenefits[$tierKey] as $b): ?>
             <div class="u-benefit-card">
-                <div class="u-benefit-card__icon"><?= $b['icon'] ?></div>
-                <div class="u-benefit-card__title"><?= $b['title'] ?></div>
-                <div class="u-benefit-card__desc"><?= $b['desc'] ?></div>
+                <div class="u-benefit-card__icon"><?= htmlspecialchars($b['icono'] ?? $b['icon'] ?? '✦') ?></div>
+                <div class="u-benefit-card__title"><?= htmlspecialchars($b['titulo'] ?? $b['title'] ?? '') ?></div>
+                <div class="u-benefit-card__desc"><?= htmlspecialchars($b['descripcion'] ?? $b['desc'] ?? '') ?></div>
             </div>
             <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 
