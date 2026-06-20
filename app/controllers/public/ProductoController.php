@@ -1,48 +1,42 @@
 <?php
 
-require_once __DIR__ .
-    '/../../models/Producto.php';
+require_once __DIR__ . '/../../models/Producto.php';
+require_once __DIR__ . '/../../repositories/FavoritoRepository.php';
 
 class ProductoController
 {
     // ================= DETALLE PRODUCTO =================
     public function detalle($slug)
     {
-        // ================= MODELO =====================
         $productoModel = new Producto();
+        $producto      = $productoModel->obtenerPorSlug($slug);
 
-        // ================= PRODUCTO ===================
-        $producto =
-            $productoModel->obtenerPorSlug($slug);
-
-        // ================= VALIDAR ====================
-        if(!$producto)
-        {
-            header(
-                'Location: ' .
-                BASE_URL .
-                '/coleccion'
-            );
-
+        if (!$producto) {
+            header('Location: ' . BASE_URL . '/coleccion');
             exit;
         }
 
-        // ================= RELACIONADOS ===============
-        $relacionados =
-            $productoModel->obtenerRelacionados(
-                $producto['categoria_id'],
-                $producto['id']
+        $relacionados = $productoModel->obtenerRelacionados(
+            $producto['categoria_id'],
+            $producto['id']
+        );
+
+        $logueado = isset($_SESSION['usuario']);
+        $esFav    = false;
+
+        if ($logueado) {
+            $favRepo = new FavoritoRepository();
+            $esFav   = (bool) $favRepo->existe(
+                (int) $_SESSION['usuario']['id'],
+                (int) $producto['id']
             );
+        }
 
-        // ================= METADATA ===================
-        $titulo =
-            'Malku - ' .
-            $producto['nombre'];
+        $titulo = 'Malku — ' . $producto['nombre'];
+        $css    = 'public/productos.css';
 
-        $css = "public/productos.css";
-
-        // ================= VIEW =======================
-        require_once __DIR__ .
-            '/../../views/public/coleccion/detalle.php';
+        require_once __DIR__ . '/../../views/layouts/header.php';
+        require_once __DIR__ . '/../../views/public/coleccion/detalle.php';
+        require_once __DIR__ . '/../../views/layouts/footer.php';
     }
 }

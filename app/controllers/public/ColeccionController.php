@@ -7,30 +7,66 @@ require_once __DIR__ . '/../../repositories/FavoritoRepository.php';
 
 class ColeccionController
 {
-    public function index($categoriaSlug = null)
+    // Sort slugs used in clean URLs
+    private static $SORT_SLUGS = [
+        'precio-asc'  => 'precio_asc',
+        'precio-desc' => 'precio_desc',
+        'destacados'  => 'destacados',
+    ];
+
+    public function index($slug1 = null, $slug2 = null)
     {
         $titulo = "Malku - Colección";
         $css    = "public/coleccion.css";
 
-        $productoModel = new Producto();
+        $productoModel  = new Producto();
         $categoriaModel = new Categoria();
         $categoriaRepo  = new CategoriaRepository();
+
+        // Detect which slug is the sort and which is the category
+        $categoriaSlug = null;
+        $orden         = 'nuevos';
+
+        if ($slug1 !== null && $slug2 !== null) {
+            // Two segments: first is always category, second is always sort
+            $categoriaSlug = $slug1;
+            $orden = self::$SORT_SLUGS[$slug2] ?? 'nuevos';
+        } elseif ($slug1 !== null) {
+            // One segment: could be sort-only or category-only
+            if (isset(self::$SORT_SLUGS[$slug1])) {
+                $orden = self::$SORT_SLUGS[$slug1];
+            } else {
+                $categoriaSlug = $slug1;
+            }
+        }
+
+        // Backward compat: ?orden= → redirect to clean URL
+        if (isset($_GET['orden']) && $_GET['orden'] !== 'nuevos') {
+            $sortMap = array_flip(self::$SORT_SLUGS);
+            $sortSlug = $sortMap[$_GET['orden']] ?? null;
+            if ($sortSlug) {
+                $path = BASE_URL . '/coleccion';
+                if ($categoriaSlug) $path .= '/' . $categoriaSlug;
+                $path .= '/' . $sortSlug;
+                $extra = [];
+                if (!empty($_GET['buscar'])) $extra['buscar'] = $_GET['buscar'];
+                if (!empty($_GET['pagina'])) $extra['pagina'] = $_GET['pagina'];
+                if ($extra) $path .= '?' . http_build_query($extra);
+                header('Location: ' . $path, true, 302);
+                exit;
+            }
+        }
 
         // Backward compat: ?categoria=3 → redirect to /coleccion/{slug}
         if (!$categoriaSlug && isset($_GET['categoria']) && is_numeric($_GET['categoria'])) {
             $cat = $categoriaRepo->obtenerPorId((int) $_GET['categoria']);
             if ($cat && !empty($cat['slug'])) {
-                $extra = [];
-                if (!empty($_GET['orden']))  $extra['orden']  = $_GET['orden'];
-                if (!empty($_GET['buscar'])) $extra['buscar'] = $_GET['buscar'];
-                $qs = $extra ? '?' . http_build_query($extra) : '';
-                header('Location: ' . BASE_URL . '/coleccion/' . $cat['slug'] . $qs, true, 301);
+                header('Location: ' . BASE_URL . '/coleccion/' . $cat['slug'], true, 301);
                 exit;
             }
         }
 
         $buscar = trim($_GET['buscar'] ?? '');
-        $orden  = $_GET['orden'] ?? 'nuevos';
 
         // Resolve category slug → ID
         $categoriaId     = null;
@@ -48,8 +84,8 @@ class ColeccionController
         $limite  = 6;
         $offset  = ($pagina - 1) * $limite;
 
-        $productos      = $productoModel->obtenerColeccion($buscar, $categoriaId, $orden, $limite, $offset);
-        $totalProductos = $productoModel->contarProductos($buscar, $categoriaId);
+        $productos       = $productoModel->obtenerColeccion($buscar, $categoriaId, $orden, $limite, $offset);
+        $totalProductos  = $productoModel->contarProductos($buscar, $categoriaId);
         $hayMasProductos = ($offset + $limite) < $totalProductos;
 
         $categorias = $categoriaModel->obtenerTodas();
@@ -60,12 +96,17 @@ class ColeccionController
             $favoritosIds = $favRepo->obtenerProductoIdsPorUsuario((int) $_SESSION['usuario']['id']);
         }
 
-        // Build current page URL for redirects (e.g. favoritos toggle)
-        $currentPageUrl = BASE_URL . '/coleccion' . ($categoriaSlug ? '/' . $categoriaSlug : '');
-        $extraParams = [];
-        if ($buscar) $extraParams['buscar'] = $buscar;
-        if ($orden && $orden !== 'nuevos') $extraParams['orden'] = $orden;
-        if ($extraParams) $currentPageUrl .= '?' . http_build_query($extraParams);
+        // Build current page URL for the favoritos toggle redirect
+        $currentPageUrl = BASE_URL . '/coleccion';
+        if ($categoriaSlug) $currentPageUrl .= '/' . $categoriaSlug;
+        if ($orden && $orden !== 'nuevos') {
+            $sortMap = array_flip(self::$SORT_SLUGS);
+            if (isset($sortMap[$orden])) $currentPageUrl .= '/' . $sortMap[$orden];
+        }
+        if ($buscar) $currentPageUrl .= '?buscar=' . urlencode($buscar);
+
+        // Expose sort slug for JS URL building in the view
+        $ordenSlug = ($orden !== 'nuevos') ? (array_flip(self::$SORT_SLUGS)[$orden] ?? '') : '';
 
         require_once __DIR__ . '/../../views/public/coleccion/index.php';
     }

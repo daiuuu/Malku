@@ -1,11 +1,10 @@
 <?php require_once __DIR__ . '/../../layouts/header.php'; ?>
 
 <?php
-// Base URL for this category page (without page/sort params)
-$baseColeccion = BASE_URL . '/coleccion' . ($categoriaSlug ? '/' . htmlspecialchars($categoriaSlug) : '');
-
-// Query params that carry over (sort + search, but NOT page)
-$ordenParam  = ($orden && $orden !== 'nuevos') ? $orden : '';
+// Base URL without sort (used for "Cargar más")
+$baseColeccion = BASE_URL . '/coleccion';
+if ($categoriaSlug) $baseColeccion .= '/' . htmlspecialchars($categoriaSlug);
+if ($ordenSlug)     $baseColeccion .= '/' . htmlspecialchars($ordenSlug);
 ?>
 
 <script>
@@ -20,7 +19,7 @@ $ordenParam  = ($orden && $orden !== 'nuevos') ? $orden : '';
         <div class="contenedor">
 
             <h1>
-                <i>Colección<?= $categoriaActual ? ' — ' . htmlspecialchars($categoriaActual['nombre']) : '' ?></i>
+                <i>Colección</i>
             </h1>
 
             <p>
@@ -61,34 +60,36 @@ $ordenParam  = ($orden && $orden !== 'nuevos') ? $orden : '';
 
                 </form>
 
-                <!-- ================= FILTRO CATEGORÍA (LINKS) ================= -->
-                <div class="filtros-categorias">
-
-                    <a
-                        href="<?= BASE_URL ?>/coleccion<?= $ordenParam ? '?orden=' . htmlspecialchars($ordenParam) : '' ?>"
-                        class="filtro-btn<?= !$categoriaSlug ? ' filtro-btn--active' : '' ?>"
+                <!-- ================= FILTRO CATEGORÍA (SELECT) ================= -->
+                <div class="filtros-cat-wrap">
+                    <span class="filtros-cat-label">Categoría:</span>
+                    <select
+                        class="filtro-btn filtro-btn--cat"
+                        id="categoria-select"
+                        aria-label="Filtrar por categoría"
                     >
-                        Todas
-                    </a>
-
-                    <?php foreach ($categorias as $cat): ?>
-
-                        <?php
-                        $catSlug  = htmlspecialchars($cat['slug']);
-                        $catQuery = $ordenParam ? '?orden=' . htmlspecialchars($ordenParam) : '';
-                        $isActive = $categoriaSlug === $cat['slug'];
-                        ?>
-
-                        <a
-                            href="<?= BASE_URL ?>/coleccion/<?= $catSlug . $catQuery ?>"
-                            class="filtro-btn<?= $isActive ? ' filtro-btn--active' : '' ?>"
+                        <option value="">Todas</option>
+                        <?php foreach ($categorias as $cat): ?>
+                        <option
+                            value="<?= htmlspecialchars($cat['slug']) ?>"
+                            <?= $categoriaSlug === $cat['slug'] ? 'selected' : '' ?>
                         >
                             <?= htmlspecialchars($cat['nombre']) ?>
-                        </a>
-
-                    <?php endforeach; ?>
-
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
+
+                <script>
+                document.getElementById('categoria-select').addEventListener('change', function () {
+                    var slug      = this.value;
+                    var ordenSlug = <?= json_encode($ordenSlug) ?>;
+                    var url = window.BASE_URL + '/coleccion';
+                    if (slug) url += '/' + slug;
+                    if (ordenSlug) url += '/' + ordenSlug;
+                    window.location.href = url;
+                });
+                </script>
 
             </div>
 
@@ -97,33 +98,30 @@ $ordenParam  = ($orden && $orden !== 'nuevos') ? $orden : '';
 
                 <span>Ordenar por:</span>
 
-                <form method="GET" action="<?= $baseColeccion ?>">
+                <select class="filtro-btn" id="orden-select" aria-label="Ordenar productos">
+                    <option value="nuevos"     <?= $orden === 'nuevos'     ? 'selected' : '' ?>>Más nuevos</option>
+                    <option value="destacados" <?= $orden === 'destacados' ? 'selected' : '' ?>>Destacados</option>
+                    <option value="precio_asc" <?= $orden === 'precio_asc' ? 'selected' : '' ?>>Menor precio</option>
+                    <option value="precio_desc"<?= $orden === 'precio_desc'? 'selected' : '' ?>>Mayor precio</option>
+                </select>
 
-                    <?php if ($buscar): ?>
-                        <input type="hidden" name="buscar" value="<?= htmlspecialchars($buscar) ?>">
-                    <?php endif; ?>
-
-                    <select
-                        name="orden"
-                        class="filtro-btn"
-                        onchange="this.form.submit()"
-                    >
-
-                        <option value="nuevos" <?= $orden === 'nuevos' ? 'selected' : '' ?>>
-                            Más nuevos
-                        </option>
-
-                        <option value="precio_asc" <?= $orden === 'precio_asc' ? 'selected' : '' ?>>
-                            Menor precio
-                        </option>
-
-                        <option value="precio_desc" <?= $orden === 'precio_desc' ? 'selected' : '' ?>>
-                            Mayor precio
-                        </option>
-
-                    </select>
-
-                </form>
+                <script>
+                document.getElementById('orden-select').addEventListener('change', function () {
+                    var orden  = this.value;
+                    var catSlug = <?= json_encode($categoriaSlug ?? '') ?>;
+                    var buscar  = <?= json_encode($buscar) ?>;
+                    var sortMap = {
+                        'precio_asc':  'precio-asc',
+                        'precio_desc': 'precio-desc',
+                        'destacados':  'destacados'
+                    };
+                    var url = window.BASE_URL + '/coleccion';
+                    if (catSlug) url += '/' + catSlug;
+                    if (orden && orden !== 'nuevos') url += '/' + sortMap[orden];
+                    if (buscar) url += '?buscar=' + encodeURIComponent(buscar);
+                    window.location.href = url;
+                });
+                </script>
 
             </div>
 
@@ -181,9 +179,9 @@ $ordenParam  = ($orden && $orden !== 'nuevos') ? $orden : '';
                                     </button>
                                 </form>
                                 <?php else: ?>
-                                <a href="<?= BASE_URL ?>/login" class="fav-btn" aria-label="Iniciar sesión para guardar">
+                                <button type="button" class="fav-btn fav-btn--guest" aria-label="Guardar en favoritos">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                                </a>
+                                </button>
                                 <?php endif; ?>
 
                             </div>
@@ -238,10 +236,8 @@ $ordenParam  = ($orden && $orden !== 'nuevos') ? $orden : '';
             <?php if ($hayMasProductos): ?>
 
                 <?php
-                $moreParams = [];
+                $moreParams = ['pagina' => $pagina + 1];
                 if ($buscar) $moreParams['buscar'] = $buscar;
-                if ($ordenParam) $moreParams['orden'] = $ordenParam;
-                $moreParams['pagina'] = $pagina + 1;
                 ?>
 
                 <a

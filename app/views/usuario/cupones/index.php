@@ -8,9 +8,14 @@ $origenLabel = [
 <main>
 <div class="contenedor">
 
-    <div class="u-page-header">
-        <span class="u-page-header__label">Mi cuenta</span>
-        <h1 class="u-page-header__title">Mis cupones</h1>
+    <div class="u-page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+        <div>
+            <span class="u-page-header__label">Mi cuenta</span>
+            <h1 class="u-page-header__title">Mis cupones</h1>
+        </div>
+        <a href="<?= BASE_URL ?>/usuario/giftcard/crear" class="u-btn u-btn--outline" style="margin-top:.25rem">
+            🎁 Crear Gift Card
+        </a>
     </div>
 
     <?php if (empty($cupones)): ?>
@@ -98,7 +103,7 @@ $origenLabel = [
     <?php endif; ?>
 
     <div>
-        <a href="<?= BASE_URL ?>/coleccion" class="u-btn u-btn--primary">Ver colección</a>
+        <a href="<?= BASE_URL ?>/coleccion" class="u-btn u-btn--dark">Ver colección</a>
     </div>
 
 </div>

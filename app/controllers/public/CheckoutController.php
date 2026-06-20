@@ -167,7 +167,8 @@ class CheckoutController
     {
         AuthMiddleware::verificar();
 
-        $titulo = 'Compra realizada';
+        $titulo = 'Compra realizada | Malku';
+        $css    = 'public/checkout.css';
         require_once __DIR__ . '/../../views/layouts/header.php';
         require_once __DIR__ . '/../../views/public/checkout/exito.php';
         require_once __DIR__ . '/../../views/layouts/footer.php';

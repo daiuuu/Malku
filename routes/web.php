@@ -183,7 +183,18 @@ switch(true)
         break;
 
     // ==================================================
-    // COLECCIÓN - FILTRO POR SLUG DE CATEGORÍA
+    // COLECCIÓN - CATEGORÍA + ORDEN  (/cat/orden)
+    // ==================================================
+    case (preg_match('#^coleccion/([a-z0-9-]+)/([a-z0-9-]+)$#', $url, $m) === 1):
+
+        $controller = new ColeccionController();
+
+        $controller->index($m[1], $m[2]);
+
+        break;
+
+    // ==================================================
+    // COLECCIÓN - CATEGORÍA O SÓLO ORDEN  (/slug)
     // ==================================================
     case (preg_match('#^coleccion/([a-z0-9-]+)$#', $url, $m) === 1):
 
@@ -663,6 +674,25 @@ switch(true)
         // ---- CUPONES ----
         } elseif ($url === 'usuario/cupones') {
             $c->cupones();
+
+        // ---- GIFT CARD ----
+        } elseif ($url === 'usuario/giftcard/crear') {
+            $c->giftcard();
+
+        } elseif ($url === 'usuario/giftcard/generar') {
+            $c->generarGiftcard();
+
+        } elseif ($url === 'usuario/giftcard/pago/exito') {
+            $c->pagoExitoGiftcard();
+
+        } elseif ($url === 'usuario/giftcard/pago/error') {
+            $c->pagoErrorGiftcard();
+
+        } elseif ($url === 'usuario/giftcard/pendiente') {
+            $c->pagoPendienteGiftcard();
+
+        } elseif ($url === 'usuario/giftcard/exito') {
+            $c->giftcardExito();
 
         // ---- MEMBRESÍA ----
         } elseif ($url === 'usuario/membresia') {

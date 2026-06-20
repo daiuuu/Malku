@@ -23,7 +23,7 @@ $_esLogueado = isset($_SESSION['usuario']);
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/layouts/footer.css?v=2">
 
     <?php if (isset($css)): ?>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= $css ?>">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= $css ?>?v=5">
     <?php endif; ?>
 
 </head>
@@ -50,8 +50,12 @@ $_esLogueado = isset($_SESSION['usuario']);
         <!-- DESKTOP ICONS -->
         <div class="header-icons">
 
-            <?php if ($_esLogueado && !$_esAdmin): ?>
-            <a href="<?= BASE_URL ?>/usuario/favoritos" class="hicon hicon--heart" aria-label="Mis favoritos"></a>
+            <?php if (!$_esAdmin): ?>
+                <?php if ($_esLogueado): ?>
+                <a href="<?= BASE_URL ?>/usuario/favoritos" class="hicon hicon--heart" aria-label="Mis favoritos"></a>
+                <?php else: ?>
+                <button type="button" class="hicon hicon--heart" id="btn-fav-guest" aria-label="Favoritos" style="background-color:transparent;border:none;cursor:pointer;"></button>
+                <?php endif; ?>
             <?php endif; ?>
 
             <a href="<?= BASE_URL ?>/carrito" class="hicon hicon--cart" aria-label="Carrito"></a>
@@ -88,6 +92,7 @@ $_esLogueado = isset($_SESSION['usuario']);
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/pedidos">Mis Pedidos</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/favoritos">Favoritos</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/cupones">Mis Cupones</a>
+                        <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/giftcard/crear">Crear Gift Card</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/direcciones">Direcciones</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/perfil">Mi Perfil</a>
                         <a class="account-menu__item" href="<?= BASE_URL ?>/usuario/membresia">Membresía</a>
@@ -168,6 +173,7 @@ $_esLogueado = isset($_SESSION['usuario']);
                 <li><a href="<?= BASE_URL ?>/usuario/pedidos">Mis Pedidos</a></li>
                 <li><a href="<?= BASE_URL ?>/usuario/favoritos">Favoritos</a></li>
                 <li><a href="<?= BASE_URL ?>/usuario/cupones">Mis Cupones</a></li>
+                <li><a href="<?= BASE_URL ?>/usuario/giftcard/crear">Crear Gift Card</a></li>
                 <li><a href="<?= BASE_URL ?>/usuario/direcciones">Direcciones</a></li>
                 <li><a href="<?= BASE_URL ?>/usuario/perfil">Mi Perfil</a></li>
                 <li><a href="<?= BASE_URL ?>/usuario/membresia">Membresía</a></li>

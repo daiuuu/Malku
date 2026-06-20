@@ -185,6 +185,14 @@ class Producto
 
                     break;
 
+                case 'destacados':
+
+                    $sql .= "
+                        ORDER BY p.destacado DESC, p.id DESC
+                    ";
+
+                    break;
+
                 default:
 
                     $sql .= "
