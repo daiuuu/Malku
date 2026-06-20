@@ -46,15 +46,31 @@
                         <div class="form-group">
 
                             <label for="nombre">
-                                Nombre completo
+                                Nombre
                             </label>
 
                             <input
                                 type="text"
                                 id="nombre"
                                 name="nombre"
-                                placeholder="Ingrese su nombre"
+                                placeholder="Tu nombre"
                                 required
+                            >
+
+                        </div>
+
+                        <!-- APELLIDO -->
+                        <div class="form-group">
+
+                            <label for="apellido">
+                                Apellido
+                            </label>
+
+                            <input
+                                type="text"
+                                id="apellido"
+                                name="apellido"
+                                placeholder="Tu apellido"
                             >
 
                         </div>
@@ -90,22 +106,6 @@
                                 placeholder="••••••••"
                                 required
                             >
-
-                        </div>
-
-                        <!-- CHECKBOX -->
-                        <div class="checkbox-group">
-
-                            <input
-                                type="checkbox"
-                                id="newsletter"
-                                name="newsletter"
-                            >
-
-                            <label for="newsletter">
-                                Deseo recibir novedades
-                                sobre nuevas colecciones.
-                            </label>
 
                         </div>
 

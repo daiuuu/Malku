@@ -29,6 +29,38 @@ class AuthMiddleware
             isset($_SESSION['usuario'])
         )
         {
+            $rol =
+                $_SESSION['usuario']['rol'];
+
+            if($rol === 'admin')
+            {
+                header(
+                    'Location: ' .
+                    BASE_URL .
+                    '/admin'
+                );
+            }
+            else
+            {
+                header(
+                    'Location: ' .
+                    BASE_URL .
+                    '/usuario'
+                );
+            }
+
+            exit;
+        }
+    }
+
+    // ================= ES ADMIN =================
+    public static function esAdmin()
+    {
+        if(
+            !isset($_SESSION['usuario']) ||
+            $_SESSION['usuario']['rol'] !== 'admin'
+        )
+        {
             header(
                 'Location: ' .
                 BASE_URL
