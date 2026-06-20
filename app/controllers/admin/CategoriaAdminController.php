@@ -14,12 +14,14 @@ class CategoriaAdminController
     public function index()
     {
         $categorias = $this->repo->obtenerTodas();
+        $css        = 'admin/admin.css?v=2';
         $titulo     = 'Categorías | Admin Malku';
         require_once __DIR__ . '/../../views/admin/categorias/index.php';
     }
 
     public function crear()
     {
+        $css    = 'admin/admin.css?v=2';
         $titulo = 'Nueva Categoría | Admin Malku';
         require_once __DIR__ . '/../../views/admin/categorias/crear.php';
     }
@@ -57,6 +59,7 @@ class CategoriaAdminController
             header('Location: ' . BASE_URL . '/admin/categorias');
             exit;
         }
+        $css    = 'admin/admin.css?v=2';
         $titulo = 'Editar Categoría | Admin Malku';
         require_once __DIR__ . '/../../views/admin/categorias/editar.php';
     }

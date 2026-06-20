@@ -22,6 +22,7 @@ class UsuarioAdminController
             $usuarios = [];
         }
 
+        $css    = 'admin/admin.css?v=2';
         $titulo = 'Usuarios | Admin Malku';
         require_once __DIR__ . '/../../views/admin/usuarios/index.php';
     }

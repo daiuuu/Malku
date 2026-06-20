@@ -14,6 +14,7 @@ class PedidoAdminController
     public function index()
     {
         $pedidos = $this->repo->obtenerTodos();
+        $css     = 'admin/admin.css?v=2';
         $titulo  = 'Pedidos | Admin Malku';
         require_once __DIR__ . '/../../views/admin/pedidos/index.php';
     }
@@ -28,6 +29,7 @@ class PedidoAdminController
             exit;
         }
 
+        $css    = 'admin/admin.css?v=2';
         $titulo = 'Pedido #' . str_pad($id, 5, '0', STR_PAD_LEFT) . ' | Admin Malku';
         require_once __DIR__ . '/../../views/admin/pedidos/detalle.php';
     }
@@ -36,7 +38,7 @@ class PedidoAdminController
     {
         $id     = (int)($_POST['id'] ?? 0);
         $estado = $_POST['estado'] ?? '';
-        $estados = ['pendiente','pagado','preparando','despachado','entregado','cancelado'];
+        $estados = ['pendiente','pagado','enviado','entregado','cancelado'];
 
         if ($id && in_array($estado, $estados)) {
             $this->repo->cambiarEstado($id, $estado);

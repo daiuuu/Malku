@@ -318,7 +318,7 @@ switch(true)
         AuthMiddleware::verificar();
         AuthMiddleware::esAdmin();
 
-        $css = 'admin/admin.css';
+        $css = 'admin/admin.css?v=2';
 
         // ---- DASHBOARD ----
         if ($url === 'admin') {
@@ -409,6 +409,10 @@ switch(true)
         } elseif ($url === 'admin/contacto/cambiar-estado') {
             $c = new ContactoAdminController();
             $c->cambiarEstado();
+
+        } elseif ($url === 'admin/contacto/responder') {
+            $c = new ContactoAdminController();
+            $c->responder();
 
         // ---- STOCK ----
         } elseif ($url === 'admin/stock') {
