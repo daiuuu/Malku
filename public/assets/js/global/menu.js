@@ -1,46 +1,64 @@
-const menuToggle = document.getElementById("menu-toggle");
-const closeBtn = document.getElementById("close-btn");
-const offCanvasMenu = document.getElementById("off-canvas-menu");
-const overlay = document.getElementById("menu-overlay");
-
 /* ============================= */
-/* ABRIR MENU */
+/* HAMBURGER MENU                */
 /* ============================= */
 
-menuToggle.addEventListener("click", () => {
+const menuToggle = document.getElementById('menu-toggle');
+const closeBtn   = document.getElementById('close-btn');
+const canvasMenu = document.getElementById('off-canvas-menu');
+const overlay    = document.getElementById('menu-overlay');
 
-    offCanvasMenu.classList.add("active");
-    overlay.classList.add("active");
-
-});
-
-/* ============================= */
-/* CERRAR MENU */
-/* ============================= */
-
-function closeMenu() {
-
-    offCanvasMenu.classList.remove("active");
-    overlay.classList.remove("active");
-
+function openMenu() {
+    if (!canvasMenu || !overlay) return;
+    canvasMenu.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
-closeBtn.addEventListener("click", closeMenu);
+function closeMenu() {
+    if (!canvasMenu || !overlay) return;
+    canvasMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-overlay.addEventListener("click", closeMenu);
+if (menuToggle) menuToggle.addEventListener('click', openMenu);
+if (closeBtn)   closeBtn.addEventListener('click', closeMenu);
+if (overlay)    overlay.addEventListener('click', closeMenu);
+
+if (canvasMenu) {
+    canvasMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+}
 
 /* ============================= */
-/* CERRAR AL HACER CLICK EN LINK */
+/* ACCOUNT DROPDOWN              */
 /* ============================= */
 
-const menuLinks = offCanvasMenu.querySelectorAll("a");
+const accountBtn  = document.getElementById('account-btn');
+const accountMenu = document.getElementById('account-menu');
 
-menuLinks.forEach(link => {
+if (accountBtn && accountMenu) {
 
-    link.addEventListener("click", () => {
-
-        closeMenu();
-
+    accountBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = accountMenu.classList.toggle('is-open');
+        accountBtn.setAttribute('aria-expanded', isOpen);
     });
 
-});
+    document.addEventListener('click', e => {
+        if (!accountMenu.contains(e.target) && e.target !== accountBtn) {
+            accountMenu.classList.remove('is-open');
+            accountBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            accountMenu.classList.remove('is-open');
+            accountBtn.setAttribute('aria-expanded', 'false');
+            accountBtn.focus();
+        }
+    });
+
+}

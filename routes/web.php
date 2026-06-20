@@ -47,28 +47,10 @@ require_once __DIR__ .
 require_once __DIR__ .
     '/../app/controllers/usuario/DashboardUsuarioController.php';
 
-/*
-require_once __DIR__ .
-    '/../app/controllers/usuario/PedidoUsuarioController.php';
-
-require_once __DIR__ .
-    '/../app/controllers/usuario/PerfilUsuarioController.php';
-
-require_once __DIR__ .
-    '/../app/controllers/usuario/DireccionUsuarioController.php';
-
-require_once __DIR__ .
-    '/../app/controllers/usuario/FavoritoUsuarioController.php';
-
-require_once __DIR__ .
-    '/../app/controllers/usuario/MembresiaUsuarioController.php';
-*/
-
 // ======================================================
 // CONTROLLERS ADMIN
 // ======================================================
 
-/*
 require_once __DIR__ .
     '/../app/controllers/admin/DashboardAdminController.php';
 
@@ -88,14 +70,13 @@ require_once __DIR__ .
     '/../app/controllers/admin/ContactoAdminController.php';
 
 require_once __DIR__ .
-    '/../app/controllers/admin/CuponAdminController.php';
-
-require_once __DIR__ .
     '/../app/controllers/admin/StockAdminController.php';
 
 require_once __DIR__ .
     '/../app/controllers/admin/AnalyticsAdminController.php';
-*/
+
+require_once __DIR__ .
+    '/../app/controllers/admin/CuponAdminController.php';
 
 // ======================================================
 // URL ACTUAL
@@ -330,23 +311,128 @@ switch(true)
         break;
 
     // ==================================================
-    // PANEL ADMIN
+    // PANEL ADMIN — todas las rutas /admin/*
     // ==================================================
-    case ($url === 'admin'):
-
-        require_once __DIR__ .
-            '/../app/middleware/AuthMiddleware.php';
+    case (strpos($url, 'admin') === 0):
 
         AuthMiddleware::verificar();
-
         AuthMiddleware::esAdmin();
 
-        $titulo = 'Panel Administrativo | Malku';
+        $css = 'admin/admin.css';
 
-        $css = 'admin/dashboard.css';
+        // ---- DASHBOARD ----
+        if ($url === 'admin') {
+            $c = new DashboardAdminController();
+            $c->index();
 
-        require_once __DIR__ .
-            '/../app/views/admin/dashboard/index.php';
+        // ---- PRODUCTOS ----
+        } elseif ($url === 'admin/productos') {
+            $c = new ProductoAdminController();
+            $c->index();
+
+        } elseif ($url === 'admin/productos/crear') {
+            $c = new ProductoAdminController();
+            $c->crear();
+
+        } elseif ($url === 'admin/productos/guardar') {
+            $c = new ProductoAdminController();
+            $c->guardar();
+
+        } elseif (preg_match('#^admin/productos/editar/(\d+)$#', $url, $m)) {
+            $c = new ProductoAdminController();
+            $c->editar((int)$m[1]);
+
+        } elseif ($url === 'admin/productos/actualizar') {
+            $c = new ProductoAdminController();
+            $c->actualizar();
+
+        } elseif ($url === 'admin/productos/eliminar') {
+            $c = new ProductoAdminController();
+            $c->eliminar();
+
+        // ---- CATEGORÍAS ----
+        } elseif ($url === 'admin/categorias') {
+            $c = new CategoriaAdminController();
+            $c->index();
+
+        } elseif ($url === 'admin/categorias/crear') {
+            $c = new CategoriaAdminController();
+            $c->crear();
+
+        } elseif ($url === 'admin/categorias/guardar') {
+            $c = new CategoriaAdminController();
+            $c->guardar();
+
+        } elseif (preg_match('#^admin/categorias/editar/(\d+)$#', $url, $m)) {
+            $c = new CategoriaAdminController();
+            $c->editar((int)$m[1]);
+
+        } elseif ($url === 'admin/categorias/actualizar') {
+            $c = new CategoriaAdminController();
+            $c->actualizar();
+
+        } elseif ($url === 'admin/categorias/eliminar') {
+            $c = new CategoriaAdminController();
+            $c->eliminar();
+
+        // ---- PEDIDOS ----
+        } elseif ($url === 'admin/pedidos') {
+            $c = new PedidoAdminController();
+            $c->index();
+
+        } elseif (preg_match('#^admin/pedidos/(\d+)$#', $url, $m)) {
+            $c = new PedidoAdminController();
+            $c->detalle((int)$m[1]);
+
+        } elseif ($url === 'admin/pedidos/cambiar-estado') {
+            $c = new PedidoAdminController();
+            $c->cambiarEstado();
+
+        // ---- USUARIOS ----
+        } elseif ($url === 'admin/usuarios') {
+            $c = new UsuarioAdminController();
+            $c->index();
+
+        } elseif ($url === 'admin/usuarios/cambiar-rol') {
+            $c = new UsuarioAdminController();
+            $c->cambiarRol();
+
+        } elseif ($url === 'admin/usuarios/cambiar-estado') {
+            $c = new UsuarioAdminController();
+            $c->cambiarEstado();
+
+        // ---- CONTACTO ----
+        } elseif ($url === 'admin/contacto') {
+            $c = new ContactoAdminController();
+            $c->index();
+
+        } elseif ($url === 'admin/contacto/cambiar-estado') {
+            $c = new ContactoAdminController();
+            $c->cambiarEstado();
+
+        // ---- STOCK ----
+        } elseif ($url === 'admin/stock') {
+            $c = new StockAdminController();
+            $c->index();
+
+        } elseif ($url === 'admin/stock/ajustar') {
+            $c = new StockAdminController();
+            $c->ajustar();
+
+        // ---- ANALYTICS ----
+        } elseif ($url === 'admin/analytics') {
+            $c = new AnalyticsAdminController();
+            $c->index();
+
+        // ---- CUPONES ----
+        } elseif ($url === 'admin/cupones') {
+            $c = new CuponAdminController();
+            $c->index();
+
+        } else {
+            http_response_code(404);
+            echo '<h1>404 — Sección no encontrada</h1>';
+        }
 
         break;
 
