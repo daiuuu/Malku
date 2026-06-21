@@ -167,5 +167,83 @@
 </script>
 <?php endif; ?>
 
+<!-- ================= SCROLL TO TOP ================= -->
+<button
+    id="scroll-top-btn"
+    aria-label="Volver al inicio"
+    title="Volver al inicio"
+>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+        <path d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+    </svg>
+</button>
+
+<style>
+#scroll-top-btn {
+    position: fixed;
+    bottom: 2.2rem;
+    right: 2.2rem;
+    z-index: 8000;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #79836d;
+    border: none;
+    color: #F5F1E8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease;
+}
+#scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+#scroll-top-btn:hover {
+    background: #6c7561;
+}
+@media (max-width: 600px) {
+    #scroll-top-btn {
+        bottom: 1.4rem;
+        right: 1.4rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+</style>
+
+<script>
+(function () {
+    var btn       = document.getElementById('scroll-top-btn');
+    var umbral    = 300;
+    var ticking   = false;
+
+    function actualizar() {
+        if (window.scrollY > umbral) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            requestAnimationFrame(actualizar);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+})();
+</script>
+
 </body>
 </html>
