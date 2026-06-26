@@ -4,16 +4,16 @@ RewriteEngine On
 # BASE DEL PROYECTO
 # =====================================================
 
-RewriteBase /Proyecto-Ecommerce-Niki/public/
+RewriteBase /Malku/public/
 
 # =====================================================
 # ERRORES HTTP — pasar por el router para mostrar
 # páginas con el diseño del sitio
 # =====================================================
 
-ErrorDocument 404 /Proyecto-Ecommerce-Niki/public/index.php?url=_error_404
-ErrorDocument 403 /Proyecto-Ecommerce-Niki/public/index.php?url=_error_403
-ErrorDocument 500 /Proyecto-Ecommerce-Niki/public/index.php?url=_error_500
+ErrorDocument 404 /Malku/public/index.php?url=_error_404
+ErrorDocument 403 /Malku/public/index.php?url=_error_403
+ErrorDocument 500 /Malku/public/index.php?url=_error_500
 
 # =====================================================
 # SI EXISTE ARCHIVO O CARPETA, NO REESCRIBIR
