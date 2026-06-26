@@ -28,7 +28,7 @@ if(!defined('BASE_URL'))
 {
     define(
         'BASE_URL',
-        'http://localhost/Proyecto-Ecommerce-Niki/public'
+        'http://localhost/Malku/public'
     );
 }
 
